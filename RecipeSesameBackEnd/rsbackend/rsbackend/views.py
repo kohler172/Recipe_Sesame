@@ -10,8 +10,16 @@ from .recipeSearch import search, random_recipes
 from .nlp import get_keywords
 
 class MessageView(APIView):
+    #List class member for tracking keywords in current search thread.#
+    searches = []
+
     def post(self, request):
-        return Response(search(get_keywords(request.data['message'])))
+        #Cheap search reset for demo purposes.
+        if 'search' in request.data['message'].lower():
+            self.searches.clear()
+        else:
+            self.searches += get_keywords(request.data['message'])
+        return Response(search(self.searches))
 
 class RandomView(APIView):
     def get(self, request):
