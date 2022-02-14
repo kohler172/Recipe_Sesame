@@ -1,0 +1,35 @@
+.cartItem {
+    padding: 12px 20px 12px 12px;
+    margin: 10px 30px;
+    border-radius: var(--large-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--main-color-dark);
+}
+
+.cartItem:hover {
+    cursor: pointer;
+}
+
+.cartItem > p {
+    padding: 0 15px;
+}
+
+.cartItem > img {
+    border-radius: 6px;
+    height: 90px;
+    box-shadow: var(--card-shadow);
+}
+
+.cartItem > svg {
+    color: var(--warning-color);
+}
+
+.cartItem > svg:hover {
+    color:var(--warning-color-dark);
+}
+
+.cartIngredient {
+    text-align: left;
+}

@@ -1,0 +1,23 @@
+.cartBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color-light);
+    padding: 0 14px 0 15px;
+    height: 36px;
+    border-radius: var(--large-radius);
+    box-shadow: var(--card-shadow-light);
+}
+
+.cartBtn > p {
+    margin-right: 9px;
+    font-weight: bold;
+}
+
+.cartBtn > svg {
+    margin-bottom: 2px;
+}
+
+.cartBtn:hover {
+    cursor: pointer;
+}

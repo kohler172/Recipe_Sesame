@@ -1,0 +1,30 @@
+.recipeDescription {
+    width: 65%;
+    overflow: scroll;
+    padding: 15px;
+    background-color: var(--main-color-light);
+    border-radius: var(--small-radius);
+    text-align: left;
+    margin-right: 25px;
+}
+
+.recipeDescription > p:not(:first-of-type) {
+    margin: 4px 0;
+}
+
+.recipeInstructions {
+    margin-top: 12px !important;
+}
+
+.recipeInstructions:first-of-type {
+    margin-top: 18px !important;
+    padding-top: 15px;
+    border-top: 1px solid var(--main-color-dark);
+}
+
+@media only screen and (max-width: 500px) {
+    .recipeDescription {
+        height: 400px;
+        width: calc(100% - 30px);
+    }
+}

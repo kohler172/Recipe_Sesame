@@ -1,0 +1,33 @@
+.recipeCartContents {
+    height: 20vh;
+    overflow-y: scroll;
+    background-color: var(--main-color-light);
+    border-radius: var(--small-radius);
+    text-align: left;
+    padding: 8px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+.recipeCartContents > p {
+    padding: 8px;
+    width: calc(100% - 16px);
+}
+
+.recipeCartContents > p:not(:first-of-type) {
+    border-top: 1px solid var(--main-color-dark);
+}
+
+.centered {
+    justify-content: center;
+    align-items: center;
+}
+
+.centered > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

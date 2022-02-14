@@ -1,0 +1,28 @@
+.cartContents {
+    width: calc(100% - 120px);
+    padding: 0 60px;
+    height: 100vh;
+    margin-top: 12px;
+}
+
+.cartList {
+    overflow: scroll;
+    background-color: var(--main-color-light);
+    border-radius: 0 var(--small-radius) var(--small-radius) var(--small-radius);
+    height: 58vh;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.printButton {
+    background-color: var(--main-color-light);
+    border: 1px solid rgb(162, 216, 187);
+    padding: 0 20px;
+    margin: 8px 0;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    float: right;
+}

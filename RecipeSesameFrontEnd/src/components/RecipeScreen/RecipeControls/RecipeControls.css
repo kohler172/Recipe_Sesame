@@ -1,0 +1,26 @@
+.recipeControls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 35%;
+}
+
+.recipeControls > img {
+    width: 100%;
+    border-radius: var(--small-radius);
+    box-shadow: var(--card-shadow);
+}
+
+@media only screen and (max-width: 500px) {
+    .recipeControls > img {
+        max-height: 16vh;
+        margin: 10px 0;
+    }
+}
+
+.recipeButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

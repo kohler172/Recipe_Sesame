@@ -1,0 +1,29 @@
+.listSelector {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0;
+}
+
+.selected {
+    background-color: var(--main-color-light);
+    border-bottom: 1px solid var(--unselected-button);
+}
+
+.unselected {
+    background-color: var(--unselected-button);
+    border-bottom: 1px solid var(--unselected-button);
+}
+
+.listSelector > p {
+    padding: 0 20px;
+    height: 36px;
+    border-radius: var(--small-radius) var(--small-radius) 0 0 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.listSelector > p:hover {
+    cursor: pointer;
+}

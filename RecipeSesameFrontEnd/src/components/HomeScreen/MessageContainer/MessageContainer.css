@@ -1,0 +1,6 @@
+.messageContainer {
+    height: 100vh;
+    padding: 15px 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

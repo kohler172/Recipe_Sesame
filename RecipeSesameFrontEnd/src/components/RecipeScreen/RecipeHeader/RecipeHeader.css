@@ -1,0 +1,17 @@
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 120px);
+    margin-bottom: 8px;
+    padding: 0 60px;
+}
+
+.cardHeader > svg {
+    color: var(--warning-color);
+}
+
+.cardHeader > svg:hover {
+    cursor: pointer;
+    color:var(--warning-color-dark);
+}

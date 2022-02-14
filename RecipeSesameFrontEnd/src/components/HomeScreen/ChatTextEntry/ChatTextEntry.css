@@ -1,0 +1,32 @@
+.chatTextEntry {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--off-white);
+    border-radius: 0 0 var(--small-radius) var(--small-radius);
+    border-top: var(--gray-border);
+}
+
+.chatTextEntry > input {
+    background-color: white;
+    border: var(--gray-border);
+    border-radius: 5px;
+}
+
+.chatTextEntry > input[type=submit] {
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.send {
+    width: 70px;
+}
+
+.send:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,34 @@
+.recommendedRecipe {
+    background-color: var(--off-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: var(--small-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    background-size: cover;
+    transition-property: transform;
+    transition-duration: 0.25s;
+}
+
+@media only screen and (max-width: 1000px) {
+    .recommendedRecipe {
+        margin: 8px 15px;
+    }
+}
+
+.recommendedRecipe:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.recommendedRecipe > h3 {
+    color: var(--off-white);
+    text-shadow: 1px 0 2px rgb(50, 50, 50)
+}
+
+.recommendedRecipe > img {
+    transform: scale(0.4, 0.4);
+    border-radius: var(--small-radius);
+}

@@ -1,0 +1,28 @@
+.message {
+    min-height: 30px;
+    padding: 8px 13px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    word-break: break-word;
+}
+
+.message > p {
+    text-align: left;
+}
+
+.leftMessage {
+    border-radius: var(--large-radius) var(--large-radius) var(--large-radius) 3px;
+    background-color: rgb(80, 80, 80);
+    color: var(--off-white);
+    width: 50%;
+}
+
+.rightMessage {
+    border-radius: var(--large-radius) var(--large-radius) 3px var(--large-radius);
+    background-color: var(--secondary-color);
+    color: var(--black-text);
+    width: 50%;
+    margin-left: auto;
+}

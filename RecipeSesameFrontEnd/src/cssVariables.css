@@ -1,0 +1,22 @@
+:root {
+  --main-color: rgb(183, 235, 207);
+  --main-color-light: rgb(199, 255, 225);
+  --main-color-dark: rgb(155, 216, 184);
+  --secondary-color: rgb(255, 153, 36);
+  --secondary-color-dark: rgb(230, 133, 22);
+  --warning-color: rgb(185, 20, 20);
+  --warning-color-dark: rgb(160, 21, 21);
+  --green-border: 1px solid rgb(192, 238, 212);
+  --gray-border: 1px solid rgb(221, 221, 221);
+  --small-radius: 10px;
+  --large-radius: 15px;
+  --black-text: rgb(25, 25, 25);
+  --off-white: rgb(245, 245, 245);
+  --disabled-button-color: rgb(200, 200, 200);
+  --unselected-button: rgb(166, 224, 194);
+  --card-shadow: 0 1px 10px #85bb9e;
+  --card-shadow-light: 0 0 5px #9dddbd;
+  --list-shadow: inset 0px 0px 4px #7ca58f;
+  --screen-shadow: 0px 0px 8px rgb(36, 53, 44);
+  --screen-shade: rgba(49, 71, 58, 0.9);
+}

@@ -1,0 +1,16 @@
+@media only screen and (max-width: 500px) {
+    .logo {
+      max-width: 50%;
+    }
+  }
+
+.logo > h1 {
+    font-size: 32pt;
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .logo > h1 {
+      font-size: 40pt;
+  }
+}

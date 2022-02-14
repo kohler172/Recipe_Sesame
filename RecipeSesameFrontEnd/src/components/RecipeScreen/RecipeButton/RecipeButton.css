@@ -1,0 +1,19 @@
+.recipeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    margin: 0 7px;
+    height: 36px;
+    background-color: var(--off-white);
+    border-radius: var(--large-radius);
+    border: var(--gray-border);
+}
+
+.recipeButton > p {
+    font-weight: bold;
+}
+
+.recipeButton:hover {
+    cursor: pointer;
+}
