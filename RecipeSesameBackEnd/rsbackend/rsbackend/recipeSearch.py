@@ -10,6 +10,9 @@ def get_recipe_data(recipe):
 
 # Parameter 'words' should be single string of keywords separated by single spaces
 def search(words):
+    print('heres words')
+    print(words)
+    words = " ".join(words)
     es.indices.refresh(index="test")
 
     results = es.search(index="test", body={ #perform sample search
@@ -21,6 +24,8 @@ def search(words):
                 }
             }
         })['hits']['hits']
+    
+    print('went')
 
     return map(get_recipe_data, results) # Return only relevant recipe data
 
