@@ -1,11 +1,14 @@
 .message {
-    min-height: 30px;
-    padding: 8px 13px;
-    margin: 8px 0;
+    padding: 10px 13px;
+    margin: 4px 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     word-break: break-word;
+}
+
+.message:last-of-type {
+    margin-top: 20px;
 }
 
 .message > p {
