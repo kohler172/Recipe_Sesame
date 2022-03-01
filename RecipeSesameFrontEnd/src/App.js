@@ -12,8 +12,8 @@ function App() {
   const [numberOfMessagesSent, setNumberOfMessagesSent] = useState(0);
 
   const [recommendedRecipes, setRecommendedRecipes] = useState([]);
-  const [savedIngredients, setSavedIngredients] = useState([]);
-  const [savedRecipes, setSavedRecipes] = useState([]);
+  const [savedIngredients, setSavedIngredients] = useState(localStorage.getItem('ingredients') ? localStorage.getItem('ingredients') : []);
+  const [savedRecipes, setSavedRecipes] = useState(localStorage.getItem('recipes') ? localStorage.getItem('recipes') : []);
 
   const [recipeScreenIsOpen, setRecipeScreenIsOpen] = useState(false);
   const [openRecipe, setOpenRecipe] = useState({});

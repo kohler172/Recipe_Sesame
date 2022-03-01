@@ -1,6 +1,8 @@
 .messageContainer {
-    height: 100vh;
-    padding: 15px 20px;
+    height: 120vh;
+    padding: 15px 15px;
     overflow-y: scroll;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
 }
