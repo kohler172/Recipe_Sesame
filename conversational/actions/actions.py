@@ -21,24 +21,29 @@ class ActionIngredientPos(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        print('went positive')
         for entity in tracker.latest_message['entities']:
             dispatcher.utter_message(response="utter_ingredient_pos", ingredient=entity['value'])
             self.ingredients.append(entity['value'])
 
+        print(self.ingredients)
         return []
 
 class ActionIngredientNeg(Action):
-
+    neg_ingredients = []
     def name(self) -> Text:
         return "action_ingredient_neg"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+        print('went negative')
         for entity in tracker.latest_message['entities']:
             dispatcher.utter_message(response="utter_ingredient_neg", ingredient=entity['value'])
+            self.neg_ingredients.append(entity['value'])
 
+        print('excluding: ')
+        print(self.neg_ingredients)
         return []
 
 class ActionAdjectivePos(Action):
@@ -49,7 +54,7 @@ class ActionAdjectivePos(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+        print('went adjective')
         doc = nlp(tracker.latest_message['text'])
         for token in doc:
             if token.pos_ == "ADJ":

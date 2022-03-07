@@ -8,22 +8,34 @@ es = Elasticsearch("http://localhost:9200")
 def get_recipe_data(recipe):
     return recipe['_source']
 
-# Parameter 'words' should be a list of strings
-def search(words):
-    print('heres words')
-    print(words)
+# Parameter 'words' should be a list of strings desired for recipe
+# 'neg_words' should be a list of strings not desired in recipe
+def search(words, neg_words):
     words = " ".join(words)
     es.indices.refresh(index="test")
+    neg_words = " ".join(neg_words)
 
     results = es.search(index="test", body={ #perform sample search
         "query": {
-            "multi_match": {
-                "query": words,
-                "fields": ["Title", "Instructions", "Ingredients"],
-                "operator": "or"
+            "bool": {
+                "must": {
+                    "multi_match": {
+                        "query": words,
+                        "fields": ["Title", "Instructions", "Ingredients"],
+                        "operator": "or"
+                    }
+                },
+                "must_not": {
+                    "multi_match": {
+                        "query": neg_words,
+                        "fields": ["Title", "Instructions", "Ingredients"],
+                        "operator": "or"
+                    }
                 }
+
             }
-        })['hits']['hits']
+            }
+    })['hits']['hits']
     
     print('went')
 
