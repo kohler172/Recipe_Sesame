@@ -4,6 +4,7 @@ import './ChatTextEntry.css';
 const ChatTextEntry = (props) => {
     const [textContent, setTextContent] = useState('');
     const messageUrl = 'http://localhost:8000/message/';
+    const rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
 
     const handleTextChange = (event) => {
         setTextContent(event.target.value);
@@ -14,18 +15,31 @@ const ChatTextEntry = (props) => {
 
         if (textContent.length > 0) {
             props.addMessage({ content: textContent, isUserMessage: true });
-            props.incrementNumberOfMessagesSent();
+            //props.incrementNumberOfMessagesSent();
             fetch(messageUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({'message': textContent})
+                body: JSON.stringify({'sender': "test", 'message': textContent})
             })
                 .then(response => response.json())
                 .then(data => {
                     props.setRecommendedRecipes(data);
                     setTextContent('');
+                });
+
+            fetch(rasa_url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({'sender': "default", 'message': textContent})
+            })
+                .then(response => response.json())
+                .then(data => {     
+                    data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));                    
+                    props.incrementNumberOfMessagesSent();
                 });
         }
     }

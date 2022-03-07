@@ -8,10 +8,11 @@ from elasticsearch import Elasticsearch
 from django.http import JsonResponse
 from .recipeSearch import search, random_recipes
 from .nlp import get_keywords
+#from rasa.nlu.model import Interpreter
 
 class MessageView(APIView):
-    #List class member for tracking keywords in current search thread.#
-    searches = []
+    #List class member for tracking keywords in current search thread.
+    searches = [] # Type: List[str]
 
     def post(self, request):
         #Cheap search reset for demo purposes.
