@@ -13,14 +13,18 @@ from .nlp import get_keywords
 class MessageView(APIView):
     #List class member for tracking keywords in current search thread.
     searches = [] # Type: List[str]
+    neg_searches = []
 
     def post(self, request):
         #Cheap search reset for demo purposes.
         if 'search' in request.data['message'].lower():
             self.searches.clear()
+        elif 'not' in request.data['message'].lower():
+            self.neg_searches += get_keywords(request.data['message'])
         else:
             self.searches += get_keywords(request.data['message'])
-        return Response(search(self.searches))
+        #val = search(self.searches, self.neg_searches)
+        return Response(search(self.searches, self.neg_searches))
 
 class RandomView(APIView):
     def get(self, request):

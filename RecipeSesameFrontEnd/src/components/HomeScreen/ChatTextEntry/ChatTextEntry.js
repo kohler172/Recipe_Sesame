@@ -15,7 +15,7 @@ const ChatTextEntry = (props) => {
 
         if (textContent.length > 0) {
             props.addMessage({ content: textContent, isUserMessage: true });
-            //props.incrementNumberOfMessagesSent();
+        
             fetch(messageUrl, {
                 method: 'POST',
                 headers: {

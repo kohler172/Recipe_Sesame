@@ -29,15 +29,19 @@ responses:
 
   utter_goodbye:
   - text: "Bye"
+  - text: "Bon Appetit!"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
   utter_ingredient_pos:
   - text: "{ingredient} will be included."
+  - text: "OK, let's find some recipes with {ingredient}."
+  - text: "Alright, including {ingredient} in the search."
 
   utter_ingredient_neg:
   - text: "Recipes with {ingredient} have been filtered out."
+  - text: "Alright, we'll exclude any recipes with {ingredient}."
 
   utter_adjective_pos:
   - text: "Results have been updated to be more {adjective}"
@@ -47,6 +51,7 @@ responses:
 
   utter_anything_else:
   - text: "Anything else?"
+  - text: "Any other ingredients you'd like?"
 
 actions:
   - action_ingredient_pos
