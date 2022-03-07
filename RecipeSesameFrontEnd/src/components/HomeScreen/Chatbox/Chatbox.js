@@ -15,18 +15,32 @@ const Chatbox = (props) => {
     const incrementNumberOfMessagesSent = () => {
         props.setNumberOfMessagesSent(props.numberOfMessagesSent + 1);
         
-        // The above function call is async, so these if statements execute first
-        if (props.numberOfMessagesSent % 4 == 0) {
-            addMessage({ content: "Sounds good! Any other ingredients you'd like to include?", isUserMessage: false });
-        } else if (props.numberOfMessagesSent % 4 == 1) {
-            addMessage({ content: "Good choice.  Anything else?", isUserMessage: false });
-        } else if (props.numberOfMessagesSent % 4 == 2) {
-            addMessage({ content: "I think you might enjoy these recipes. Would you like to find any other recipes?", isUserMessage: false });
-        } else if (props.numberOfMessagesSent != 7) {
-            addMessage({ content: "Cool! What would you like?", isUserMessage: false });
-        } else {
-            addMessage({ content: "Bon Appetit : )", isUserMessage: false });
-        }
+        // // The above function call is async, so these if statements execute first
+        // fetch(messageUrl, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({'text': textContent})
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         props.addMessage(data);
+        //         setTextContent('');
+        //     });
+
+
+        // if (props.numberOfMessagesSent % 4 == 0) {
+        //     addMessage({ content: "Sounds good! Any other ingredients you'd like to include?", isUserMessage: false });
+        // } else if (props.numberOfMessagesSent % 4 == 1) {
+        //     addMessage({ content: "Good choice.  Anything else?", isUserMessage: false });
+        // } else if (props.numberOfMessagesSent % 4 == 2) {
+        //     addMessage({ content: "I think you might enjoy these recipes. Would you like to find any other recipes?", isUserMessage: false });
+        // } else if (props.numberOfMessagesSent != 7) {
+        //     addMessage({ content: "Cool! What would you like?", isUserMessage: false });
+        // } else {
+        //     addMessage({ content: "Bon Appetit : )", isUserMessage: false });
+        // }
     }
 
     return (
@@ -40,5 +54,6 @@ const Chatbox = (props) => {
         </div>
     );
 }
+
 
 export default Chatbox;

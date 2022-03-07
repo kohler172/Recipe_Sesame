@@ -1,0 +1,62 @@
+version: '3.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- ingredient_pos:
+    use_entities: true
+- ingredient_neg:
+    use_entities: true
+- adjective_pos:
+    use_entities: true
+- adjective_neg:
+    use_entities: true
+entities: []
+slots: {}
+responses:
+  utter_greet:
+  - text: Hello! What would you like to eat?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ingredient_pos:
+  - text: '{ingredient} will be included.'
+  utter_ingredient_neg:
+  - text: Recipes with {ingredient} have been filtered out.
+  utter_adjective_pos:
+  - text: Results have been updated to be more {adjective}
+  utter_adjective_neg:
+  - text: '{adjective} recipes have been filtered out'
+  utter_anything_else:
+  - text: Anything else?
+actions:
+- action_ingredient_pos
+- action_ingredient_neg
+- action_adjective_pos
+- action_adjective_neg
+forms: {}
+e2e_actions: []

@@ -5,7 +5,6 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 from typing import Any, Text, Dict, List
-
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import spacy
@@ -14,6 +13,7 @@ nlp = spacy.load("en_core_web_md")
 
 class ActionIngredientPos(Action):
 
+    ingredients = []
     def name(self) -> Text:
         return "action_ingredient_pos"
 
@@ -24,6 +24,9 @@ class ActionIngredientPos(Action):
         doc = nlp(tracker.latest_message['text'])
         for chunk in doc.noun_chunks: 
             dispatcher.utter_message(response="utter_ingredient_pos", ingredient=chunk.text)
+            self.ingredients.append(chunk.text)
+
+        
 
         return []
 
