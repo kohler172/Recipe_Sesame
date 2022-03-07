@@ -93,28 +93,86 @@ nlu:
 
 - intent: ingredient_pos
   examples: |
-    - I would like something with chicken
-    - I want something with beef
-    - I have eggs
-    - I like peanuts
-    - It must include fruit
+    - I would like something with [chicken]{"entity": "ingredient"}
+    - I would like something with [cheese]{"entity": "ingredient"}
+    - I want something with [beef]{"entity": "ingredient"}
+    - I want something with [ham]{"entity": "ingredient"}
+    - I have [eggs]{"entity": "ingredient"}
+    - I have [cilantro]{"entity": "ingredient"}
+    - I like [peanuts]{"entity": "ingredient"}
+    - I like [ice cream]{"entity": "ingredient"}
+    - It must include [fruit]{"entity": "ingredient"}
+    - It must include [vegetables]{"entity": "ingredient"}
+    - It must have [rice]{"entity": "ingredient"}
+    - It must have [fruit]{"entity": "ingredient"}
+    - give me [pasta]{"entity": "ingredient"}
+    - give me [fish]{"entity": "ingredient"}
+    - i enjoy [french fries]{"entity": "ingredient"}
+    - i enjoy [chips]{"entity": "ingredient"}
+    - it should have [rice]{"entity": "ingredient"}
+    - it should have [spicy chicken]{"entity": "ingredient"}
+    - [pancakes]{"entity": "ingredient"} taste good
+    - [waffles]{"entity": "ingredient"} taste good
+    - i love [apples]{"entity": "ingredient"}
+    - i love [oranges]{"entity": "ingredient"}
 
 - intent: ingredient_neg
   examples: |
-    - I don't want chicken
-    - I don't have beef
-    - I am allergic to peanuts
-    - Absolutely no peanuts
-    - It must not include fruit
+    - I don't want [chicken]{"entity": "ingredient"}
+    - I don't want [cheese]{"entity": "ingredient"}
+    - I don't have [beef]{"entity": "ingredient"}
+    - I don't have [ham]{"entity": "ingredient"}
+    - I am allergic to [peanuts]{"entity": "ingredient"}
+    - I am allergic to [ice cream]{"entity": "ingredient"}
+    - Absolutely no [peanuts]{"entity": "ingredient"}
+    - Absolutely no [cilantro]{"entity": "ingredient"}
+    - It must not include [fruit]{"entity": "ingredient"}
+    - It must not include [vegetables]{"entity": "ingredient"}
+    - don't give me [pasta]{"entity": "ingredient"}
+    - don't give me [fish]{"entity": "ingredient"}
+    - i dislike [french fries]{"entity": "ingredient"}
+    - I dislike [chips]{"entity": "ingredient"}
+    - i hate [bananas]{"entity": "ingredient"}
+    - i hate [apples]{"entity": "ingredient"}
+    - i hate [oranges]{"entity": "ingredient"}
+    - [bread]{"entity": "ingredient"} is gross
+    - [pancakes]{"entity": "ingredient"} are gross
 
 - intent: adjective_pos
   examples: |
-    - Make it spicy
-    - I would like something sweet
-    - Something salty
+    - Make it [spicy]{"entity": "adjective"}
+    - Make it [sweet]{"entity": "adjective"}
+    - Make it [sour]{"entity": "adjective"}
+    - Make it [bitter]{"entity": "adjective"}
+    - I would like something [sweet]{"entity": "adjective"}
+    - I would like something [spicy]{"entity": "adjective"}
+    - I would like something [strong]{"entity": "adjective"}
+    - I would like something [tasty]{"entity": "adjective"}
+    - I would like seomthing [grilled]{"entity": "adjective"}
+    - Something [salty]{"entity": "adjective"}
+    - It should be [salty]{"entity": "adjective"}
+    - It should be [sweet]{"entity": "adjective"}
+    - It should be [hot]{"entity": "adjective"}
+    - It should be [cold]{"entity": "adjective"}
+    - Something [sweet]{"entity": "adjective"} sounds good
+    - Something [fried]{"entity": "adjective"} sounds good
+    - Give me something [fried]{"entity": "adjective"}
+    - Give me something [spicy]{"entity": "adjective"}
+    - Give me something [bitter]{"entity": "adjective"}
 
 - intent: adjective_neg
   examples: |
-    - I don't like spicy food
-    - Nothing sweet
-    - Those are too salty
+    - I don't like [spicy]{"entity": "adjective"} food
+    - I don't like [sweet]{"entity": "adjective"} food
+    - I don't like [sour]{"entity": "adjective"} food
+    - I don't like [bitter]{"entity": "adjective"} food
+    - Nothing [sweet]{"entity": "adjective"}
+    - Nothing [bitter]{"entity": "adjective"}
+    - Nothing [hot]{"entity": "adjective"}
+    - Nothing [cold]{"entity": "adjective"}
+    - Those are too [salty]{"entity": "adjective"}
+    - Those are too [spicy]{"entity": "adjective"}
+    - Those are too [gross]{"entity": "adjective"}
+    - Those are too [fried]{"entity": "adjective"}
+    - That's too [bitter]{"entity": "adjective"}
+    - That's too [grilled]{"entity": "adjective"}

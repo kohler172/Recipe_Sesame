@@ -21,12 +21,9 @@ class ActionIngredientPos(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        doc = nlp(tracker.latest_message['text'])
-        for chunk in doc.noun_chunks: 
-            dispatcher.utter_message(response="utter_ingredient_pos", ingredient=chunk.text)
-            self.ingredients.append(chunk.text)
-
-        
+        for entity in tracker.latest_message['entities']:
+            dispatcher.utter_message(response="utter_ingredient_pos", ingredient=entity['value'])
+            self.ingredients.append(entity['value'])
 
         return []
 
@@ -39,9 +36,8 @@ class ActionIngredientNeg(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        doc = nlp(tracker.latest_message['text'])
-        for chunk in doc.noun_chunks: 
-            dispatcher.utter_message(response="utter_ingredient_neg", ingredient=chunk.text)
+        for entity in tracker.latest_message['entities']:
+            dispatcher.utter_message(response="utter_ingredient_neg", ingredient=entity['value'])
 
         return []
 
@@ -55,7 +51,7 @@ class ActionAdjectivePos(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         doc = nlp(tracker.latest_message['text'])
-        for token in doc: 
+        for token in doc:
             if token.pos_ == "ADJ":
                 dispatcher.utter_message(response="utter_adjective_pos", adjective=token.text)
 
@@ -71,7 +67,7 @@ class ActionAdjectiveNeg(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         doc = nlp(tracker.latest_message['text'])
-        for token in doc: 
+        for token in doc:
             if token.pos_ == "ADJ":
                 dispatcher.utter_message(response="utter_adjective_neg", adjective=token.text)
 

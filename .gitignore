@@ -28,3 +28,6 @@
 /RecipeSesameFrontEnd/yarn-error.log*
 
 /RecipeSesameFrontEnd/public/images
+
+/conversational/models
+/conversational/.rasa/cache
