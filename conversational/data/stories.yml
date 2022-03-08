@@ -40,7 +40,7 @@ stories:
   - intent: ingredient_neg
   - action: action_ingredient_neg
   - action: utter_anything_else
-  
+
 - story: adjective_pos path
   steps:
   - intent: adjective_pos
@@ -51,4 +51,16 @@ stories:
   steps:
   - intent: adjective_neg
   - action: action_adjective_neg
+  - action: utter_anything_else
+
+- story: tool_pos path
+  steps:
+  - intent: tool_pos
+  - action: action_tool_pos
+  - action: utter_anything_else
+
+- story: tool_neg path
+  steps:
+  - intent: tool_neg
+  - action: action_tool_neg
   - action: utter_anything_else

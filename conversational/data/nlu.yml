@@ -1,6 +1,15 @@
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#ALL TRAINING DATA SHOULD BE LOWERCASE
+#ALL TRAINING DATA SHOULD BE LOWERCASE
+#ALL TRAINING DATA SHOULD BE LOWERCASE
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 version: "3.0"
 
 nlu:
+- lookup: tools
+
 - intent: greet
   examples: |
     - hey
@@ -184,6 +193,30 @@ nlu:
     - that's too [bitter]{"entity": "adjective"}
     - that's too [grilled]{"entity": "adjective"}
 
+- intent: tool_pos
+  examples: |
+    - i only have a [grill]{"entity": "tool"}
+    - i only have a [stove]{"entity": "tool"}
+    - i only have a [toaster]{"entity": "tool"}
+    - i want recipes for my [grill]{"entity": "tool"}
+    - i want recipes for my [oven]{"entity": "tool"}
+    - i want recipes for my [stove]{"entity": "tool"}
+    - i want recipes for my [crockpot]{"entity": "tool"}
+    - for a [microwave]{"entity": "tool"}
+    - for a [stove]{"entity": "tool"}
+
+- intent: tool_neg
+  examples: |
+    - i don't have a [grill]{"entity": "tool"}
+    - i dont have a [stove]{"entity": "tool"}
+    - i do not have a [toaster]{"entity": "tool"}
+    - i don't have a [grill]{"entity": "tool"} though
+    - i dont have a [microwave]{"entity": "tool"} though
+    - no recipes for a [grill]{"entity": "tool"}
+    - no recipes for a [oven]{"entity": "tool"}
+    - nothing for a [stove]{"entity": "tool"}
+    - don't give me anything for a [crockpot]{"entity": "tool"}
+
 - intent: clear
   examples: |
     - let's start over
@@ -192,3 +225,5 @@ nlu:
     - erase recipes
     - delete recipes
     - let's try again
+    - clear
+    - start over
