@@ -1,0 +1,17 @@
+grill
+stove
+microwave
+oven
+toaster
+pot
+pan
+crockpot
+slow cooker
+toaster oven
+bowl
+tray
+blender
+juicer
+knife
+fork
+spoon

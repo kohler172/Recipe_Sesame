@@ -77,3 +77,52 @@ class ActionAdjectiveNeg(Action):
                 dispatcher.utter_message(response="utter_adjective_neg", adjective=token.text)
 
         return []
+
+class ActionToolPos(Action):
+
+    ingredients = []
+    def name(self) -> Text:
+        return "action_tool_pos"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        print('went positive')
+        for entity in tracker.latest_message['entities']:
+            dispatcher.utter_message(response="utter_tool_pos", tool=entity['value'])
+            self.ingredients.append(entity['value'])
+
+        print(self.ingredients)
+        return []
+
+class ActionToolNeg(Action):
+    neg_ingredients = []
+    def name(self) -> Text:
+        return "action_tool_neg"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print('went negative')
+        for entity in tracker.latest_message['entities']:
+            dispatcher.utter_message(response="utter_tool_neg", tool=entity['value'])
+            self.neg_ingredients.append(entity['value'])
+
+        print('excluding: ')
+        print(self.neg_ingredients)
+        return []
+
+
+class ActionClear(Action):
+
+    def name(self) -> Text:
+        return "action_clear"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(response="utter_clear")
+
+        return []

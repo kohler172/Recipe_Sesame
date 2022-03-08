@@ -12,6 +12,9 @@ intents:
   - ingredient_neg
   - adjective_pos
   - adjective_neg
+  - tool_pos
+  - tool_neg
+  - clear
 
 responses:
   utter_greet:
@@ -49,19 +52,33 @@ responses:
   utter_adjective_neg:
   - text: "{adjective} recipes have been filtered out"
 
+  utter_tool_pos:
+  - text: "Searching for recipes made with a {tool}"
+
+  utter_tool_neg:
+  - text: "Excluding recipes that require a {tool}"
+
   utter_anything_else:
   - text: "Anything else?"
   - text: "Any other ingredients you'd like?"
+
+  utter_clear:
+  - text: "Starting over."
 
 actions:
   - action_ingredient_pos
   - action_ingredient_neg
   - action_adjective_pos
   - action_adjective_neg
+  - action_tool_pos
+  - action_tool_neg
+  - action_clear
+
 
 entities:
   - ingredient
   - adjective
+  - tool
 
 session_config:
   session_expiration_time: 60

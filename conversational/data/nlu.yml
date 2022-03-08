@@ -1,6 +1,15 @@
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#ALL TRAINING DATA SHOULD BE LOWERCASE
+#ALL TRAINING DATA SHOULD BE LOWERCASE
+#ALL TRAINING DATA SHOULD BE LOWERCASE
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 version: "3.0"
 
 nlu:
+- lookup: tools
+
 - intent: greet
   examples: |
     - hey
@@ -44,7 +53,7 @@ nlu:
     - no
     - n
     - never
-    - I don't think so
+    - i don't think so
     - don't like that
     - no way
     - not really
@@ -56,10 +65,10 @@ nlu:
     - amazing
     - feeling like a king
     - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
+    - i am feeling very good
+    - i am great
+    - i am amazing
+    - i am going to save the world
     - super stoked
     - extremely good
     - so so perfect
@@ -69,11 +78,11 @@ nlu:
 - intent: mood_unhappy
   examples: |
     - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
+    - i am sad
+    - i don't feel very well
+    - i am disappointed
     - super sad
-    - I'm so sad
+    - i'm so sad
     - sad
     - very sad
     - unhappy
@@ -87,24 +96,24 @@ nlu:
   examples: |
     - are you a bot?
     - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - am i talking to a bot?
+    - am i talking to a human?
 
 
 - intent: ingredient_pos
   examples: |
-    - I would like something with [chicken]{"entity": "ingredient"}
-    - I would like something with [cheese]{"entity": "ingredient"}
-    - I want something with [beef]{"entity": "ingredient"}
-    - I want something with [ham]{"entity": "ingredient"}
-    - I have [eggs]{"entity": "ingredient"}
-    - I have [cilantro]{"entity": "ingredient"}
-    - I like [peanuts]{"entity": "ingredient"}
-    - I like [ice cream]{"entity": "ingredient"}
-    - It must include [fruit]{"entity": "ingredient"}
-    - It must include [vegetables]{"entity": "ingredient"}
-    - It must have [rice]{"entity": "ingredient"}
-    - It must have [fruit]{"entity": "ingredient"}
+    - i would like something with [chicken]{"entity": "ingredient"}
+    - i would like something with [cheese]{"entity": "ingredient"}
+    - i want something with [beef]{"entity": "ingredient"}
+    - i want something with [ham]{"entity": "ingredient"}
+    - i have [eggs]{"entity": "ingredient"}
+    - i have [cilantro]{"entity": "ingredient"}
+    - i like [peanuts]{"entity": "ingredient"}
+    - i like [ice cream]{"entity": "ingredient"}
+    - it must include [fruit]{"entity": "ingredient"}
+    - it must include [vegetables]{"entity": "ingredient"}
+    - it must have [rice]{"entity": "ingredient"}
+    - it must have [fruit]{"entity": "ingredient"}
     - give me [pasta]{"entity": "ingredient"}
     - give me [fish]{"entity": "ingredient"}
     - i enjoy [french fries]{"entity": "ingredient"}
@@ -118,20 +127,20 @@ nlu:
 
 - intent: ingredient_neg
   examples: |
-    - I don't want [chicken]{"entity": "ingredient"}
-    - I don't want [cheese]{"entity": "ingredient"}
-    - I don't have [beef]{"entity": "ingredient"}
-    - I don't have [ham]{"entity": "ingredient"}
-    - I am allergic to [peanuts]{"entity": "ingredient"}
-    - I am allergic to [ice cream]{"entity": "ingredient"}
-    - Absolutely no [peanuts]{"entity": "ingredient"}
-    - Absolutely no [cilantro]{"entity": "ingredient"}
-    - It must not include [fruit]{"entity": "ingredient"}
-    - It must not include [vegetables]{"entity": "ingredient"}
+    - i don't want [chicken]{"entity": "ingredient"}
+    - i don't want [cheese]{"entity": "ingredient"}
+    - i don't have [beef]{"entity": "ingredient"}
+    - i don't have [ham]{"entity": "ingredient"}
+    - i am allergic to [peanuts]{"entity": "ingredient"}
+    - i am allergic to [ice cream]{"entity": "ingredient"}
+    - absolutely no [peanuts]{"entity": "ingredient"}
+    - absolutely no [cilantro]{"entity": "ingredient"}
+    - it must not include [fruit]{"entity": "ingredient"}
+    - it must not include [vegetables]{"entity": "ingredient"}
     - don't give me [pasta]{"entity": "ingredient"}
     - don't give me [fish]{"entity": "ingredient"}
     - i dislike [french fries]{"entity": "ingredient"}
-    - I dislike [chips]{"entity": "ingredient"}
+    - i dislike [chips]{"entity": "ingredient"}
     - i hate [bananas]{"entity": "ingredient"}
     - i hate [apples]{"entity": "ingredient"}
     - i hate [oranges]{"entity": "ingredient"}
@@ -140,39 +149,81 @@ nlu:
 
 - intent: adjective_pos
   examples: |
-    - Make it [spicy]{"entity": "adjective"}
-    - Make it [sweet]{"entity": "adjective"}
-    - Make it [sour]{"entity": "adjective"}
-    - Make it [bitter]{"entity": "adjective"}
-    - I would like something [sweet]{"entity": "adjective"}
-    - I would like something [spicy]{"entity": "adjective"}
-    - I would like something [strong]{"entity": "adjective"}
-    - I would like something [tasty]{"entity": "adjective"}
-    - I would like seomthing [grilled]{"entity": "adjective"}
-    - Something [salty]{"entity": "adjective"}
-    - It should be [salty]{"entity": "adjective"}
-    - It should be [sweet]{"entity": "adjective"}
-    - It should be [hot]{"entity": "adjective"}
-    - It should be [cold]{"entity": "adjective"}
-    - Something [sweet]{"entity": "adjective"} sounds good
-    - Something [fried]{"entity": "adjective"} sounds good
-    - Give me something [fried]{"entity": "adjective"}
-    - Give me something [spicy]{"entity": "adjective"}
-    - Give me something [bitter]{"entity": "adjective"}
+    - make it [spicy]{"entity": "adjective"}
+    - make it [sweet]{"entity": "adjective"}
+    - make it [sour]{"entity": "adjective"}
+    - make it [bitter]{"entity": "adjective"}
+    - i would like something [sweet]{"entity": "adjective"}
+    - i would like something [spicy]{"entity": "adjective"}
+    - i would like something [strong]{"entity": "adjective"}
+    - i would like something [tasty]{"entity": "adjective"}
+    - i would like something [greek]{"entity": "adjective"}
+    - i would like something [mexican]{"entity": "adjective"}
+    - i would like something [chinese]{"entity": "adjective"}
+    - something [salty]{"entity": "adjective"}
+    - something [french]{"entity": "adjective"}
+    - something [japanese]{"entity": "adjective"}
+    - it should be [salty]{"entity": "adjective"}
+    - it should be [sweet]{"entity": "adjective"}
+    - it should be [hot]{"entity": "adjective"}
+    - it should be [cold]{"entity": "adjective"}
+    - something [sweet]{"entity": "adjective"} sounds good
+    - something [fried]{"entity": "adjective"} sounds good
+    - give me something [fried]{"entity": "adjective"}
+    - give me something [spicy]{"entity": "adjective"}
+    - give me something [bitter]{"entity": "adjective"}
+    - i want [thai]{"entity": "adjective"} food
 
 - intent: adjective_neg
   examples: |
-    - I don't like [spicy]{"entity": "adjective"} food
-    - I don't like [sweet]{"entity": "adjective"} food
-    - I don't like [sour]{"entity": "adjective"} food
-    - I don't like [bitter]{"entity": "adjective"} food
-    - Nothing [sweet]{"entity": "adjective"}
-    - Nothing [bitter]{"entity": "adjective"}
-    - Nothing [hot]{"entity": "adjective"}
-    - Nothing [cold]{"entity": "adjective"}
-    - Those are too [salty]{"entity": "adjective"}
-    - Those are too [spicy]{"entity": "adjective"}
-    - Those are too [gross]{"entity": "adjective"}
-    - Those are too [fried]{"entity": "adjective"}
-    - That's too [bitter]{"entity": "adjective"}
-    - That's too [grilled]{"entity": "adjective"}
+    - i don't like [spicy]{"entity": "adjective"} food
+    - i don't like [sweet]{"entity": "adjective"} food
+    - i don't like [sour]{"entity": "adjective"} food
+    - i don't like [greek]{"entity": "adjective"} food
+    - i don't like [mexican]{"entity": "adjective"} food
+    - i don't like [chinese]{"entity": "adjective"} food
+    - nothing [sweet]{"entity": "adjective"}
+    - nothing [bitter]{"entity": "adjective"}
+    - nothing [hot]{"entity": "adjective"}
+    - nothing [cold]{"entity": "adjective"}
+    - those are too [salty]{"entity": "adjective"}
+    - those are too [spicy]{"entity": "adjective"}
+    - those are too [gross]{"entity": "adjective"}
+    - those are too [fried]{"entity": "adjective"}
+    - that's too [bitter]{"entity": "adjective"}
+    - that's too [grilled]{"entity": "adjective"}
+
+- intent: tool_pos
+  examples: |
+    - i only have a [grill]{"entity": "tool"}
+    - i only have a [stove]{"entity": "tool"}
+    - i only have a [toaster]{"entity": "tool"}
+    - i want recipes for my [grill]{"entity": "tool"}
+    - i want recipes for my [oven]{"entity": "tool"}
+    - i want recipes for my [stove]{"entity": "tool"}
+    - i want recipes for my [crockpot]{"entity": "tool"}
+    - for a [microwave]{"entity": "tool"}
+    - for a [stove]{"entity": "tool"}
+
+- intent: tool_neg
+  examples: |
+    - i don't have a [grill]{"entity": "tool"}
+    - i dont have a [stove]{"entity": "tool"}
+    - i do not have a [toaster]{"entity": "tool"}
+    - i don't have a [grill]{"entity": "tool"} though
+    - i dont have a [microwave]{"entity": "tool"} though
+    - no recipes for a [grill]{"entity": "tool"}
+    - no recipes for a [oven]{"entity": "tool"}
+    - nothing for a [stove]{"entity": "tool"}
+    - don't give me anything for a [crockpot]{"entity": "tool"}
+
+- intent: clear
+  examples: |
+    - let's start over
+    - clear all recipes
+    - i want to try again
+    - erase recipes
+    - delete recipes
+    - let's try again
+    - clear
+    - start over
