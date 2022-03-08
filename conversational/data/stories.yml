@@ -29,38 +29,20 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: ingredient_pos path
+- story: ingredient path
   steps:
-  - intent: ingredient_pos
-  - action: action_ingredient_pos
+  - intent: ingredient
+  - action: action_ingredient
   - action: utter_anything_else
 
-- story: ingredient_neg path
+- story: adjective path
   steps:
-  - intent: ingredient_neg
-  - action: action_ingredient_neg
+  - intent: adjective
+  - action: action_adjective
   - action: utter_anything_else
 
-- story: adjective_pos path
+- story: tool path
   steps:
-  - intent: adjective_pos
-  - action: action_adjective_pos
-  - action: utter_anything_else
-
-- story: adjective_neg path
-  steps:
-  - intent: adjective_neg
-  - action: action_adjective_neg
-  - action: utter_anything_else
-
-- story: tool_pos path
-  steps:
-  - intent: tool_pos
-  - action: action_tool_pos
-  - action: utter_anything_else
-
-- story: tool_neg path
-  steps:
-  - intent: tool_neg
-  - action: action_tool_neg
+  - intent: tool
+  - action: action_tool
   - action: utter_anything_else

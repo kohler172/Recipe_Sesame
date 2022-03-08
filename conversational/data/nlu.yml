@@ -100,7 +100,7 @@ nlu:
     - am i talking to a human?
 
 
-- intent: ingredient_pos
+- intent: ingredient
   examples: |
     - i would like something with [chicken]{"entity": "ingredient"}
     - i would like something with [cheese]{"entity": "ingredient"}
@@ -124,9 +124,6 @@ nlu:
     - [waffles]{"entity": "ingredient"} taste good
     - i love [apples]{"entity": "ingredient"}
     - i love [oranges]{"entity": "ingredient"}
-
-- intent: ingredient_neg
-  examples: |
     - i don't want [chicken]{"entity": "ingredient"}
     - i don't want [cheese]{"entity": "ingredient"}
     - i don't have [beef]{"entity": "ingredient"}
@@ -147,7 +144,7 @@ nlu:
     - [bread]{"entity": "ingredient"} is gross
     - [pancakes]{"entity": "ingredient"} are gross
 
-- intent: adjective_pos
+- intent: adjective
   examples: |
     - make it [spicy]{"entity": "adjective"}
     - make it [sweet]{"entity": "adjective"}
@@ -173,9 +170,6 @@ nlu:
     - give me something [spicy]{"entity": "adjective"}
     - give me something [bitter]{"entity": "adjective"}
     - i want [thai]{"entity": "adjective"} food
-
-- intent: adjective_neg
-  examples: |
     - i don't like [spicy]{"entity": "adjective"} food
     - i don't like [sweet]{"entity": "adjective"} food
     - i don't like [sour]{"entity": "adjective"} food
@@ -193,7 +187,7 @@ nlu:
     - that's too [bitter]{"entity": "adjective"}
     - that's too [grilled]{"entity": "adjective"}
 
-- intent: tool_pos
+- intent: tool
   examples: |
     - i only have a [grill]{"entity": "tool"}
     - i only have a [stove]{"entity": "tool"}
@@ -204,9 +198,6 @@ nlu:
     - i want recipes for my [crockpot]{"entity": "tool"}
     - for a [microwave]{"entity": "tool"}
     - for a [stove]{"entity": "tool"}
-
-- intent: tool_neg
-  examples: |
     - i don't have a [grill]{"entity": "tool"}
     - i dont have a [stove]{"entity": "tool"}
     - i do not have a [toaster]{"entity": "tool"}
