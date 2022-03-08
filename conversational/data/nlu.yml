@@ -176,3 +176,12 @@ nlu:
     - Those are too [fried]{"entity": "adjective"}
     - That's too [bitter]{"entity": "adjective"}
     - That's too [grilled]{"entity": "adjective"}
+
+- intent: clear
+  examples: |
+    - Let's start over
+    - Clear all recipes
+    - I want to try again
+    - Erase recipes
+    - Delete recipes
+    - Let's try again

@@ -11,3 +11,9 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Clear stored data and start over at user's request
+  steps:
+  - intent: clear
+  - action: action_clear
+  - action: utter_greet

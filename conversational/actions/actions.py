@@ -77,3 +77,17 @@ class ActionAdjectiveNeg(Action):
                 dispatcher.utter_message(response="utter_adjective_neg", adjective=token.text)
 
         return []
+
+
+class ActionClear(Action):
+
+    def name(self) -> Text:
+        return "action_clear"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(response="utter_clear")
+
+        return []

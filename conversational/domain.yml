@@ -12,6 +12,7 @@ intents:
   - ingredient_neg
   - adjective_pos
   - adjective_neg
+  - clear
 
 responses:
   utter_greet:
@@ -53,11 +54,15 @@ responses:
   - text: "Anything else?"
   - text: "Any other ingredients you'd like?"
 
+  utter_clear:
+  - text: "Starting over."
+
 actions:
   - action_ingredient_pos
   - action_ingredient_neg
   - action_adjective_pos
   - action_adjective_neg
+  - action_clear
 
 entities:
   - ingredient
