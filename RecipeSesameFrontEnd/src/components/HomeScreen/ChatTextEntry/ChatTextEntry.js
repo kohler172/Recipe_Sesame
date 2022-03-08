@@ -34,7 +34,7 @@ const ChatTextEntry = (props) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({'sender': "default", 'message': textContent})
+                body: JSON.stringify({'sender': "default", 'message': textContent.toLowerCase()})
             })
                 .then(response => response.json())
                 .then(data => {     
