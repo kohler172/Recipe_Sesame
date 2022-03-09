@@ -17,3 +17,21 @@ rules:
   - intent: clear
   - action: action_clear
   - action: utter_greet
+
+- rule: Ingredient action
+  steps:
+  - intent: ingredient
+  - action: action_ingredient
+  - action: utter_anything_else
+
+- rule: Adjective action
+  steps:
+  - intent: adjective
+  - action: action_adjective
+  - action: utter_anything_else
+
+- rule: Tool action
+  steps:
+  - intent: tool
+  - action: action_tool
+  - action: utter_anything_else

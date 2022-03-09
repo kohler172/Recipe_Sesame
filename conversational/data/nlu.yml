@@ -125,9 +125,9 @@ nlu:
     - i love [apples]{"entity": "ingredient"}
     - i love [oranges]{"entity": "ingredient"}
     - i don't want [chicken]{"entity": "ingredient"}
-    - i don't want [cheese]{"entity": "ingredient"}
+    - i dont want [cheese]{"entity": "ingredient"}
     - i don't have [beef]{"entity": "ingredient"}
-    - i don't have [ham]{"entity": "ingredient"}
+    - i dont have [ham]{"entity": "ingredient"}
     - i am allergic to [peanuts]{"entity": "ingredient"}
     - i am allergic to [ice cream]{"entity": "ingredient"}
     - absolutely no [peanuts]{"entity": "ingredient"}
@@ -143,6 +143,16 @@ nlu:
     - i hate [oranges]{"entity": "ingredient"}
     - [bread]{"entity": "ingredient"} is gross
     - [pancakes]{"entity": "ingredient"} are gross
+    - something with [beef]{"entity": "ingredient"}
+    - something with [corn]{"entity": "ingredient"}
+    - something without [salad]{"entity": "ingredient"}
+    - something without [fish]{"entity": "ingredient"}
+    - [peanuts]{"entity": "ingredient"}
+    - [french fries]{"entity": "ingredient"}
+    - [corn]{"entity": "ingredient"}
+    - no [peas]{"entity": "ingredient"}
+    - no [wine]{"entity": "ingredient"}
+    - no [steak]{"entity": "ingredient"} though
 
 - intent: adjective
   examples: |
@@ -186,6 +196,8 @@ nlu:
     - those are too [fried]{"entity": "adjective"}
     - that's too [bitter]{"entity": "adjective"}
     - that's too [grilled]{"entity": "adjective"}
+    - [spicier]{"entity": "adjective"}
+    - [tastier]{"entity": "adjective"}
 
 - intent: tool
   examples: |
