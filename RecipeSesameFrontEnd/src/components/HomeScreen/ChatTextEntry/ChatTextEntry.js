@@ -3,6 +3,8 @@ import './ChatTextEntry.css';
 
 const ChatTextEntry = (props) => {
     const [textContent, setTextContent] = useState('');
+    const [keywords, setKeywords] = useState([]);
+    const [negKeywords, setNegKeywords] = useState([]);
     const messageUrl = 'http://localhost:8000/message/';
     const rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
 
@@ -21,11 +23,14 @@ const ChatTextEntry = (props) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({'sender': "test", 'message': textContent})
+                body: JSON.stringify({'sender': "test", 'message': textContent, 'keywords': keywords, 'negKeywords': negKeywords})
             })
                 .then(response => response.json())
                 .then(data => {
-                    props.setRecommendedRecipes(data);
+                    const parsedData = JSON.parse(data);
+                    props.setRecommendedRecipes(parsedData.recipes);
+                    setKeywords(parsedData.keywords);
+                    setNegKeywords(parsedData.negKeywords);
                     setTextContent('');
                 });
 
