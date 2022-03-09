@@ -15,12 +15,14 @@ class MessageView(APIView):
     searches = [] # Type: List[str]
     neg_searches = []
 
+    EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate "]
+
     def post(self, request):
         #Cheap search reset for demo purposes.
-        if 'search' in request.data['message'].lower():
-            self.searches.clear()
-        elif 'not' in request.data['message'].lower():
+        if any(x in request.data['message'].lower() for x in self.EXCLUSION_KEYWORDS):
             self.neg_searches += get_keywords(request.data['message'])
+        elif 'search' in request.data['message'].lower():
+            self.searches.clear()
         else:
             self.searches += get_keywords(request.data['message'])
         #val = search(self.searches, self.neg_searches)
@@ -30,4 +32,3 @@ class RandomView(APIView):
     def get(self, request):
         number_of_recipes = 6
         return Response(random_recipes(number_of_recipes))
-        

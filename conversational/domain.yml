@@ -8,12 +8,9 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - ingredient_pos
-  - ingredient_neg
-  - adjective_pos
-  - adjective_neg
-  - tool_pos
-  - tool_neg
+  - ingredient
+  - adjective
+  - tool
   - clear
 
 responses:
@@ -66,12 +63,9 @@ responses:
   - text: "Starting over."
 
 actions:
-  - action_ingredient_pos
-  - action_ingredient_neg
-  - action_adjective_pos
-  - action_adjective_neg
-  - action_tool_pos
-  - action_tool_neg
+  - action_ingredient
+  - action_adjective
+  - action_tool
   - action_clear
 
 

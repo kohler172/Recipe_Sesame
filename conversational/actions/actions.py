@@ -11,107 +11,73 @@ import spacy
 
 nlp = spacy.load("en_core_web_md")
 
-class ActionIngredientPos(Action):
+EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate "]
+
+class ActionIngredient(Action):
 
     ingredients = []
     def name(self) -> Text:
-        return "action_ingredient_pos"
+        return "action_ingredient"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        print('went positive')
-        for entity in tracker.latest_message['entities']:
-            dispatcher.utter_message(response="utter_ingredient_pos", ingredient=entity['value'])
-            self.ingredients.append(entity['value'])
+        if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
+            for entity in tracker.latest_message['entities']:
+                dispatcher.utter_message(response="utter_ingredient_neg", ingredient=entity['value'])
+        else:
+            print('went positive')
+            for entity in tracker.latest_message['entities']:
+                dispatcher.utter_message(response="utter_ingredient_pos", ingredient=entity['value'])
+                self.ingredients.append(entity['value'])
 
         print(self.ingredients)
         return []
 
-class ActionIngredientNeg(Action):
-    neg_ingredients = []
-    def name(self) -> Text:
-        return "action_ingredient_neg"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print('went negative')
-        for entity in tracker.latest_message['entities']:
-            dispatcher.utter_message(response="utter_ingredient_neg", ingredient=entity['value'])
-            self.neg_ingredients.append(entity['value'])
-
-        print('excluding: ')
-        print(self.neg_ingredients)
-        return []
 
 class ActionAdjectivePos(Action):
 
     def name(self) -> Text:
-        return "action_adjective_pos"
+        return "action_adjective"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         print('went adjective')
         doc = nlp(tracker.latest_message['text'])
-        for token in doc:
-            if token.pos_ == "ADJ":
-                dispatcher.utter_message(response="utter_adjective_pos", adjective=token.text)
+        if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
+            for token in doc:
+                if token.pos_ == "ADJ":
+                    dispatcher.utter_message(response="utter_adjective_neg", adjective=token.text)
+        else:
+            for token in doc:
+                if token.pos_ == "ADJ":
+                    dispatcher.utter_message(response="utter_adjective_pos", adjective=token.text)
 
         return []
 
-class ActionAdjectiveNeg(Action):
-
-    def name(self) -> Text:
-        return "action_adjective_neg"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        doc = nlp(tracker.latest_message['text'])
-        for token in doc:
-            if token.pos_ == "ADJ":
-                dispatcher.utter_message(response="utter_adjective_neg", adjective=token.text)
-
-        return []
 
 class ActionToolPos(Action):
 
     ingredients = []
     def name(self) -> Text:
-        return "action_tool_pos"
+        return "action_tool"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        print('went positive')
-        for entity in tracker.latest_message['entities']:
-            dispatcher.utter_message(response="utter_tool_pos", tool=entity['value'])
-            self.ingredients.append(entity['value'])
+        if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
+            for entity in tracker.latest_message['entities']:
+                dispatcher.utter_message(response="utter_tool_neg", tool=entity['value'])
+        else:
+            for entity in tracker.latest_message['entities']:
+                dispatcher.utter_message(response="utter_tool_pos", tool=entity['value'])
 
         print(self.ingredients)
         return []
 
-class ActionToolNeg(Action):
-    neg_ingredients = []
-    def name(self) -> Text:
-        return "action_tool_neg"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print('went negative')
-        for entity in tracker.latest_message['entities']:
-            dispatcher.utter_message(response="utter_tool_neg", tool=entity['value'])
-            self.neg_ingredients.append(entity['value'])
-
-        print('excluding: ')
-        print(self.neg_ingredients)
-        return []
 
 
 class ActionClear(Action):
