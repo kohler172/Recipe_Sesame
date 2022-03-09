@@ -6,9 +6,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/RecipeSesameFrontEnd/node_modules
-/RecipeSesameFrontEnd/node_modules/.cache
-/RecipeSesameFrontEnd/node_modules/.cache/.eslintcache
+/RecipeSesameFrontEnd/node_modules/**
 /RecipeSesameFrontEnd/.pnp
 /RecipeSesameFrontEnd/.pnp.js
 
