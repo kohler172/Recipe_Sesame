@@ -5,6 +5,7 @@ const RecipeButton = (props) => {
     const saveRecipe = () => {
         let currentRecipes = props.savedRecipes.slice();
         currentRecipes.push(props.recipe);
+        localStorage.setItem('savedRecipes', JSON.stringify(currentRecipes));
         props.setSavedRecipes(currentRecipes);
     }
 
@@ -13,6 +14,7 @@ const RecipeButton = (props) => {
             let currentIngredients = props.savedIngredients.slice();
             const newIngredientList = [...currentIngredients, ...JSON.parse(props.recipe.Ingredients.replace(/'/g, '"'))];
             props.setSavedIngredients(newIngredientList);
+            localStorage.setItem('savedIngredients', JSON.stringify(newIngredientList));
             
 
             if (!props.recipeSaved) saveRecipe();
