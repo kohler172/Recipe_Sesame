@@ -7,6 +7,8 @@
 
 # dependencies
 /RecipeSesameFrontEnd/node_modules
+/RecipeSesameFrontEnd/node_modules/.cache
+/RecipeSesameFrontEnd/node_modules/.cache/.eslintcache
 /RecipeSesameFrontEnd/.pnp
 /RecipeSesameFrontEnd/.pnp.js
 
