@@ -29,6 +29,7 @@ const ChatTextEntry = (props) => {
                     .then(data => props.setRecommendedRecipes(data));
             } else if (textContent.toLowerCase() === 'show me more') {
                 props.setResultStartingIndex(props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6);
+                props.addMessage({ content: "Here's some other recipes.", isUserMessage: false })
             } else {
                 fetch(messageUrl, {
                     method: 'POST',
