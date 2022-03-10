@@ -15,3 +15,5 @@ juicer
 knife
 fork
 spoon
+machine
+maker
