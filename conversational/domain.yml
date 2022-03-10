@@ -44,10 +44,12 @@ responses:
   - text: "Alright, we'll exclude any recipes with {ingredient}."
 
   utter_adjective_pos:
-  - text: "Results have been updated to be more {adjective}"
+  - text: "Results have been updated to be more {adjective}."
+  - text: "Searching for {adjective} recipes."
 
   utter_adjective_neg:
-  - text: "{adjective} recipes have been filtered out"
+  - text: "{adjective} recipes have been filtered out."
+  - text: "Excluding {adjective} recipes."
 
   utter_tool_pos:
   - text: "Searching for recipes made with a {tool}"

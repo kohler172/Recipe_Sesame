@@ -11,7 +11,7 @@ import spacy
 
 nlp = spacy.load("en_core_web_md")
 
-EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate "]
+EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate ", "rid "]
 
 class ActionIngredient(Action):
 
