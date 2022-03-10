@@ -3,7 +3,7 @@ import './ChatTextEntry.css';
 
 const ChatTextEntry = (props) => {
     const [textContent, setTextContent] = useState('');
-    const [keywords, setKeywords] = useState([]);
+    const [keywords, setKeywords] = useState(['i']);
     const [negKeywords, setNegKeywords] = useState([]);
     const randomUrl = 'http://localhost:8000/random/';
     const messageUrl = 'http://localhost:8000/message/';
@@ -22,7 +22,7 @@ const ChatTextEntry = (props) => {
             
             if (textContent.search('search') > -1 || 
                 textContent.search('restart') > -1) {
-                setKeywords([]);
+                setKeywords(['i']);
                 setNegKeywords([]);
                 fetch(randomUrl)
                     .then(response => response.json())
