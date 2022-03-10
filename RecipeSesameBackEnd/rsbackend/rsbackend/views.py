@@ -13,7 +13,7 @@ from .nlp import get_keywords
 #from rasa.nlu.model import Interpreter
 
 class MessageView(APIView):
-    EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate "]
+    EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate ", "rid "]
 
     def post(self, request):
         #Cheap search reset for demo purposes.

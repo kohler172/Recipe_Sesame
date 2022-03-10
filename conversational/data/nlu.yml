@@ -8,7 +8,7 @@
 version: "3.0"
 
 nlu:
-- lookup: tools
+- lookup: tool
 
 - intent: greet
   examples: |
@@ -38,6 +38,14 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - nope, that's it
+    - all done
+    - no more recipes
+    - complete
+    - that will be all
+    - that's all
+    - thats all
+    - no thats it
 
 - intent: affirm
   examples: |
@@ -150,9 +158,36 @@ nlu:
     - [peanuts]{"entity": "ingredient"}
     - [french fries]{"entity": "ingredient"}
     - [corn]{"entity": "ingredient"}
+    - [beer]{"entity": "ingredient"}
+    - [orange juice]{"entity": "ingredient"}
+    - [tomato sauce]{"entity": "ingredient"}
+    - [apple juice]{"entity": "ingredient"}
+    - [grilled cheese]{"entity": "ingredient"}
+    - [spicy chicken]{"entity": "ingredient"}
+    - [cheddar cheese]{"entity": "ingredient"}
+    - [chocolate-chip cookies]{"entity": "ingredient"}
     - no [peas]{"entity": "ingredient"}
     - no [wine]{"entity": "ingredient"}
     - no [steak]{"entity": "ingredient"} though
+    - no [orange juice]{"entity": "ingredient"} though
+    - want [taco meat]{"entity": "ingredient"}
+    - i'd like [grape juice]{"entity": "ingredient"}
+    - id like [ground beef]{"entity": "ingredient"}
+    - get rid of the [milk]{"entity": "ingredient"}
+    - get rid of any [sage leaves]{"entity": "ingredient"}
+    - get rid of [ice cream]{"entity": "ingredient"}
+    - no [nutmeg]{"entity": "ingredient"}, i'm allergic
+    - no [nuts]{"entity": "ingredient"}, im allergic
+    - i'm allergic to [almonds]{"entity": "ingredient"}
+    - i'm allergic to [shellfish{"entity": "ingredient"}
+    - im allergic to [salt]{"entity": "ingredient"}
+    - im allergic to [garlic]{"entity": "ingredient"}
+    - i want [ice cream]{"entity": "ingredient"}
+    - i want [chocolate ice cream]{"entity": "ingredient"}
+    - i want [red wine]{"entity": "ingredient"} too
+    - more [milk shakes]{"entity": "ingredient"} too
+    - no [crab]{"entity": "ingredient"}
+    - no [grilled chicken]{"entity": "ingredient"}
 
 - intent: adjective
   examples: |
@@ -198,6 +233,8 @@ nlu:
     - that's too [grilled]{"entity": "adjective"}
     - [spicier]{"entity": "adjective"}
     - [tastier]{"entity": "adjective"}
+    - i want it [sweeter]{"entity": "adjective"}
+    - make it [colder]{"entity": "adjective"}
 
 - intent: tool
   examples: |
@@ -219,6 +256,8 @@ nlu:
     - no recipes for a [oven]{"entity": "tool"}
     - nothing for a [stove]{"entity": "tool"}
     - don't give me anything for a [crockpot]{"entity": "tool"}
+    - dont have a [strainer]{"entity": "tool"}
+    - dont have an oven]{"entity": "tool"} either
 
 - intent: clear
   examples: |
