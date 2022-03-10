@@ -25,7 +25,7 @@ def search(words, neg_words):
     print(neg_words)
 
     results = es.search(index="test", body={ #perform sample search
-        "size": 36,
+        "size": 72,
         "query": {
             "bool": {
                 "must": {
