@@ -8,7 +8,7 @@
 version: "3.0"
 
 nlu:
-- lookup: tools
+- lookup: tool
 
 - intent: greet
   examples: |
@@ -38,6 +38,13 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - nope, that's it
+    - all done
+    - no more recipes
+    - complete
+    - that will be all
+    - that's all
+    - thats all
 
 - intent: affirm
   examples: |
@@ -150,9 +157,19 @@ nlu:
     - [peanuts]{"entity": "ingredient"}
     - [french fries]{"entity": "ingredient"}
     - [corn]{"entity": "ingredient"}
+    - [beer]{"entity": "ingredient"}
+    - [orange juice]{"entity": "ingredient"}
+    - [tomato sauce]{"entity": "ingredient"}
+    - [apple juice]{"entity": "ingredient"}
+    - [grilled cheese]{"entity": "ingredient"}
+    - [spicy chicken]{"entity": "ingredient"}
+    - [cheddar cheese]{"entity": "ingredient"}
+    - [chocolate-chip cookies]{"entity": "ingredient"}
     - no [peas]{"entity": "ingredient"}
     - no [wine]{"entity": "ingredient"}
     - no [steak]{"entity": "ingredient"} though
+    - no [orange juice]{"entity": "ingredient"} though
+    - want [taco meat]{"entity": "ingredient"}
 
 - intent: adjective
   examples: |
