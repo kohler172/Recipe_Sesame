@@ -42,6 +42,7 @@ function App() {
           <Chatbox 
             numberOfMessagesSent={numberOfMessagesSent} 
             setNumberOfMessagesSent={setNumberOfMessagesSent}
+            recommendedRecipes={recommendedRecipes}
             setRecommendedRecipes={setRecommendedRecipes}
             resultStartingIndex={resultStartingIndex}
             setResultStartingIndex={setResultStartingIndex}

@@ -22,6 +22,7 @@ const Chatbox = (props) => {
             <ChatTextEntry 
                 incrementNumberOfMessagesSent={incrementNumberOfMessagesSent} 
                 addMessage={addMessage}
+                recommendedRecipes={props.recommendedRecipes}
                 setRecommendedRecipes={props.setRecommendedRecipes}
                 resultStartingIndex={props.resultStartingIndex}
                 setResultStartingIndex={props.setResultStartingIndex}
