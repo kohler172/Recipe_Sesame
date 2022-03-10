@@ -1,6 +1,8 @@
+import json
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import status
+from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -11,22 +13,21 @@ from .nlp import get_keywords
 #from rasa.nlu.model import Interpreter
 
 class MessageView(APIView):
-    #List class member for tracking keywords in current search thread.
-    searches = [] # Type: List[str]
-    neg_searches = []
-
     EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate "]
 
     def post(self, request):
         #Cheap search reset for demo purposes.
+        searches = request.data['keywords']
+        print(request.data['keywords'])
+        neg_searches = request.data['negKeywords']
         if any(x in request.data['message'].lower() for x in self.EXCLUSION_KEYWORDS):
-            self.neg_searches += get_keywords(request.data['message'])
-        elif 'search' in request.data['message'].lower():
-            self.searches.clear()
+            neg_searches += get_keywords(request.data['message'])
         else:
-            self.searches += get_keywords(request.data['message'])
-        #val = search(self.searches, self.neg_searches)
-        return Response(search(self.searches, self.neg_searches))
+            searches += get_keywords(request.data['message'])
+
+        recipes = search(searches, neg_searches)
+        data = {"recipes": recipes, "keywords": searches, "negKeywords": neg_searches}
+        return Response(json.dumps(data))
 
 class RandomView(APIView):
     def get(self, request):

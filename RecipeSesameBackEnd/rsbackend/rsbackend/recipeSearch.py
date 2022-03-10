@@ -39,7 +39,12 @@ def search(words, neg_words):
     
     print('went')
 
-    return map(get_recipe_data, results) # Return only relevant recipe data
+    finalRes = []
+
+    for result in results:
+        finalRes.append(result['_source'])
+
+    return finalRes # Return only relevant recipe data
 
 def random_recipes(amount):
     es.indices.refresh(index="test")

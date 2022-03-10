@@ -2,10 +2,13 @@
 /RecipeSesameBackEnd/rsbackend/dataset.csv
 /RecipeSesameBackEnd/rsbackend/dataset_trimmed.csv
 /RecipeSesameBackEnd/rsbackend/recipes_raw_nosource_fn.json
+/RecipeSesameBackEnd/rsbackend/__pycache__/*
+/RecipeSesameBackEnd/rsbackend/rsbackend/__pycache__/*
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/RecipeSesameFrontEnd/node_modules/*
 /RecipeSesameFrontEnd/node_modules/**
 /RecipeSesameFrontEnd/.pnp
 /RecipeSesameFrontEnd/.pnp.js
@@ -30,4 +33,6 @@
 /RecipeSesameFrontEnd/public/images
 
 /conversational/models
-/conversational/.rasa/cache
+/conversational/.rasa/cache/*
+/conversation/actions/__pycache__/*
+

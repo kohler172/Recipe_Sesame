@@ -4,6 +4,7 @@ import './RecommendedRecipe.css';
 const RecommendedRecipe = (props) => {
     const handleRecipeClick = () => {
         props.setOpenRecipe(props.recipe);
+        console.log(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"'));
         props.setRecipeScreenIsOpen(true);
     }
 
