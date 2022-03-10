@@ -11,18 +11,28 @@ def get_recipe_data(recipe):
 # Parameter 'words' should be a list of strings desired for recipe
 # 'neg_words' should be a list of strings not desired in recipe
 def search(words, neg_words):
+    if len(words) == 0 and len(neg_words) > 0:
+        words.append("i")
+
+    if len(words) > 1 and "i" in words:
+        words.remove("i")
+
     words = " ".join(words)
     es.indices.refresh(index="test")
     neg_words = " ".join(neg_words)
 
+    print(words)
+    print(neg_words)
+
     results = es.search(index="test", body={ #perform sample search
+        "size": 72,
         "query": {
             "bool": {
                 "must": {
                     "multi_match": {
                         "query": words,
                         "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "or"
+                        "operator": "and"
                     }
                 },
                 "must_not": {
@@ -36,8 +46,6 @@ def search(words, neg_words):
             }
             }
     })['hits']['hits']
-    
-    print('went')
 
     finalRes = []
 

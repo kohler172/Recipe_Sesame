@@ -15,15 +15,24 @@ from .nlp import get_keywords
 class MessageView(APIView):
     EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate ", "rid "]
 
+    def removeI(self, keywords):
+        if "i" in keywords:
+            keywords.remove("i")
+        elif "I" in keywords:
+            keywords.remove("I")
+        return keywords
+
     def post(self, request):
         #Cheap search reset for demo purposes.
         searches = request.data['keywords']
-        print(request.data['keywords'])
         neg_searches = request.data['negKeywords']
         if any(x in request.data['message'].lower() for x in self.EXCLUSION_KEYWORDS):
             neg_searches += get_keywords(request.data['message'])
         else:
             searches += get_keywords(request.data['message'])
+
+        searches = self.removeI(searches)
+        neg_searches = self.removeI(neg_searches)
 
         recipes = search(searches, neg_searches)
         data = {"recipes": recipes, "keywords": searches, "negKeywords": neg_searches}
@@ -31,5 +40,5 @@ class MessageView(APIView):
 
 class RandomView(APIView):
     def get(self, request):
-        number_of_recipes = 6
+        number_of_recipes = 72
         return Response(random_recipes(number_of_recipes))
