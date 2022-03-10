@@ -18,6 +18,7 @@ function App() {
   const [recipeScreenIsOpen, setRecipeScreenIsOpen] = useState(false);
   const [openRecipe, setOpenRecipe] = useState({});
   const [cartScreenIsOpen, setCartScreenIsOpen] = useState(false);
+  const [resultStartingIndex, setResultStartingIndex] = useState(0);
 
   const randomUrl = 'http://localhost:8000/random/';
 
@@ -42,6 +43,8 @@ function App() {
             numberOfMessagesSent={numberOfMessagesSent} 
             setNumberOfMessagesSent={setNumberOfMessagesSent}
             setRecommendedRecipes={setRecommendedRecipes}
+            resultStartingIndex={resultStartingIndex}
+            setResultStartingIndex={setResultStartingIndex}
           />
         </div>
         
@@ -51,6 +54,7 @@ function App() {
           numberOfMessagesSent={numberOfMessagesSent} 
           recommendedRecipes={recommendedRecipes}
           setRecommendedRecipes={setRecommendedRecipes}
+          resultStartingIndex={resultStartingIndex}
         />
       </div>
 
