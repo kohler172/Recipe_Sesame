@@ -170,6 +170,8 @@ nlu:
     - no [steak]{"entity": "ingredient"} though
     - no [orange juice]{"entity": "ingredient"} though
     - want [taco meat]{"entity": "ingredient"}
+    - i'd like [grape juice]{"entity": "ingredient"}
+    - id like [ground beef]{"entity": "ingredient"}
 
 - intent: adjective
   examples: |
