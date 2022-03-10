@@ -17,7 +17,7 @@ const CartContents = (props) => {
                 {displayIngredients ? props.savedIngredients.map((item, index) => (
                     <CartItem key={index} item={item} />
                 )) : props.savedRecipes.map((item, index) => (
-                    <CartItem key={index} item={item} />
+                    <CartItem key={index} item={item} setOpenRecipe={props.setOpenRecipe} setRecipeScreenIsOpen={props.setRecipeScreenIsOpen}/>
                 )) }
             </div>
 

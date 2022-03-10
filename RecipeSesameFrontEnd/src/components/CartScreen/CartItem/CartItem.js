@@ -4,8 +4,13 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import './CartItem.css';
 
 const CartItem = (props) => {
+    const handleRecipeClick = () => {
+        props.setOpenRecipe(props.item);
+        props.setRecipeScreenIsOpen(true);
+    }
+
     return props.item.Title ? (
-        <div className="cartItem">
+        <div className="cartItem" onClick={handleRecipeClick}>
             <img src={process.env.PUBLIC_URL + "/images/"  + props.item.Image_Name + ".jpg"} alt={props.item.Title} />
             <p>{props.item.Title}</p>
             <FontAwesomeIcon icon={faTrash} />
