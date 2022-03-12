@@ -28,12 +28,12 @@
 }
 
 .firstLeft {
-    border-radius: var(--large-radius) var(--large-radius) 3px 3px;
-    margin-bottom: 1px;
+    border-radius: 3px 3px var(--large-radius) 3px;
 }
 
 .lastLeft {
-    border-radius: 3px 3px var(--large-radius) 3px;
+    border-radius: var(--large-radius) var(--large-radius) 3px 3px;
+    margin-bottom: 1px;
 }
 
 .rightMessage {
@@ -45,10 +45,10 @@
 }
 
 .firstRight {
-    border-radius: var(--large-radius) var(--large-radius) 3px 3px;
-    margin-bottom: 1px;
+    border-radius: 3px 3px 3px var(--large-radius);
 }
 
 .lastRight {
-    border-radius: 3px 3px 3px var(--large-radius);
+    border-radius: var(--large-radius) var(--large-radius) 3px 3px;
+    margin-bottom: 1px;
 }
