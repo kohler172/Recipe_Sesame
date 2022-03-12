@@ -9,8 +9,8 @@ const CartItem = (props) => {
         props.setRecipeScreenIsOpen(true);
     }
 
-    return props.item.Title ? (
-        <div className="cartItem" onClick={handleRecipeClick}>
+    return props.itemType === 'recipe' ? (
+        <div className="cartItem recipeItem" onClick={handleRecipeClick}>
             <img src={process.env.PUBLIC_URL + "/images/"  + props.item.Image_Name + ".jpg"} alt={props.item.Title} />
             <p>{props.item.Title}</p>
             <FontAwesomeIcon icon={faTrash} />

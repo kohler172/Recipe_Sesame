@@ -12,6 +12,12 @@ const Chatbox = (props) => {
         setMessages(currentMessages);
     }
 
+    const removeLastMessage = () => {
+        const currentMessages = messages;
+        currentMessages.pop();
+        setMessages(currentMessages);
+    }
+
     const incrementNumberOfMessagesSent = () => {
         props.setNumberOfMessagesSent(props.numberOfMessagesSent + 1);
     }
@@ -22,6 +28,7 @@ const Chatbox = (props) => {
             <ChatTextEntry 
                 incrementNumberOfMessagesSent={incrementNumberOfMessagesSent} 
                 addMessage={addMessage}
+                removeLastMessage={removeLastMessage}
                 recommendedRecipes={props.recommendedRecipes}
                 setRecommendedRecipes={props.setRecommendedRecipes}
                 resultStartingIndex={props.resultStartingIndex}

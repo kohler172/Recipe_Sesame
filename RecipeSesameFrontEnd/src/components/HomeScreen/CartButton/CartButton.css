@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--main-color-light);
+    background-color: var(--off-white);
     padding: 0 14px 0 15px;
     height: 36px;
     border-radius: var(--large-radius);
@@ -15,7 +15,7 @@
 }
 
 .cartBtn > svg {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
 
 .cartBtn:hover {

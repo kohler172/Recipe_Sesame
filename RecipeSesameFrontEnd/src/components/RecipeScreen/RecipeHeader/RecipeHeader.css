@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 120px);
+    width: calc(100% - 80px);
     margin-bottom: 8px;
-    padding: 0 60px;
+    padding: 0 40px;
 }
 
 .cardHeader > svg {

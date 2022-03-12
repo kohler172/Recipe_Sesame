@@ -2,12 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 15px;
-    margin: 0 7px;
-    height: 36px;
+    padding: 8px 15px;
+    margin: 0;
     background-color: var(--off-white);
     border-radius: var(--large-radius);
-    border: var(--gray-border);
+    box-shadow: var(--card-shadow-light);
+}
+
+.recipeButton:first-of-type {
+    margin-right: 12px;
 }
 
 .recipeButton > p {

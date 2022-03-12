@@ -1,11 +1,19 @@
 .cartItem {
-    padding: 12px 20px 12px 12px;
-    margin: 10px 30px;
-    border-radius: var(--large-radius);
+    padding: 10px 15px 10px 0;
+    margin: 0 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid var(--main-color-dark);
+    border-top: 1px solid var(--main-color-dark);
+    font-weight: bold;
+}
+
+.cartItem:first-of-type {
+    border-top: none;
+}
+
+.recipeItem {
+    padding: 15px 12px 15px 8px;
 }
 
 .cartItem:hover {

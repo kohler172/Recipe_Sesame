@@ -5,6 +5,7 @@ const ChatTextEntry = (props) => {
     const [textContent, setTextContent] = useState('');
     const [keywords, setKeywords] = useState([]);
     const [negKeywords, setNegKeywords] = useState([]);
+    const [isWaiting, setIsWaiting] = useState(false);
     const randomUrl = 'http://localhost:8000/random/';
     const messageUrl = 'http://localhost:8000/message/';
     const rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
@@ -15,21 +16,28 @@ const ChatTextEntry = (props) => {
 
     const handleSend = (event) => {
         event.preventDefault();
+        setIsWaiting(true);
 
         if (textContent.length > 0) {
             props.addMessage({ content: textContent, isUserMessage: true });
+            props.addMessage({ content: '...', isUserMessage: false});
             setTextContent('');
             
-            if (textContent.search('search') > -1 || 
-                textContent.search('restart') > -1) {
+            if (textContent.toLowerCase().search('search') > -1 || 
+                textContent.toLowerCase().search('restart') > -1 ||
+                textContent.toLowerCase().search('reset') > -1) {
+                setIsWaiting(false);
                 setKeywords([]);
                 setNegKeywords([]);
                 fetch(randomUrl)
                     .then(response => response.json())
                     .then(data => props.setRecommendedRecipes(data));
+                    props.removeLastMessage();
                     props.addMessage({ content: "Your search has been reset. What would you like to look for?", isUserMessage: false })
-            } else if (textContent.toLowerCase() === 'show me more') {
+            } else if (textContent.toLowerCase().search('show me more') > -1) {
+                setIsWaiting(false);
                 props.setResultStartingIndex(props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6);
+                props.removeLastMessage();
                 props.addMessage({ content: "Here's some other recipes.", isUserMessage: false })
             } else {
                 fetch(messageUrl, {
@@ -55,7 +63,9 @@ const ChatTextEntry = (props) => {
                     body: JSON.stringify({'sender': "default", 'message': textContent.toLowerCase()})
                 })
                     .then(response => response.json())
-                    .then(data => {     
+                    .then(data => {    
+                        setIsWaiting(false); 
+                        props.removeLastMessage();
                         data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));                    
                         props.incrementNumberOfMessagesSent();
                     });

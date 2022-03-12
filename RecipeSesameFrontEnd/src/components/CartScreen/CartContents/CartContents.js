@@ -4,26 +4,49 @@ import ListSelector from "../ListSelector/ListSelector";
 import './CartContents.css';
 
 const CartContents = (props) => {
-    const [displayIngredients, setDisplayIngredients] = useState(true);
-
     return (
         <div className="cartContents">
             <ListSelector 
-                displayIngredients={displayIngredients}
-                setDisplayIngredients={setDisplayIngredients}
+                displayIngredients={props.displayIngredients}
+                setDisplayIngredients={props.setDisplayIngredients}
             />
             
-            <div className="cartList">
-                {displayIngredients ? props.savedIngredients.map((item, index) => (
-                    <CartItem key={index} item={item} />
-                )) : props.savedRecipes.map((item, index) => (
-                    <CartItem key={index} item={item} setOpenRecipe={props.setOpenRecipe} setRecipeScreenIsOpen={props.setRecipeScreenIsOpen}/>
-                )) }
-            </div>
+            {props.displayIngredients ? (
+                props.savedIngredients && props.savedIngredients.length > 0 ? (
+                    <div className="cartList">
+                        {props.savedIngredients.map((item, index) => (
+                            <CartItem key={index} item={item} itemType="ingredient"/>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="cartList empty">
+                        <p>You don't have any ingredients in your basket.</p>
+                    </div>
+                )
+            ) : (
+                props.savedRecipes && props.savedRecipes.length > 0 ? (
+                    <div className="cartList taller">
+                        {props.savedRecipes.map((item, index) => (
+                            <CartItem key={index} 
+                                item={item} 
+                                setOpenRecipe={props.setOpenRecipe} 
+                                setRecipeScreenIsOpen={props.setRecipeScreenIsOpen}
+                                itemType="recipe"
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="cartList empty">
+                        <p>You haven't saved any recipes.</p>
+                    </div>
+                )
+            )}
 
-            <div className="printButton">
+            {props.displayIngredients ? (
+                <div className="printButton">
                 <p>Print List</p>
             </div>
+            ) : null}
         </div>
     );
 }

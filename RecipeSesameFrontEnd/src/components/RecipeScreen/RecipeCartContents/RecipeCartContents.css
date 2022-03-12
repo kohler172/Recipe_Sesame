@@ -1,5 +1,4 @@
 .recipeCartContents {
-    height: 20vh;
     overflow-y: scroll;
     background-color: var(--main-color-light);
     border-radius: var(--small-radius);
@@ -10,6 +9,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 5px;
+    height: 34vh;
 }
 
 .recipeCartContents > p {
@@ -24,6 +24,7 @@
 .centered {
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 }
 
 .centered > p {

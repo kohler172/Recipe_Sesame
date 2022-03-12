@@ -6,12 +6,12 @@
 
 .selected {
     background-color: var(--main-color-light);
-    border-bottom: 1px solid var(--unselected-button);
+    border-bottom: 2px solid var(--unselected-button);
 }
 
 .unselected {
     background-color: var(--unselected-button);
-    border-bottom: 1px solid var(--unselected-button);
+    border-bottom: 2px solid var(--unselected-button);
 }
 
 .listSelector > p {

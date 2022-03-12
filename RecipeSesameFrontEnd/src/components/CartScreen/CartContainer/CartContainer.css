@@ -10,6 +10,11 @@
     background-color: var(--screen-shade);
 }
 
+.cartCard {
+    height: calc(90vh - 70px);
+    padding: 30px 0 40px;
+}
+
 .cartContent {
     background-color: var(--main-color);
     height: 90vh;
