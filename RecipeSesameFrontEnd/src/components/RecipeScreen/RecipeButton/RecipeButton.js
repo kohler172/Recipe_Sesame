@@ -35,9 +35,16 @@ const RecipeButton = (props) => {
     }
 
     return (
-        <div className="recipeButton" onClick={handleButtonClick}>
-            <p>{props.label}</p>
-        </div>
+        // Ternary is here so we can force save button to be certain width
+        props.type === 'add' ? (
+            <div className="recipeButton" onClick={handleButtonClick}>
+                <p>{props.label}</p>
+            </div>
+        ) : (
+            <div className="recipeButton saveBtn" onClick={handleButtonClick}>
+                <p>{props.label}</p>
+            </div>
+        )
     );
 }
 

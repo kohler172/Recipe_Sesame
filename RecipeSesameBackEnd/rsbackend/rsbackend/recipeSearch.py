@@ -32,7 +32,7 @@ def search(words, neg_words):
                     "multi_match": {
                         "query": words,
                         "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "and"
+                        "operator": "or"
                     }
                 },
                 "must_not": {

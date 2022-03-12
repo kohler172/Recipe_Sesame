@@ -16,12 +16,12 @@ const ChatTextEntry = (props) => {
 
     const handleSend = (event) => {
         event.preventDefault();
-        setIsWaiting(true);
 
         if (textContent.length > 0) {
             props.addMessage({ content: textContent, isUserMessage: true });
-            props.addMessage({ content: '...', isUserMessage: false});
+            if (!isWaiting) props.addMessage({ content: '...', isUserMessage: false});
             setTextContent('');
+            setIsWaiting(true);
             
             if (textContent.toLowerCase().search('search') > -1 || 
                 textContent.toLowerCase().search('restart') > -1 ||
@@ -32,12 +32,12 @@ const ChatTextEntry = (props) => {
                 fetch(randomUrl)
                     .then(response => response.json())
                     .then(data => props.setRecommendedRecipes(data));
-                    props.removeLastMessage();
+                    props.removeTypingMessages();
                     props.addMessage({ content: "Your search has been reset. What would you like to look for?", isUserMessage: false })
             } else if (textContent.toLowerCase().search('show me more') > -1) {
                 setIsWaiting(false);
                 props.setResultStartingIndex(props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6);
-                props.removeLastMessage();
+                props.removeTypingMessages();
                 props.addMessage({ content: "Here's some other recipes.", isUserMessage: false })
             } else {
                 fetch(messageUrl, {
@@ -65,8 +65,8 @@ const ChatTextEntry = (props) => {
                     .then(response => response.json())
                     .then(data => {    
                         setIsWaiting(false); 
-                        props.removeLastMessage();
                         data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));                    
+                        props.removeTypingMessages();
                         props.incrementNumberOfMessagesSent();
                     });
             } 

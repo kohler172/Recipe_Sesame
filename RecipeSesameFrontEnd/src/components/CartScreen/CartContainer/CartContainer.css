@@ -11,13 +11,13 @@
 }
 
 .cartCard {
-    height: calc(90vh - 70px);
-    padding: 30px 0 40px;
+    height: calc(90vh - 40px);
+    padding: 20px 0;
 }
 
 .cartContent {
     background-color: var(--main-color);
-    height: 90vh;
+    height: 95vh;
     width: 90%;
     border-radius: var(--large-radius);
     box-shadow: var(--screen-shadow);

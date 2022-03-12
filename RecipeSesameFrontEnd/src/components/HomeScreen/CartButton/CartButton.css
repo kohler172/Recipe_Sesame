@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--off-white);
+    background-color: var(--active-button);
     padding: 0 14px 0 15px;
     height: 36px;
     border-radius: var(--large-radius);

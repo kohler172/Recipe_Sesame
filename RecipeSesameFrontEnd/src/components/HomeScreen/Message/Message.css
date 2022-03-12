@@ -5,6 +5,7 @@
     justify-content: flex-start;
     align-items: center;
     word-break: break-word;
+    box-shadow: var(--card-shadow-light);
 }
 
 .message:last-of-type {
@@ -26,10 +27,28 @@
     width: 50%;
 }
 
+.firstLeft {
+    border-radius: var(--large-radius) var(--large-radius) 3px 3px;
+    margin-bottom: 1px;
+}
+
+.lastLeft {
+    border-radius: 3px 3px var(--large-radius) 3px;
+}
+
 .rightMessage {
     border-radius: var(--large-radius) var(--large-radius) 3px var(--large-radius);
     background-color: var(--secondary-color);
     color: var(--black-text);
     width: 50%;
     margin-left: auto;
+}
+
+.firstRight {
+    border-radius: var(--large-radius) var(--large-radius) 3px 3px;
+    margin-bottom: 1px;
+}
+
+.lastRight {
+    border-radius: 3px 3px 3px var(--large-radius);
 }

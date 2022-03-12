@@ -2,14 +2,14 @@
     width: calc(100% - 80px);
     padding: 0 40px;
     height: 100vh;
-    margin-top: 12px;
+    margin-top: 5px;
 }
 
 .cartList {
     overflow: scroll;
     background-color: var(--main-color-light);
     border-radius: 0 var(--small-radius) var(--small-radius) var(--small-radius);
-    height: 61vh;
+    height: 63vh;
     width: 100%;
     padding: 10px 0;
 }
@@ -26,7 +26,7 @@
 }
 
 .printButton {
-    background-color: var(--off-white);
+    background-color: var(--active-button);
     box-shadow: var(--card-shadow-light);
     padding: 8px 15px;
     margin: 15px 0;

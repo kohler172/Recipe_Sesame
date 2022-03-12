@@ -3,14 +3,10 @@
     justify-content: center;
     align-items: center;
     padding: 8px 15px;
-    margin: 0;
-    background-color: var(--off-white);
+    margin: 0 10px;
+    background-color: var(--active-button);
     border-radius: var(--large-radius);
     box-shadow: var(--card-shadow-light);
-}
-
-.recipeButton:first-of-type {
-    margin-right: 12px;
 }
 
 .recipeButton > p {
@@ -19,4 +15,8 @@
 
 .recipeButton:hover {
     cursor: pointer;
+}
+
+.saveBtn {
+    width: 105px;
 }
