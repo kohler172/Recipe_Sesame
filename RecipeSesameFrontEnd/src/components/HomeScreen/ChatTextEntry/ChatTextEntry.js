@@ -48,6 +48,7 @@ const ChatTextEntry = (props) => {
                 props.removeTypingMessages();
             } else {
                 let numberOfResults = 0;
+                props.setResultStartingIndex(0);
 
                 fetch(messageUrl, {
                     method: 'POST',
@@ -87,7 +88,7 @@ const ChatTextEntry = (props) => {
                             props.addMessage({ content: "Sorry, we couldn't find any recipes that matched.", isUserMessage: false })
                             handleReset();
                         }
-                        
+
                         props.removeTypingMessages();
                         props.incrementNumberOfMessagesSent();
                     });
