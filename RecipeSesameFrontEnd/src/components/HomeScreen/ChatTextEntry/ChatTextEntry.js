@@ -80,12 +80,14 @@ const ChatTextEntry = (props) => {
                     .then(response => response.json())
                     .then(data => {    
                         setIsWaiting(false); 
-
                         data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));                    
+                        
+                        // Handle case of no results and no message
                         if (!data && numberOfResults < 1) {
                             props.addMessage({ content: "Sorry, we couldn't find any recipes that matched.", isUserMessage: false })
                             handleReset();
                         }
+                        
                         props.removeTypingMessages();
                         props.incrementNumberOfMessagesSent();
                     });
