@@ -31,7 +31,9 @@ const CartContainer = (props) => {
                     setOpenRecipe={setOpenRecipe}
                     setRecipeScreenIsOpen={setRecipeScreenIsOpen}
                     savedIngredients={props.savedIngredients} 
+                    setSavedIngredients={props.setSavedIngredients}
                     savedRecipes={props.savedRecipes} 
+                    setSavedRecipes={props.setSavedRecipes}
                     displayIngredients={displayIngredients}
                     setDisplayIngredients={setDisplayIngredients}
                 />

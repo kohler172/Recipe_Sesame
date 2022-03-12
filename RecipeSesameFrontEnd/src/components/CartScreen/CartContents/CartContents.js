@@ -15,7 +15,13 @@ const CartContents = (props) => {
                 props.savedIngredients && props.savedIngredients.length > 0 ? (
                     <div className="cartList">
                         {props.savedIngredients.map((item, index) => (
-                            <CartItem key={index} item={item} itemType="ingredient"/>
+                            <CartItem 
+                                key={index} 
+                                item={item} 
+                                savedIngredients={props.savedIngredients}
+                                setSavedIngredients={props.setSavedIngredients}
+                                itemType="ingredient"
+                            />
                         ))}
                     </div>
                 ) : (
@@ -31,6 +37,8 @@ const CartContents = (props) => {
                                 item={item} 
                                 setOpenRecipe={props.setOpenRecipe} 
                                 setRecipeScreenIsOpen={props.setRecipeScreenIsOpen}
+                                savedRecipes={props.savedRecipes}
+                                setSavedRecipes={props.setSavedRecipes}
                                 itemType="recipe"
                             />
                         ))}

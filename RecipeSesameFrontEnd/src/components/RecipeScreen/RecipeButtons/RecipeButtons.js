@@ -22,6 +22,8 @@ const RecipeButtons = (props) => {
             {props.recipeSaved ? (<RecipeButton 
                                 recipe={props.recipe} 
                                 label={savedRecipeLabel} 
+                                savedRecipes={props.savedRecipes}
+                                setSavedRecipes={props.setSavedRecipes}
                                 setRecipeSaved={props.setRecipeSaved}
                                 recipeSaved={props.recipeSaved}
                                 type={'save'} 

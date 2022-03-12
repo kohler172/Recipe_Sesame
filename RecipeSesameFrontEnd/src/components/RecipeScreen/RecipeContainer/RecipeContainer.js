@@ -6,7 +6,7 @@ import RecipeButtons from "../RecipeButtons/RecipeButtons";
 import './RecipeContainer.css';
 
 const RecipeContainer = (props) => {
-    const [recipeSaved, setRecipeSaved] = useState(false);
+    const [recipeSaved, setRecipeSaved] = useState(props.savedRecipes.includes(props.openRecipe));
 
     const closeRecipeScreen = () => {
         props.setRecipeScreenIsOpen(false);

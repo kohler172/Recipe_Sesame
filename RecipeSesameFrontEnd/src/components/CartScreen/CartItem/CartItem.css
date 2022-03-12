@@ -41,3 +41,7 @@
 .cartIngredient {
     text-align: left;
 }
+
+.delete {
+    z-index: 5;
+}
