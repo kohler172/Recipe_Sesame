@@ -11,6 +11,10 @@
     margin-top: 20px;
 }
 
+.message:hover {
+    cursor: default;
+}
+
 .message > p {
     text-align: left;
 }

@@ -30,7 +30,8 @@ const CartItem = (props) => {
     }
 
     return props.itemType === 'recipe' ? (
-        <div className="cartItem recipeItem" onClick={handleRecipeClick}>
+        <div className="cartItem recipeItem">
+            <div className="click" onClick={handleRecipeClick}></div>
             <img src={process.env.PUBLIC_URL + "/images/"  + props.item.Image_Name + ".jpg"} alt={props.item.Title} />
             <p>{props.item.Title}</p>
             <FontAwesomeIcon icon={faTrash} className="delete" onClick={removeRecipe}/>
