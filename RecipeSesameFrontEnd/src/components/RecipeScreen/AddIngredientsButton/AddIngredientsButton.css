@@ -1,6 +1,6 @@
 .addIngredientsButtonContainer {
     background-color: var(--active-button);
-    width: 130px;
+    width: 119px;
     height: 22px;
     padding: 5px 43px 5px 6px;
     display: flex;
@@ -31,8 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left: 1px solid rgb(105, 158, 130);
-    border-right: 1px solid rgb(105, 158, 130);
+    border-right: 1px solid rgb(114, 168, 139);
 }
 
 .servingsArrows > svg:hover {
@@ -40,7 +39,7 @@
 }
 
 .servingsArrows > svg:first-of-type {
-    margin: 0 7px 0 12px;
+    margin: 0 7px 0 2px;
 }
 
 .servingsArrows > svg:last-of-type {
