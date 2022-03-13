@@ -1,5 +1,5 @@
 .cartItem {
-    padding: 10px 10px 10px 0;
+    padding: 10px 20px 10px 5px;
     margin: 0;
     display: flex;
     justify-content: space-between;
@@ -14,7 +14,7 @@
 }
 
 .recipeItem {
-    padding: 15px 18px 15px 15px;
+    padding: 15px 20px 15px 15px;
     transition-property: background-color;
     transition-duration: 0.2s;
 }
