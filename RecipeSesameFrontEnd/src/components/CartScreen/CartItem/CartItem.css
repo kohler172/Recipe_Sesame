@@ -25,7 +25,7 @@
 
 .recipeItem:hover {
     cursor: pointer;
-    background-color: var(--main-color-dark);
+    background-color: rgb(172, 231, 201);
 }
 
 .cartItem > p {
@@ -40,6 +40,9 @@
 
 .cartItem > svg {
     color: var(--warning-color);
+    transition-property: color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
 
 .cartItem > svg:hover {

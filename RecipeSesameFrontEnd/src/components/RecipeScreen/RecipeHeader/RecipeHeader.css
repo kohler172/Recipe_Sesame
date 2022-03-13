@@ -10,6 +10,9 @@
 
 .cardHeader > svg {
     color: var(--warning-color);
+    transition-property: color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
 
 .cardHeader > svg:hover {
