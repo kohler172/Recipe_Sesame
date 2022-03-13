@@ -32,11 +32,11 @@ const AddIngredientsButton = (props) => {
 
     return(
         <div className="addIngredientsButtonContainer">
-            <div className="servings">
-                <input className="input" type="text" placeholder="Enter text." onChange={handleServingsChange} value={servings}></input>
-            </div>
             <div className="servingsArrows">
                 <FontAwesomeIcon icon={faAngleDown} size="lg"/>
+                <div className="servings">
+                    <input className="input" type="text" onChange={handleServingsChange} value={servings}></input>
+                </div>
                 <FontAwesomeIcon icon={faAngleUp} size="lg"/>
             </div>
             <div className="cartIcon">

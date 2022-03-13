@@ -13,11 +13,11 @@ const QuantityAdjuster = (props) => {
 
     return (
         <div className="quantityAdjuster">
-            <div className="servings">
-                <input className="input" type="text" placeholder="Enter text." onChange={handleQuantityChange} value={quantity}></input>
-            </div>
             <div className="servingsArrows quantityArrows">
                 <FontAwesomeIcon icon={faAngleDown} size="lg"/>
+                <div className="servings">
+                    <input className="input" type="text" onChange={handleQuantityChange} value={quantity}></input>
+                </div>
                 <FontAwesomeIcon icon={faAngleUp} size="lg"/>
             </div>
         </div>

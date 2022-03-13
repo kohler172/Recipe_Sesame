@@ -39,11 +39,11 @@
 }
 
 .servingsArrows > svg:first-of-type {
-    margin: 0 7px 0 2px;
+    margin: 0 10px 0 8px;
 }
 
 .servingsArrows > svg:last-of-type {
-    margin: 0 12px 0 7px;
+    margin: 0 10px 0 0;
 }
 
 .cartIcon {
