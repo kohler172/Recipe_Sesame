@@ -33,18 +33,12 @@ const AddIngredientsButton = (props) => {
     }
 
     const handleButtonClick = () => {
-        if (props.type === 'add') {
-            let currentIngredients = props.savedIngredients.slice();
-            const newIngredientList = [...currentIngredients, ...JSON.parse(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"'))];
-            props.setSavedIngredients(newIngredientList);
-            localStorage.setItem('savedIngredients', JSON.stringify(newIngredientList));
-            if (!props.recipeSaved) saveRecipe();
-            props.setRecipeSaved(true);
-        } else if (props.type === 'save') {
-            if (!props.recipeSaved) saveRecipe();
-            else if (props.savedRecipes.length > 0) removeRecipe();
-            props.setRecipeSaved(!props.recipeSaved);
-        }
+        let currentIngredients = props.savedIngredients.slice();
+        const newIngredientList = [...currentIngredients, ...JSON.parse(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"'))];
+        props.setSavedIngredients(newIngredientList);
+        localStorage.setItem('savedIngredients', JSON.stringify(newIngredientList));
+        if (!props.recipeSaved) saveRecipe();
+        props.setRecipeSaved(true);
     }
 
     return(
@@ -57,7 +51,7 @@ const AddIngredientsButton = (props) => {
                 <FontAwesomeIcon icon={faAngleUp} size="lg"/>
             </div>
             <div className="cartIcon">
-                <FontAwesomeIcon icon={faCartPlus} size="1x"/>
+                <FontAwesomeIcon icon={faCartPlus} onClick={handleButtonClick} size="1x"/>
             </div>
         </div>
     );
