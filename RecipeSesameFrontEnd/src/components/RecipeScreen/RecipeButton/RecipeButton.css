@@ -9,7 +9,7 @@
     box-shadow: var(--button-shadow);
     color: var(--active-buton-text);
     transition-property: transform;
-    transition-duration: 0.1s;
+    transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
 }
 
@@ -19,5 +19,5 @@
 
 .recipeButton:hover {
     cursor: pointer;
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
