@@ -7,12 +7,10 @@
 
 .cartList {
     overflow: scroll;
-    background-color: var(--main-color-light);
-    box-shadow: var(--card-shadow-light);
     border-radius: 0 var(--small-radius) var(--small-radius) var(--small-radius);
-    height: 63vh;
+    height: 70vh;
     width: 100%;
-    padding: 10px 0;
+    padding: 10px 0 30px;
 }
 
 .taller {

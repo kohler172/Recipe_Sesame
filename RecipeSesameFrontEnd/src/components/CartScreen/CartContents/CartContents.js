@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 const CartContents = (props) => {
+    //<div className="printButton">
+    //<FontAwesomeIcon icon={faPrint} size="1x"/>
+    //</div>
     return (
         <div className="cartContents">
             <ListSelector 
@@ -51,10 +54,6 @@ const CartContents = (props) => {
                     </div>
                 )
             )}
-
-            <div className="printButton">
-            <FontAwesomeIcon icon={faPrint} size="1x"/>
-            </div>
         </div>
     );
 }

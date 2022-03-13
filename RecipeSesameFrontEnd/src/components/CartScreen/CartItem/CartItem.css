@@ -1,6 +1,6 @@
 .cartItem {
     padding: 10px 10px 10px 0;
-    margin: 0 20px;
+    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,6 +25,7 @@
 
 .recipeItem:hover {
     cursor: pointer;
+    background-color: var(--main-color-dark);
 }
 
 .cartItem > p {
@@ -65,10 +66,6 @@
 
 .recipeItem:last-of-type {
     border-radius: 0 0 var(--large-radius) var(--large-radius);
-}
-
-.recipeItem:hover {
-    background-color: rgb(189, 243, 214);
 }
 
 .delete {
