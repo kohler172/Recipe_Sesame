@@ -1,5 +1,6 @@
 import React from "react";
 import RecipeButton from "../RecipeButton/RecipeButton";
+import AddIngredientsButton from "../AddIngredientsButton/AddIngredientsButton";
 
 const RecipeButtons = (props) => {
     const addIngredientsLabel = "Add Ingredients";
@@ -8,7 +9,7 @@ const RecipeButtons = (props) => {
 
     return (
         <div className="recipeButtons">
-            <RecipeButton 
+            <AddIngredientsButton 
                 recipe={props.recipe} 
                 savedRecipes={props.savedRecipes}
                 savedIngredients={props.savedIngredients}

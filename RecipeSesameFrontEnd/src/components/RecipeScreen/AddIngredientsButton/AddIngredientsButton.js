@@ -1,16 +1,63 @@
 import React, { useState } from "react";
 import './AddIngredientsButton.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const AddIngredientsButton = (props) => {
-    const [servings, setServings] = useState(0);
+    const [servings, setServings] = useState(1);
+
+    const handleServingsChange = (event) => {
+        // Parse text (event.target.value) and set servings
+    }
+
+    // TODO - move these into separate file to eliminate duplicate code
+
+    const saveRecipe = () => {
+        let currentRecipes = props.savedRecipes.slice();
+        currentRecipes.push(props.recipe);
+        localStorage.setItem('savedRecipes', JSON.stringify(currentRecipes));
+        props.setSavedRecipes(currentRecipes);
+    }
+
+    const removeRecipe = () => {
+        let currentRecipes = props.savedRecipes.slice();
+
+        const indexOfRec = currentRecipes.indexOf(props.recipe);
+        if (indexOfRec !== -1) currentRecipes.splice(indexOfRec, 1);
+
+        localStorage.setItem('savedRecipes', JSON.stringify(currentRecipes));
+        props.setSavedRecipes(currentRecipes);
+    }
+
+    const handleButtonClick = () => {
+        if (props.type === 'add') {
+            let currentIngredients = props.savedIngredients.slice();
+            const newIngredientList = [...currentIngredients, ...JSON.parse(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"'))];
+            props.setSavedIngredients(newIngredientList);
+            localStorage.setItem('savedIngredients', JSON.stringify(newIngredientList));
+            if (!props.recipeSaved) saveRecipe();
+            props.setRecipeSaved(true);
+        } else if (props.type === 'save') {
+            if (!props.recipeSaved) saveRecipe();
+            else if (props.savedRecipes.length > 0) removeRecipe();
+            props.setRecipeSaved(!props.recipeSaved);
+        }
+    }
 
     return(
         <div className="addIngredientsButtonContainer">
-            <div className="servingsLabel">
-                <p>Servings</p>
+            <div className="servings">
+                <input className="input" type="text" placeholder="Enter text." onChange={handleServingsChange} value={servings}></input>
             </div>
-            <div className="addIngredientsLabel">
-                <p>Add Ingredients</p>
+            <div className="servingsArrows">
+                <FontAwesomeIcon icon={faAngleDown} size="lg"/>
+                <FontAwesomeIcon icon={faAngleUp} size="lg"/>
+            </div>
+            <div className="cartIcon">
+                <FontAwesomeIcon icon={faCartPlus} size="1x"/>
             </div>
         </div>
     );
