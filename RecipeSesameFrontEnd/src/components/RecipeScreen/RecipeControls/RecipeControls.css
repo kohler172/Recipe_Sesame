@@ -4,12 +4,15 @@
     justify-content: space-between;
     align-items: center;
     width: 35%;
+    padding-top: 20px;
+    height: calc(100% - 10px);
 }
 
 .recipeControls > img {
     width: 100%;
     border-radius: var(--small-radius);
     box-shadow: var(--card-shadow);
+    margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 500px) {

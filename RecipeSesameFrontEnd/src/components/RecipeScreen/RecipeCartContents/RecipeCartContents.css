@@ -1,15 +1,11 @@
 .recipeCartContents {
     overflow-y: scroll;
-    background-color: var(--main-color-light);
-    border-radius: var(--small-radius);
     text-align: left;
-    padding: 8px 15px;
+    padding: 7px 15px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 5px;
-    height: 34vh;
 }
 
 .recipeCartContents > p {

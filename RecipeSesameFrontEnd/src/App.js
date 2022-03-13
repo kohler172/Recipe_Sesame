@@ -7,6 +7,8 @@ import CartButton from './components/HomeScreen/CartButton/CartButton';
 import RecipeContainer from './components/RecipeScreen/RecipeContainer/RecipeContainer';
 import CartContainer from './components/CartScreen/CartContainer/CartContainer';
 import { useEffect } from 'react/cjs/react.development';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [numberOfMessagesSent, setNumberOfMessagesSent] = useState(0);
@@ -32,9 +34,14 @@ function App() {
     <div className="App">
       <div className="header">
         <Logo />
-        <CartButton 
-          setCartScreenIsOpen={setCartScreenIsOpen}
-        />
+        <div className="headerButtons">
+          <div className="recipeButton">
+            <FontAwesomeIcon icon={faUser} size="1x"/>
+          </div>
+          <CartButton 
+            setCartScreenIsOpen={setCartScreenIsOpen}
+          />
+        </div>
       </div>
       <div className="mainContainer">
         <div className="container chatContainer">

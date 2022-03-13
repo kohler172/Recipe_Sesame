@@ -2,16 +2,22 @@
     display: flex;
     justify-content: flex-start;
     margin-bottom: 0;
+    align-self: flex-start;
 }
 
 .selected {
     background-color: var(--main-color-light);
-    border-bottom: 2px solid var(--unselected-button);
 }
 
 .unselected {
-    background-color: var(--unselected-button);
-    border-bottom: 2px solid var(--unselected-button);
+    background-color: var(--main-color-dark);
+    transition-property: background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.unselected:hover {
+    background-color: rgb(166, 226, 195);
 }
 
 .listSelector > p {
@@ -22,6 +28,7 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    box-shadow: 0 -3px 5px -6px #69aa8a;
 }
 
 .listSelector > p:hover {

@@ -1,15 +1,18 @@
 .recipeDescription {
-    width: 65%;
+    width: 68%;
     overflow: scroll;
-    padding: 15px;
-    background-color: var(--main-color-light);
-    border-radius: var(--small-radius);
+    padding: 15px 15px 0 0;
     text-align: left;
-    margin-right: 25px;
+    margin-right: 15px;
+    height: 79vh;
 }
 
 .recipeDescription > p:not(:first-of-type) {
     margin: 4px 0;
+}
+
+.instructions {
+    padding-bottom: 35px;
 }
 
 .recipeInstructions {

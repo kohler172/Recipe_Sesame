@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import CartItem from "../CartItem/CartItem";
 import ListSelector from "../ListSelector/ListSelector";
 import './CartContents.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 const CartContents = (props) => {
     return (
@@ -31,7 +33,7 @@ const CartContents = (props) => {
                 )
             ) : (
                 props.savedRecipes && props.savedRecipes.length > 0 ? (
-                    <div className="cartList taller">
+                    <div className="cartList allRadius">
                         {props.savedRecipes.map((item, index) => (
                             <CartItem key={index} 
                                 item={item} 
@@ -50,11 +52,9 @@ const CartContents = (props) => {
                 )
             )}
 
-            {props.displayIngredients ? (
-                <div className="printButton">
-                <p>Print List</p>
+            <div className="printButton">
+            <FontAwesomeIcon icon={faPrint} size="1x"/>
             </div>
-            ) : null}
         </div>
     );
 }

@@ -2,9 +2,9 @@ import React from "react";
 import RecipeButton from "../RecipeButton/RecipeButton";
 
 const RecipeButtons = (props) => {
-    const addIngredientsLabel = "Add ingredients";
-    const saveRecipeLabel = "Save recipe";
-    const savedRecipeLabel = "Recipe saved";
+    const addIngredientsLabel = "Add Ingredients";
+    const saveRecipeLabel = "Save Recipe";
+    const savedRecipeLabel = "Recipe Saved";
 
     return (
         <div className="recipeButtons">

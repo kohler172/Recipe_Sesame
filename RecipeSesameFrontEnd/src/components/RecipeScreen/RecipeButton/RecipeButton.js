@@ -1,5 +1,9 @@
 import React from "react";
 import './RecipeButton.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark as faBookmarkSolid } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 const RecipeButton = (props) => {
     const saveRecipe = () => {
@@ -38,12 +42,18 @@ const RecipeButton = (props) => {
         // Ternary is here so we can force save button to be certain width
         props.type === 'add' ? (
             <div className="recipeButton" onClick={handleButtonClick}>
-                <p>{props.label}</p>
+                <FontAwesomeIcon icon={faCartPlus} size="1x"/>
             </div>
         ) : (
-            <div className="recipeButton saveBtn" onClick={handleButtonClick}>
-                <p>{props.label}</p>
-            </div>
+            props.recipeSaved ? (
+                <div className="recipeButton saveBtn" onClick={handleButtonClick}>
+                    <FontAwesomeIcon icon={faBookmarkSolid} size="1x"/>
+                </div>
+            ) : (
+                <div className="recipeButton saveBtn" onClick={handleButtonClick}>
+                    <FontAwesomeIcon icon={faBookmark} size="1x"/>
+                </div>
+            )
         )
     );
 }

@@ -21,19 +21,16 @@ const RecipeContainer = (props) => {
                     <div className="recipeContent">
                         <RecipeDescription recipe={props.openRecipe} />
                         <RecipeControls 
-                            savedIngredients={props.savedIngredients} 
+                            setRecipeSaved={setRecipeSaved}
                             recipe={props.openRecipe}
+                            recipeSaved={recipeSaved}
+                            savedRecipes={props.savedRecipes}
+                            setSavedRecipes={props.setSavedRecipes}
+                            savedIngredients={props.savedIngredients}
+                            setSavedIngredients={props.setSavedIngredients}
                         />
                     </div>
-                    <RecipeButtons 
-                        setRecipeSaved={setRecipeSaved}
-                        recipe={props.openRecipe}
-                        recipeSaved={recipeSaved}
-                        savedRecipes={props.savedRecipes}
-                        setSavedRecipes={props.setSavedRecipes}
-                        savedIngredients={props.savedIngredients}
-                        setSavedIngredients={props.setSavedIngredients}
-                    />
+                     
                 </div>
             </div>
         </div>

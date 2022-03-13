@@ -10,6 +10,7 @@
     background-size: cover;
     transition-property: transform;
     transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -21,7 +22,6 @@
 .recommendedRecipe:hover {
     cursor: pointer;
     transform: scale(1.03);
-    transition-timing-function: ease-in-out;
 }
 
 .recommendedRecipe > h3 {

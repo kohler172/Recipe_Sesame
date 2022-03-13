@@ -8,6 +8,7 @@
 .cartList {
     overflow: scroll;
     background-color: var(--main-color-light);
+    box-shadow: var(--card-shadow-light);
     border-radius: 0 var(--small-radius) var(--small-radius) var(--small-radius);
     height: 63vh;
     width: 100%;
@@ -27,17 +28,22 @@
 
 .printButton {
     background-color: var(--active-button);
-    box-shadow: var(--card-shadow-light);
+    color: var(--active-buton-text);
+    box-shadow: var(--button-shadow);
     padding: 8px 15px;
-    margin: 15px 0;
+    margin: 19px 0 13px;
     border-radius: var(--large-radius);
     font-weight: bold;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     float: right;
+    transition-property: transform;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
 }
 
 .printButton:hover {
     cursor: pointer;
+    transform: scale(1.02);
 }

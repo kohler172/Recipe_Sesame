@@ -34,6 +34,8 @@ const ChatTextEntry = (props) => {
     const handleSend = (event) => {
         event.preventDefault();
 
+        /* Sorry for the mess, I'll clean this up. */
+
         if (textContent.length > 0) {
             props.addMessage({ content: textContent, isUserMessage: true });
             if (!isWaiting) props.addMessage({ content: '...', isUserMessage: false});

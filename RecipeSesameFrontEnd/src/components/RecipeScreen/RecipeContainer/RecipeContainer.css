@@ -48,21 +48,27 @@
 .recipeCard {
     width: 90%;
     align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .recipeContent {
     display: flex;
     justify-content: space-between;
-    overflow: scroll;
-    height: 100vh;
-    padding: 8px 40px 0;
+    height: calc(100% - 80px);
+    padding: 0 40px 10px;
 }
 
 .recipeButtons {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 15px 0 0 0;
+    align-self: flex-end;
+    margin: 15px 0 4px;
+}
+
+.saveBtn {
+    margin-right: 0 !important;
 }
 
 @media only screen and (max-width: 500px) {
