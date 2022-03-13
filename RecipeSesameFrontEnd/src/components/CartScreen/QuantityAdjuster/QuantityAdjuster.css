@@ -1,0 +1,23 @@
+.quantityAdjuster {
+    background-color: var(--active-button);
+    width: 86px;
+    height: 22px;
+    padding: 5px 43px 5px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--off-white);
+    border-radius: var(--large-radius);
+    box-shadow: var(--button-shadow);
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.quantityAdjuster:hover {
+    transform: scale(1.02);
+}
+
+.quantityArrows {
+    border-right: none;
+}

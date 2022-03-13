@@ -25,7 +25,7 @@
 .screenCard {
     background-color: var(--main-color);
     height: calc(93vh - 40px);
-    width: 65%;
+    width: 70%;
     padding: 20px 0;
     border-radius: var(--large-radius);
     box-shadow: var(--screen-shadow);

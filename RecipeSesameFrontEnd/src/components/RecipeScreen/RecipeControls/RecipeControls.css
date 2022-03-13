@@ -8,6 +8,10 @@
     height: calc(100% - 10px);
 }
 
+.recipeControls > h2:hover {
+    cursor: default;
+}
+
 .recipeControls > img {
     width: 100%;
     border-radius: var(--small-radius);

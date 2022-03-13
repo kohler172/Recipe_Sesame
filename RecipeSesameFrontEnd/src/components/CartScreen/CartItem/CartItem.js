@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import './CartItem.css';
+import QuantityAdjuster from "../QuantityAdjuster/QuantityAdjuster";
 
 const CartItem = (props) => {
     const handleRecipeClick = () => {
@@ -39,7 +40,10 @@ const CartItem = (props) => {
     ) : (
         <div className="cartItem cartIngredient">
             <p>{props.item}</p>
-            <FontAwesomeIcon icon={faTrash} className="delete" onClick={removeIngredient}/>
+            <div className="ingredientButtons">
+                <FontAwesomeIcon icon={faTrash} className="delete" onClick={removeIngredient}/>
+                <QuantityAdjuster />
+            </div>
         </div>
     );
 }

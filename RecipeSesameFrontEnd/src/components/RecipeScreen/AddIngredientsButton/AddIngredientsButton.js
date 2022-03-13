@@ -3,7 +3,6 @@ import './AddIngredientsButton.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const AddIngredientsButton = (props) => {
@@ -18,16 +17,6 @@ const AddIngredientsButton = (props) => {
     const saveRecipe = () => {
         let currentRecipes = props.savedRecipes.slice();
         currentRecipes.push(props.recipe);
-        localStorage.setItem('savedRecipes', JSON.stringify(currentRecipes));
-        props.setSavedRecipes(currentRecipes);
-    }
-
-    const removeRecipe = () => {
-        let currentRecipes = props.savedRecipes.slice();
-
-        const indexOfRec = currentRecipes.indexOf(props.recipe);
-        if (indexOfRec !== -1) currentRecipes.splice(indexOfRec, 1);
-
         localStorage.setItem('savedRecipes', JSON.stringify(currentRecipes));
         props.setSavedRecipes(currentRecipes);
     }

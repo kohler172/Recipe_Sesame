@@ -1,5 +1,5 @@
 .cartItem {
-    padding: 10px 20px 10px 5px;
+    padding: 13px 13px 13px 5px;
     margin: 0;
     display: flex;
     justify-content: space-between;
@@ -38,14 +38,21 @@
     box-shadow: var(--card-shadow);
 }
 
-.cartItem > svg {
+.ingredientButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ingredientButtons > svg, .cartItem > svg {
     color: var(--warning-color);
     transition-property: color;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
+    margin-right: 20px;
 }
 
-.cartItem > svg:hover {
+.ingredientButtons > svg:hover, .cartItem > svg:hover {
     color:var(--warning-color-dark);
     cursor: pointer;
 }

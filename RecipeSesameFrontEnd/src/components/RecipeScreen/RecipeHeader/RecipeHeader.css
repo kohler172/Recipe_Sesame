@@ -8,6 +8,10 @@
     border-bottom: 2px solid var(--main-color-dark);
 }
 
+.cardHeader > h1:hover {
+    cursor: default;
+}
+
 .cardHeader > svg {
     color: var(--warning-color);
     transition-property: color;
