@@ -24,7 +24,7 @@
 
 .screenCard {
     background-color: var(--main-color);
-    height: calc(93vh - 40px);
+    height: calc(95vh - 40px);
     width: 70%;
     padding: 20px 0;
     border-radius: var(--large-radius);
@@ -46,7 +46,7 @@
 }
 
 .recipeCard {
-    width: 90%;
+    width: 95%;
     align-items: center;
     margin-bottom: 0;
     padding-bottom: 0;

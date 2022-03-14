@@ -1,10 +1,10 @@
 .recipeDescription {
     width: 68%;
     overflow: scroll;
-    padding: 15px 15px 0 0;
+    padding: 20px 15px 0 0;
     text-align: left;
     margin-right: 15px;
-    height: 79vh;
+    height: 81vh;
 }
 
 .recipeDescription > p:not(:first-of-type) {
