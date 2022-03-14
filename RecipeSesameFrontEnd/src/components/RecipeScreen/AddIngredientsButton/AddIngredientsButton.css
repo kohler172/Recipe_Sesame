@@ -1,6 +1,6 @@
 .addIngredientsButtonContainer {
     background-color: var(--active-button);
-    width: 119px;
+    width: 122px;
     height: 22px;
     padding: 5px 43px 5px 6px;
     display: flex;
@@ -24,6 +24,7 @@
     border: none;
     background-color: var(--off-white);
     border-radius: 10px;
+    margin: 0;
     text-align: center;
 }
 
@@ -43,7 +44,7 @@
 }
 
 .servingsArrows > svg:last-of-type {
-    margin: 0 10px 0 0;
+    margin: 0 13px 0 10px;
 }
 
 .cartIcon {

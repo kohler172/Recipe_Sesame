@@ -15,7 +15,7 @@ const QuantityAdjuster = (props) => {
         <div className="quantityAdjuster">
             <div className="servingsArrows quantityArrows">
                 <FontAwesomeIcon icon={faAngleDown} size="lg"/>
-                <div className="servings">
+                <div className="servings quantity">
                     <input className="input" type="text" onChange={handleQuantityChange} value={quantity}></input>
                 </div>
                 <FontAwesomeIcon icon={faAngleUp} size="lg"/>
