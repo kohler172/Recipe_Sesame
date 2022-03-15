@@ -66,10 +66,6 @@
     margin: 15px 0 4px;
 }
 
-.saveBtn {
-    margin-right: 0 !important;
-}
-
 @media only screen and (max-width: 500px) {
     .recipeContent {
         flex-direction: column;

@@ -9,17 +9,6 @@ const RecipeButtons = (props) => {
 
     return (
         <div className="recipeButtons">
-            <AddIngredientsButton 
-                recipe={props.recipe} 
-                savedRecipes={props.savedRecipes}
-                savedIngredients={props.savedIngredients}
-                setSavedIngredients={props.setSavedIngredients} 
-                setSavedRecipes={props.setSavedRecipes}
-                setRecipeSaved={props.setRecipeSaved} 
-                recipeSaved={props.recipeSaved}
-                type={'add'} 
-                label={addIngredientsLabel} 
-            />
             {props.recipeSaved ? (<RecipeButton 
                                 recipe={props.recipe} 
                                 label={savedRecipeLabel} 
@@ -37,6 +26,17 @@ const RecipeButtons = (props) => {
                                         recipeSaved={props.recipeSaved}
                                         type={'save'} 
                                     />) }
+            <AddIngredientsButton 
+                recipe={props.recipe} 
+                savedRecipes={props.savedRecipes}
+                savedIngredients={props.savedIngredients}
+                setSavedIngredients={props.setSavedIngredients} 
+                setSavedRecipes={props.setSavedRecipes}
+                setRecipeSaved={props.setRecipeSaved} 
+                recipeSaved={props.recipeSaved}
+                type={'add'} 
+                label={addIngredientsLabel} 
+            />
         </div>
     )
 }
