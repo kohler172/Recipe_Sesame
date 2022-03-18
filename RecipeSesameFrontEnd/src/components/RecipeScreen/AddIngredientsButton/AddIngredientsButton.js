@@ -8,11 +8,42 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 const AddIngredientsButton = (props) => {
     const [servings, setServings] = useState(1);
 
+    const floatRegExp = new RegExp('^([0-9]+([.][0-9]*)?|[.][0-9]+)$');
+
     const handleServingsChange = (event) => {
-        // Parse text (event.target.value) and set servings
+        setServings(event.target.value);
     }
 
-    // TODO - move these into separate file to eliminate duplicate code
+    const onServingsBlur = (event) => {
+        if(!event.target.value.match(floatRegExp)) setServings(0);
+
+        // TODO - update value saved in state and localStorage
+    }
+
+    const incrementServings = () => {
+        const currentServings = Number(servings);
+        if (currentServings >= 5.0) {
+            setServings(currentServings + 1.0);
+        } else if (currentServings >= 1.0) {
+            setServings(currentServings + 0.5);
+        } else {
+            setServings(currentServings + 0.25);
+        }
+    }
+
+    const decrementServings = () => {
+        const currentServings = Number(servings);
+        let newServings = 0.0;
+        if (currentServings > 5.0) {
+            newServings = currentServings - 1.0;
+        } else if (currentServings > 1.0) {
+            newServings = currentServings - 0.5;
+        } else {
+            newServings = currentServings - 0.25;
+        }
+        if (newServings < 0.0) setServings(0.0); // Catch any negatives
+        else setServings(newServings);
+    }
 
     const saveRecipe = () => {
         let currentRecipes = props.savedRecipes.slice();
@@ -33,11 +64,11 @@ const AddIngredientsButton = (props) => {
     return(
         <div className="addIngredientsButtonContainer">
             <div className="servingsArrows">
-                <FontAwesomeIcon icon={faAngleDown} size="lg"/>
+                <FontAwesomeIcon icon={faAngleDown} onClick={decrementServings} size="lg"/>
                 <div className="servings">
-                    <input className="input" type="text" onChange={handleServingsChange} value={servings}></input>
+                    <input className="input" type="text" onChange={handleServingsChange} onBlur={onServingsBlur} value={servings}></input>
                 </div>
-                <FontAwesomeIcon icon={faAngleUp} size="lg"/>
+                <FontAwesomeIcon icon={faAngleUp} onClick={incrementServings} size="lg"/>
             </div>
             <div className="cartIcon">
                 <FontAwesomeIcon icon={faCartPlus} onClick={handleButtonClick} size="1x"/>
