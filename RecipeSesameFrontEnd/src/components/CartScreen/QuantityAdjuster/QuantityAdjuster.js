@@ -19,15 +19,23 @@ const QuantityAdjuster = (props) => {
         // TODO - update value saved in state and localStorage
     }
 
+    const roundToQuarter = (num) => {
+        return (Math.round(num * 4) / 4);
+    }
+
     const incrementQuantity = () => {
         const currentQuantity = Number(quantity);
+        let newQuantity = 0.0;
+
         if (currentQuantity >= 5.0) {
-            setQuantity(currentQuantity + 1.0);
+            newQuantity = currentQuantity + 1.0;
         } else if (currentQuantity >= 1.0) {
-            setQuantity(currentQuantity + 0.5);
+            newQuantity = currentQuantity + 0.5;
         } else {
-            setQuantity(currentQuantity + 0.25);
+            newQuantity = currentQuantity + 0.25;
         }
+
+        setQuantity(roundToQuarter(newQuantity));
     }
 
     const decrementQuantity = () => {
@@ -40,8 +48,8 @@ const QuantityAdjuster = (props) => {
         } else {
             newQuantity = currentQuantity - 0.25;
         }
-        if (newQuantity < 0.0) setQuantity(0.0); // Catch any negatives
-        else setQuantity(newQuantity);
+        if (newQuantity < 0.0) setQuantity(0); // Catch any negatives
+        else setQuantity(roundToQuarter(newQuantity));
     }
 
     return (

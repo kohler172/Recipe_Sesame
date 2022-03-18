@@ -20,20 +20,29 @@ const AddIngredientsButton = (props) => {
         // TODO - update value saved in state and localStorage
     }
 
+    const roundToQuarter = (num) => {
+        return (Math.round(num * 4) / 4);
+    }
+
     const incrementServings = () => {
         const currentServings = Number(servings);
+        let newServings = 0.0;
+
         if (currentServings >= 5.0) {
-            setServings(currentServings + 1.0);
+            newServings = currentServings + 1.0;
         } else if (currentServings >= 1.0) {
-            setServings(currentServings + 0.5);
+            newServings = currentServings + 0.5;
         } else {
-            setServings(currentServings + 0.25);
+            newServings = currentServings + 0.25;
         }
+
+        setServings(roundToQuarter(newServings));
     }
 
     const decrementServings = () => {
         const currentServings = Number(servings);
         let newServings = 0.0;
+
         if (currentServings > 5.0) {
             newServings = currentServings - 1.0;
         } else if (currentServings > 1.0) {
@@ -41,8 +50,9 @@ const AddIngredientsButton = (props) => {
         } else {
             newServings = currentServings - 0.25;
         }
-        if (newServings < 0.0) setServings(0.0); // Catch any negatives
-        else setServings(newServings);
+
+        if (newServings < 0.0) setServings(0); // Catch any negatives
+        else setServings(roundToQuarter(newServings));
     }
 
     const saveRecipe = () => {
