@@ -21,7 +21,16 @@ const ChatTextEntry = (props) => {
         fetch(randomUrl)
             .then(response => response.json())
             .then(data => props.setRecommendedRecipes(data));
-            props.addMessage({ content: "Your search has been reset. What would you like to look for?", isUserMessage: false });
+            const random = Math.random();
+
+            if (random < 0.33) {
+                props.addMessage({ content: "Your search is cleared. What would you like to look for?", isUserMessage: false });
+            } else if (random < 0.66) {
+                props.addMessage({ content: "Starting from scratch. What kinds of recipes would you like?", isUserMessage: false });
+            } else {
+                props.addMessage({ content: "Ok, starting over. Tell me what you're looking for.", isUserMessage: false });
+            }
+
             props.removeTypingMessages();
     }
 
@@ -46,7 +55,15 @@ const ChatTextEntry = (props) => {
             } else if (textContent.toLowerCase().search('show me more') > -1) {
                 setIsWaiting(false);
                 props.setResultStartingIndex(props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6);
-                props.addMessage({ content: "Here's some other recipes.", isUserMessage: false });
+                const random = Math.random();
+                if (random < 0.33) {
+                    props.addMessage({ content: "Here's some other recipes.", isUserMessage: false });
+                } else if (random < 0.66) {
+                    props.addMessage({ content: "Ok, here's more recipes from your search.", isUserMessage: false });
+                } else {
+                    props.addMessage({ content: "You might like these recipes.", isUserMessage: false });
+                }
+
                 props.removeTypingMessages();
             } else {
                 let numberOfResults = 0;

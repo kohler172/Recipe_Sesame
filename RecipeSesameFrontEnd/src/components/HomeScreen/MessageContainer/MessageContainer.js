@@ -6,10 +6,10 @@ const MessageContainer = (props) => {
     return (
         <div className="messageContainer">
             { props.messages.slice(0).reverse().map((message, index) => (
-                (index < (props.messages.length - 1)) && (props.messages[index + 1].isUserMessage == props.messages[index].isUserMessage) ? (
+                (message.isUserMessage) ? (
                     <Message key={index} content={message.content} isUserMessage={message.isUserMessage} />
                 ) : (
-                    <Message key={index} content={message.content} isUserMessage={message.isUserMessage} />
+                    <Message key={index} content={message.content.charAt(0).toUpperCase() + message.content.slice(1)} isUserMessage={message.isUserMessage} />
                 )
             ))}
         </div>

@@ -188,6 +188,8 @@ nlu:
     - more [milk shakes]{"entity": "ingredient"} too
     - no [crab]{"entity": "ingredient"}
     - no [grilled chicken]{"entity": "ingredient"}
+    - i don't like [olives]{"entity": "ingredient"}
+    - i dont like [tomato]{"entity": "ingredient"}
 
 - intent: adjective
   examples: |
