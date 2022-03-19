@@ -27,7 +27,6 @@
 
 @media only screen and (max-width: 500px) {
     .recipeDescription {
-        height: 400px;
-        width: calc(100% - 30px);
+        display: none;
     }
 }

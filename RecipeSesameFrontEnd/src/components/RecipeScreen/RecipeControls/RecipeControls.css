@@ -19,9 +19,27 @@
     margin-bottom: 15px;
 }
 
+.mobileIngredient, .mobileInstructions {
+    display: none;
+}
+
 @media only screen and (max-width: 500px) {
+    .recipeControls {
+        width: 100%;
+        padding-top: 8px;
+    }
+
     .recipeControls > img {
-        max-height: 16vh;
-        margin: 10px 0;
+        margin: 10px 0 18px;
+    }
+
+    .mobileIngredient, .mobileInstructions {
+        display: block;
+        text-align: left;
+        align-self: flex-start;
+    }
+
+    .mobileInstructions {
+        margin-bottom: 20px;
     }
 }

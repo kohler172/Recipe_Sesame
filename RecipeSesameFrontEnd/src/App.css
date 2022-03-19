@@ -25,6 +25,22 @@
    justify-content: flex-start;
    align-items: flex-start;
   }
+
+  .header {
+    height: auto;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mainContainer {
+    height: auto !important;
+  }
+
+  .container {
+    height: auto !important;
+  }
 }
 
 .App-logo {

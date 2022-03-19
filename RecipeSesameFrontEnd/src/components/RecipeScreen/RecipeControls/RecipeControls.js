@@ -7,6 +7,10 @@ const RecipeControls = (props) => {
     return (
         <div className="recipeControls">
             <img src={process.env.PUBLIC_URL + "/images/"  + props.recipe.Image_Name + ".jpg"} alt={props.recipe.Title} />
+            { JSON.parse(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"')).map(line => <p className="mobileIngredient">{line}</p>) }
+            <div className="mobileInstructions">
+                { props.recipe.Instructions.split('\n').map(line => <p className="recipeInstructions">{line}</p>) }
+            </div>
             <h2>Your Ingredients</h2>
             <RecipeCartContainer savedIngredients={props.savedIngredients}/>
             <RecipeButtons 

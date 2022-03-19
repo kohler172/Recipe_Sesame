@@ -22,3 +22,10 @@
     border-radius: var(--large-radius);
     box-shadow: var(--screen-shadow);
 }
+
+@media only screen and (max-width: 500px) {
+    .cartCard {
+        height: calc(90vh - 20px);
+        padding: 20px 0 0;
+    }
+}

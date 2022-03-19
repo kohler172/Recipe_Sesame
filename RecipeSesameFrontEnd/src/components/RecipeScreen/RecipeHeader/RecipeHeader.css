@@ -23,3 +23,9 @@
     cursor: pointer;
     color:var(--warning-color-dark);
 }
+
+@media only screen and (max-width: 500px) {
+    .cardHeader {
+        width: 100%;
+    }
+}

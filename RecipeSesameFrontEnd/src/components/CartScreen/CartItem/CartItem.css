@@ -61,6 +61,32 @@
     text-align: left;
 }
 
+@media only screen and (max-width: 500px) {
+    .cartIngredient {
+        text-align: left;
+    }
+
+    .ingredientButtons {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+    }
+
+    .ingredientButtons > svg {
+        margin-top: 14px;
+        margin-right: 0;
+    }
+
+    .recipeItem {
+        padding: 15px 5px
+    }
+
+    .cartItem > img {
+        height: 50px;
+    }
+}
+
 .click {
     position: absolute;
     top: 0;

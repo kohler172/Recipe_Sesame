@@ -4,3 +4,10 @@
     margin-bottom: 8px;
     padding: 0 40px;
 }
+
+@media only screen and (max-width: 500px) {
+    .cartHeader {
+        width: calc(100% - 40px);
+        padding: 0 20px;
+    }
+}

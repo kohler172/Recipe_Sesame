@@ -14,9 +14,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .recommendedRecipe {
-        margin: 8px 15px;
-    }
+
 }
 
 .recommendedRecipe:hover {

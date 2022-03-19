@@ -13,6 +13,16 @@
     padding: 10px 0 30px;
 }
 
+@media only screen and (max-width: 500px) {
+    .cartContents {
+        width: calc(100% - 20px);
+        padding: 0 10px;
+    }
+
+    .cartList {
+    }
+}
+
 .taller {
     height: 65vh;
 }

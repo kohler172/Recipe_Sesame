@@ -37,14 +37,6 @@
     z-index: 10;
 }
 
-@media only screen and (max-width: 500px) {
-    .screenCard {
-        width: 100%;
-        height: calc(95vh - 50px);
-        padding: 20px 20px 30px;
-    }
-}
-
 .recipeCard {
     width: 95%;
     align-items: center;
@@ -70,6 +62,20 @@
     .recipeContent {
         flex-direction: column;
         height: auto;
+        width: 100%;
         overflow: auto;
+    }
+
+    .screenCard {
+        width: 95%;
+        height: calc(95vh - 20px);
+        padding: 20px 20px 0;
+        border-radius: var(--small-radius);
+        overflow:visible;
+    }
+
+    .recipeMain {
+        width: 90%;
+        left: 5%;
     }
 }

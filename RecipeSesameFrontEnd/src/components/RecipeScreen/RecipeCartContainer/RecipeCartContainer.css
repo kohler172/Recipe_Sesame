@@ -6,3 +6,9 @@
     border-radius: var(--small-radius);
     margin-top: 8px;
 }
+
+@media only screen and (max-width: 500px) {
+    .recipeCart {
+        height: 50vh;
+    }
+}
