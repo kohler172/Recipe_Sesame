@@ -6,10 +6,7 @@
     align-items: center;
     word-break: break-word;
     box-shadow: var(--card-shadow-light);
-}
-
-.message:last-of-type {
-    margin-top: 20px;
+    max-width: 75%;
 }
 
 .message:hover {
