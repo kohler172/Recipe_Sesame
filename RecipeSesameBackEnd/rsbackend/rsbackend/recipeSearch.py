@@ -17,7 +17,13 @@ def search(words, neg_words):
     if len(words) > 1 and "i" in words:
         words.remove("i")
 
-    words = " ".join(words)
+    words = " ".join(words).lower()
+
+    # Testing search improvements here, not working now
+    words.replace("recipes", " ")
+    words.replace("recipe", " ")
+    words.replace("something", " ")
+
     es.indices.refresh(index="test")
     neg_words = " ".join(neg_words)
 
