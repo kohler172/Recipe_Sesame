@@ -1,10 +1,15 @@
 # Rasa: Conversational Chatbot
 
-Chatbot in rasa. Not integrated with the rest yet.
 
 ## Setup
 
-Rasa must be installed.
+Rasa must be installed with
+### `python3 -m pip install rasa`
+
+Check that it installs ver. 3.0.8 or similar with
+### `python3 -m pip show rasa`
+If it installs a weird version, your python is probably either too old or too new.
+Rasa only supports Python 3.7 & 3.8
 
 In /conversational run the following command to start the actions server.
 
