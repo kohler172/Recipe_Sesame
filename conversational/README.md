@@ -1,7 +1,7 @@
 # Rasa: Conversational Chatbot
 
 
-## Setup
+## Setup: Must install with Python 3.7 or 3.8.
 
 Rasa must be installed with
 ### `python3 -m pip install rasa`
