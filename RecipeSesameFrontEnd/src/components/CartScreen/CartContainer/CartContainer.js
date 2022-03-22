@@ -7,6 +7,11 @@ import './CartContainer.css';
 const CartContainer = (props) => {
     const [recipeScreenIsOpen, setRecipeScreenIsOpen] = useState(false);
     const [openRecipe, setOpenRecipe] = useState({});
+    const [displayIngredients, setDisplayIngredients] = useState(true);
+
+    const closeCartScreen = () => {
+        props.setCartScreenIsOpen(false);
+    }
 
     return (recipeScreenIsOpen ? 
             <RecipeContainer 
@@ -19,13 +24,18 @@ const CartContainer = (props) => {
             /> 
           : 
           <div className="cartContainer">
-            <div className="screenCard">
+            <div className="shade" onClick={closeCartScreen}></div>
+            <div className="screenCard cartCard">
                 <CartHeader setCartScreenIsOpen={props.setCartScreenIsOpen}/>
                 <CartContents 
                     setOpenRecipe={setOpenRecipe}
                     setRecipeScreenIsOpen={setRecipeScreenIsOpen}
                     savedIngredients={props.savedIngredients} 
+                    setSavedIngredients={props.setSavedIngredients}
                     savedRecipes={props.savedRecipes} 
+                    setSavedRecipes={props.setSavedRecipes}
+                    displayIngredients={displayIngredients}
+                    setDisplayIngredients={setDisplayIngredients}
                 />
             </div>
         </div>

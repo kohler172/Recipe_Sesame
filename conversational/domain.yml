@@ -15,11 +15,13 @@ intents:
 
 responses:
   utter_greet:
+  - text: "Hello!"
+  - text: "Hey!"
+  - text: "Hi!"
   - text: "Hello! What would you like to eat?"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
 
   utter_did_that_help:
   - text: "Did that help you?"
@@ -28,38 +30,55 @@ responses:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Goodbye!"
+  - text: "Bye!"
   - text: "Bon Appetit!"
+  - text: "Enjoy!"
+  - text: "See you later!"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
   utter_ingredient_pos:
   - text: "{ingredient} will be included."
-  - text: "OK, let's find some recipes with {ingredient}."
+  - text: "Ok, let's find some recipes with {ingredient}."
   - text: "Alright, including {ingredient} in the search."
+  - text: "{ingredient} is in."
+  - text: "{ingredient}? No problem!"
 
   utter_ingredient_neg:
   - text: "Recipes with {ingredient} have been filtered out."
   - text: "Alright, we'll exclude any recipes with {ingredient}."
+  - text: "Ok, we won't include {ingredient}."
+  - text: "{ingredient} is out."
+  - text: "No {ingredient}? No problem!"
 
   utter_adjective_pos:
   - text: "Results have been updated to be more {adjective}."
   - text: "Searching for {adjective} recipes."
+  - text: "Making it {adjective}."
+  - text: "Making it more {adjective}."
 
   utter_adjective_neg:
   - text: "{adjective} recipes have been filtered out."
   - text: "Excluding {adjective} recipes."
+  - text: "We'll avoid {adjective} recipes."
+  - text: "{adjective} recipes are no longer included."
 
   utter_tool_pos:
-  - text: "Searching for recipes made with a {tool}"
+  - text: "Searching for recipes made with a {tool}."
+  - text: "We'll find recipes that use your {tool}."
 
   utter_tool_neg:
-  - text: "Excluding recipes that require a {tool}"
+  - text: "Excluding recipes that require a {tool}."
+  - text: "We won't include any recipes that require a {tool}."
 
   utter_anything_else:
   - text: "Anything else?"
   - text: "Any other ingredients you'd like?"
+  - text: "What else would you like?"
+  - text: "Would you like to exclude anything?"
+  - text: "Any ingredients you don't like?"
 
   utter_clear:
   - text: "Starting over."

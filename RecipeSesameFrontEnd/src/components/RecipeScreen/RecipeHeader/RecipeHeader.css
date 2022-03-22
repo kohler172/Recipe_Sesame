@@ -2,16 +2,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 120px);
-    margin-bottom: 8px;
-    padding: 0 60px;
+    width: calc(100% - 80px);
+    margin-bottom: 0px;
+    padding: 5px 0 10px;
+    border-bottom: 2px solid var(--main-color-dark);
+}
+
+.cardHeader > h1:hover {
+    cursor: default;
 }
 
 .cardHeader > svg {
     color: var(--warning-color);
+    transition-property: color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
 
 .cardHeader > svg:hover {
     cursor: pointer;
     color:var(--warning-color-dark);
+}
+
+@media only screen and (max-width: 500px) {
+    .cardHeader {
+        width: 100%;
+    }
 }

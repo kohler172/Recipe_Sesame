@@ -2,16 +2,22 @@
     display: flex;
     justify-content: flex-start;
     margin-bottom: 0;
+    align-self: flex-start;
+    border-bottom: 2px solid var(--main-color-dark);
 }
 
 .selected {
-    background-color: var(--main-color-light);
-    border-bottom: 1px solid var(--unselected-button);
+    background-color: var(--main-color-dark);
 }
 
 .unselected {
-    background-color: var(--unselected-button);
-    border-bottom: 1px solid var(--unselected-button);
+    transition-property: background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.unselected:hover {
+    background-color: rgb(172, 231, 201);
 }
 
 .listSelector > p {

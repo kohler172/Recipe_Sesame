@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import './CartHeader.css';
 
 const CartHeader = (props) => {
     const closeCartScreen = () => {
@@ -8,7 +9,7 @@ const CartHeader = (props) => {
     }
 
     return (
-        <div className="cardHeader">
+        <div className="cardHeader cartHeader">
             <h1>Your Basket</h1>
             <FontAwesomeIcon icon={faTimes} size="2x" onClick={closeCartScreen}/>
         </div>

@@ -1,0 +1,56 @@
+.addIngredientsButtonContainer {
+    background-color: var(--active-button);
+    width: 119px;
+    height: 22px;
+    padding: 5px 43px 5px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--off-white);
+    border-radius: var(--large-radius);
+    box-shadow: var(--button-shadow);
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.addIngredientsButtonContainer:hover {
+    transform: scale(1.01);
+}
+
+.servings > input {
+    width: 31px;
+    height: 11px;
+    border: none;
+    background-color: var(--off-white);
+    border-radius: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+.servingsArrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgb(114, 168, 139);
+}
+
+.servingsArrows > svg:hover {
+    cursor: pointer;
+}
+
+.servingsArrows > svg:first-of-type {
+    margin: 0 10px 0 6px;
+}
+
+.servingsArrows > svg:last-of-type {
+    margin: 0 13px 0 10px;
+}
+
+.cartIcon {
+    padding-left: 12px;
+}
+
+.cartIcon:hover {
+    cursor: pointer;
+}

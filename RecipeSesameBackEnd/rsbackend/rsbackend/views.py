@@ -23,9 +23,9 @@ class MessageView(APIView):
         return keywords
 
     def post(self, request):
-        #Cheap search reset for demo purposes.
         searches = request.data['keywords']
         neg_searches = request.data['negKeywords']
+        
         if any(x in request.data['message'].lower() for x in self.EXCLUSION_KEYWORDS):
             neg_searches += get_keywords(request.data['message'])
         else:

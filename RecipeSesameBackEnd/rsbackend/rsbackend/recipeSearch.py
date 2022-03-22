@@ -17,7 +17,13 @@ def search(words, neg_words):
     if len(words) > 1 and "i" in words:
         words.remove("i")
 
-    words = " ".join(words)
+    words = " ".join(words).lower()
+
+    # Testing search improvements here, not working now
+    words.replace("recipes", " ")
+    words.replace("recipe", " ")
+    words.replace("something", " ")
+
     es.indices.refresh(index="test")
     neg_words = " ".join(neg_words)
 
@@ -46,6 +52,32 @@ def search(words, neg_words):
             }
             }
     })['hits']['hits']
+
+    # Prefer to AND, but if no results, OR instead
+
+    if len(results) < 1:
+        results = es.search(index="test", body={ #perform sample search
+        "size": 72,
+        "query": {
+            "bool": {
+                "must": {
+                    "multi_match": {
+                        "query": words,
+                        "fields": ["Title", "Instructions", "Ingredients"],
+                        "operator": "or"
+                    }
+                },
+                "must_not": {
+                    "multi_match": {
+                        "query": neg_words,
+                        "fields": ["Title", "Instructions", "Ingredients"],
+                        "operator": "or"
+                    }
+                }
+
+            }
+            }
+        })['hits']['hits']
 
     finalRes = []
 

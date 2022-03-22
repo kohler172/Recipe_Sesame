@@ -1,14 +1,16 @@
 .message {
     padding: 10px 13px;
-    margin: 4px 0;
+    margin: 3px 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     word-break: break-word;
+    box-shadow: var(--card-shadow-light);
+    max-width: 75%;
 }
 
-.message:last-of-type {
-    margin-top: 20px;
+.message:hover {
+    cursor: default;
 }
 
 .message > p {
@@ -16,16 +18,15 @@
 }
 
 .leftMessage {
-    border-radius: var(--large-radius) var(--large-radius) var(--large-radius) 3px;
     background-color: rgb(80, 80, 80);
     color: var(--off-white);
-    width: 50%;
+    margin-right: auto;
+    border-radius: var(--large-radius) var(--large-radius) var(--large-radius) 3px;
 }
 
 .rightMessage {
-    border-radius: var(--large-radius) var(--large-radius) 3px var(--large-radius);
     background-color: var(--secondary-color);
     color: var(--black-text);
-    width: 50%;
     margin-left: auto;
+    border-radius: var(--large-radius) var(--large-radius) 3px var(--large-radius);
 }

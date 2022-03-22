@@ -1,0 +1,35 @@
+.quantityAdjuster {
+    background-color: var(--active-button);
+    width: auto !important;
+    height: 22px;
+    padding: 5px 4px 5px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--off-white);
+    border-radius: var(--large-radius);
+    box-shadow: var(--button-shadow);
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.quantityAdjuster:hover {
+    transform: scale(1.02);
+}
+
+.quantity > input {
+    margin: 0;
+}
+
+.quantityArrows {
+    border-right: none;
+}
+
+.quantityArrows > svg:first-of-type {
+    margin: 0 12px 0 8px !important;
+}
+
+.quantityArrows > svg:last-of-type {
+    margin: 0 8px 0 12px !important;
+}

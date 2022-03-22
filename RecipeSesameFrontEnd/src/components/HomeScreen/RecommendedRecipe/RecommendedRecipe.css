@@ -9,23 +9,22 @@
     box-shadow: var(--card-shadow);
     background-size: cover;
     transition-property: transform;
-    transition-duration: 0.25s;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
 
 @media only screen and (max-width: 1000px) {
-    .recommendedRecipe {
-        margin: 8px 15px;
-    }
+
 }
 
 .recommendedRecipe:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .recommendedRecipe > h3 {
     color: var(--off-white);
-    text-shadow: 1px 0 2px rgb(50, 50, 50)
+    text-shadow: 0 0 3px rgb(50, 50, 50)
 }
 
 .recommendedRecipe > img {
