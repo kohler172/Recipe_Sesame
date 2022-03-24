@@ -32,7 +32,21 @@ const CartItem = (props) => {
 
     const getInitialQuantity = (ingredient) => {
         // TODO - Get the intial quantity in the given ingredient
-        return 1;
+        /*
+        - Possible values:
+            - No numbers at all (disable quantity adjuster)
+            - Integer (ex: 4)
+            - Multi-character fraction (ex: 1/2)
+                - There is a “/“ between two integers
+            - Multi-character fraction > 1 (ex: 1 1/2)
+                - There is a “ “ and a “/“ between two integers
+            - Unicode fraction (ex: ½)
+                - Existence of fractional unicode
+            - Unicode fraction > 1 (ex: 1 ½)
+                - Fractional unicode after a “ “ after an integer
+        */
+        if (ingredient.charAt(0) >= '0' || ingredient.charAt(0) <= '9') return ingredient.charAt(0);
+        else return 1;
     }
 
     return props.itemType === 'recipe' ? (
