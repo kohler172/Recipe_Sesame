@@ -30,6 +30,25 @@ const CartItem = (props) => {
         props.setSavedIngredients(currentIngredients);
     }
 
+    const getInitialQuantity = (ingredient) => {
+        // TODO - Get the intial quantity in the given ingredient
+        /*
+        - Possible values:
+            - No numbers at all (disable quantity adjuster)
+            - Integer (ex: 4)
+            - Multi-character fraction (ex: 1/2)
+                - There is a “/“ between two integers
+            - Multi-character fraction > 1 (ex: 1 1/2)
+                - There is a “ “ and a “/“ between two integers
+            - Unicode fraction (ex: ½)
+                - Existence of fractional unicode
+            - Unicode fraction > 1 (ex: 1 ½)
+                - Fractional unicode after a “ “ after an integer
+        */
+        if (ingredient.charAt(0) >= '0' || ingredient.charAt(0) <= '9') return ingredient.charAt(0);
+        else return 1;
+    }
+
     return props.itemType === 'recipe' ? (
         <div className="cartItem recipeItem">
             <div className="click" onClick={handleRecipeClick}></div>
@@ -42,7 +61,12 @@ const CartItem = (props) => {
             <p>{props.item}</p>
             <div className="ingredientButtons">
                 <FontAwesomeIcon icon={faTrash} className="delete" onClick={removeIngredient}/>
-                <QuantityAdjuster />
+                <QuantityAdjuster 
+                    ingredient={props.item}
+                    initialQuantity={getInitialQuantity(props.item)}
+                    savedIngredients={props.savedIngredients}
+                    setSavedIngredients={props.setSavedIngredients}
+                />
             </div>
         </div>
     );
