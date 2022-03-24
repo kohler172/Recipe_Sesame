@@ -77,8 +77,8 @@ responses:
   - text: "Anything else?"
   - text: "Any other ingredients you'd like?"
   - text: "What else would you like?"
-  - text: "Would you like to exclude anything?"
-  - text: "Any ingredients you don't like?"
+  - text: "Would you like to refine your search?"
+  - text: "What else are you looking for?"
 
   utter_clear:
   - text: "Starting over."
