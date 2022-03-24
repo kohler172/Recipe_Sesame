@@ -5,17 +5,28 @@ import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const QuantityAdjuster = (props) => {
-    const [quantity, setQuantity] = useState(1);
-
+    const [quantity, setQuantity] = useState(props.initialQuantity);
     const floatRegExp = new RegExp('^([0-9]+([.][0-9]*)?|[.][0-9]+)$');
+
+    const updateItem = () => {
+        let currentIngredients = props.savedIngredients.slice();
+        let currentIng = props.ingredient;
+
+        //const indexOfIng = currentIngredients.indexOf(currentIng);
+        //if (indexOfIng !== -1) currentIngredients.splice(indexOfIng, 1);
+
+        //localStorage.setItem('savedIngredients', JSON.stringify(currentIngredients));
+        //props.setSavedIngredients(currentIngredients);
+    }
 
     const handleQuantityChange = (event) => {
         setQuantity(event.target.value);
+        updateItem();
     }
 
     const onQuantityBlur = (event) => {
         if(!event.target.value.match(floatRegExp)) setQuantity(0);
-
+        updateItem();
         // TODO - update value saved in state and localStorage
     }
 
@@ -36,6 +47,7 @@ const QuantityAdjuster = (props) => {
         }
 
         setQuantity(roundToQuarter(newQuantity));
+        updateItem();
     }
 
     const decrementQuantity = () => {
@@ -50,6 +62,7 @@ const QuantityAdjuster = (props) => {
         }
         if (newQuantity < 0.0) setQuantity(0); // Catch any negatives
         else setQuantity(roundToQuarter(newQuantity));
+        updateItem();
     }
 
     return (

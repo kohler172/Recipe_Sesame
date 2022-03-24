@@ -30,6 +30,11 @@ const CartItem = (props) => {
         props.setSavedIngredients(currentIngredients);
     }
 
+    const getInitialQuantity = (ingredient) => {
+        // TODO - Get the intial quantity in the given ingredient
+        return 1;
+    }
+
     return props.itemType === 'recipe' ? (
         <div className="cartItem recipeItem">
             <div className="click" onClick={handleRecipeClick}></div>
@@ -42,7 +47,12 @@ const CartItem = (props) => {
             <p>{props.item}</p>
             <div className="ingredientButtons">
                 <FontAwesomeIcon icon={faTrash} className="delete" onClick={removeIngredient}/>
-                <QuantityAdjuster />
+                <QuantityAdjuster 
+                    ingredient={props.item}
+                    initialQuantity={getInitialQuantity(props.item)}
+                    savedIngredients={props.savedIngredients}
+                    setSavedIngredients={props.setSavedIngredients}
+                />
             </div>
         </div>
     );
