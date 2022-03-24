@@ -82,9 +82,8 @@ const ChatTextEntry = (props) => {
                         if (parsedData.recipes.length < 1) {
                             setIsWaiting(false);
                             props.removeTypingMessages();
-                        } else {
-                            props.setRecommendedRecipes(parsedData.recipes);
                         }
+                        props.setRecommendedRecipes(parsedData.recipes);
                         numberOfResults = parsedData.recipes.length;
                         setKeywords(parsedData.keywords);
                         setNegKeywords(parsedData.negKeywords);

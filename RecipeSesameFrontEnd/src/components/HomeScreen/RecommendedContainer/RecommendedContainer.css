@@ -19,6 +19,14 @@
     margin-bottom: 10px;
 }
 
+.noRecipes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
 .recommendedScroll {
     display: grid;
     grid-template-columns: 1fr 1fr;
