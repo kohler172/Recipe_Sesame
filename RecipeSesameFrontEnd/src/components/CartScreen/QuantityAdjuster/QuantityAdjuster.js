@@ -21,13 +21,11 @@ const QuantityAdjuster = (props) => {
 
     const handleQuantityChange = (event) => {
         setQuantity(event.target.value);
-        updateItem();
     }
 
     const onQuantityBlur = (event) => {
         if(!event.target.value.match(floatRegExp)) setQuantity(0);
         updateItem();
-        // TODO - update value saved in state and localStorage
     }
 
     const roundToQuarter = (num) => {
