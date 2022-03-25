@@ -61,7 +61,6 @@ const ChatTextEntry = (props) => {
     }
 
     const handleShowMore = () => {
-        let thereWasMore = false;
         const originalIndex = props.resultStartingIndex;
         const newIndex = props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6;
         setIsWaiting(false);

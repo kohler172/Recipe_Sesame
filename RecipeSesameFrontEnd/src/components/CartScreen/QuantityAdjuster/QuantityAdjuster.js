@@ -7,7 +7,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const QuantityAdjuster = (props) => {
     const [quantity, setQuantity] = useState(props.initialQuantity);
-    const [startIndex, setStartIndex] = useState(props.startingIndex);
+    const [startIndex] = useState(props.startingIndex);
     const [endIndex, setEndIndex] = useState(props.endingIndex);
     const floatRegExp = new RegExp('^([0-9]+([.][0-9]*)?|[.][0-9]+)$');
 
@@ -20,13 +20,14 @@ const QuantityAdjuster = (props) => {
 
             if (quantity === 0) result += 0;
             else if (quantity >= 1) result += Math.floor(quantity);
+            
             if (typeof toVulgar(quantity % 1) !== 'undefined' && result.length === 0) result += toVulgar(quantity % 1);
             else if (typeof toVulgar(quantity % 1) !== 'undefined') result += " " + toVulgar(quantity % 1);
-            else if (quantity % 1 > 0) result = parseInt(result) + quantity % 1;
+            else if (quantity % 1 > 0) result = parseInt(result) + (quantity % 1);
 
             const newIng = currentIng.substring(0, startIndex) + result + currentIng.substring(endIndex);
             
-            setEndIndex(startIndex + result.length);
+            setEndIndex(startIndex + result.toString().length);
             currentIngredients.splice(index, 1, newIng);
             props.setSavedIngredients(currentIngredients);
         }

@@ -105,8 +105,6 @@ const CartItem = (props) => {
 
         
         if (value % 1 !== 0) {
-            console.log(ingredient);
-            console.log(ingredient.charAt(++index));
             index += 2;
         }
         
