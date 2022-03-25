@@ -61,15 +61,23 @@ const ChatTextEntry = (props) => {
     }
 
     const handleShowMore = () => {
+        let thereWasMore = false;
+        const originalIndex = props.resultStartingIndex;
+        const newIndex = props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6;
         setIsWaiting(false);
         props.setResultStartingIndex(props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6);
-        const random = Math.random();
-        if (random < 0.33) {
-            props.addMessage({ content: "Here's some other recipes.", isUserMessage: false });
-        } else if (random < 0.66) {
-            props.addMessage({ content: "Ok, here's more recipes from your search.", isUserMessage: false });
+        
+        if (originalIndex === newIndex) {
+            props.addMessage({ content: "There aren't anymore recipes.", isUserMessage: false })
         } else {
-            props.addMessage({ content: "You might like these recipes.", isUserMessage: false });
+            const random = Math.random();
+            if (random < 0.33) {
+                props.addMessage({ content: "Here's some other recipes.", isUserMessage: false });
+            } else if (random < 0.66) {
+                props.addMessage({ content: "Ok, here's more recipes from your search.", isUserMessage: false });
+            } else {
+                props.addMessage({ content: "You might like these recipes.", isUserMessage: false });
+            }
         }
         props.removeTypingMessages();
     }
