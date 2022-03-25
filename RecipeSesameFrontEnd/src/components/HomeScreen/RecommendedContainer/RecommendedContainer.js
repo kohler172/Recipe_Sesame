@@ -24,7 +24,7 @@ const RecommendedContainer = (props) => {
                 </div>
             ) : (
                 <div className="noRecipes">
-                    <p>Sorry, no recipes were found.</p>
+                    <p>No recipes were found.</p>
                 </div>
             )}
             
