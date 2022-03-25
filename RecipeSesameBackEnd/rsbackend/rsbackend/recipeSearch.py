@@ -24,6 +24,8 @@ def search(words, neg_words):
         words.remove("recipe")
     if "something" in words:
         words.remove("something")
+    if "some" in words:
+        words.remove("some")
 
     words = " ".join(words).lower()
 

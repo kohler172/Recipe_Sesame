@@ -7,6 +7,7 @@ const ChatTextEntry = (props) => {
     const [negKeywords, setNegKeywords] = useState([]);
     const [isWaiting, setIsWaiting] = useState(false);
     const [prevRecipes, setPrevRecipes] = useState([]);
+    
     const randomUrl = 'http://localhost:8000/random/';
     const messageUrl = 'http://localhost:8000/message/';
     const rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
@@ -46,7 +47,6 @@ const ChatTextEntry = (props) => {
         if (recA.Cleaned_Ingredients !== recB.Cleaned_Ingredients) return false;
         if (recA.Instructions !== recB.Instructions) return false;
         return true;
-
     }
 
     const resultsAreUnchanged = (newRecipes) => {
@@ -134,7 +134,7 @@ const ChatTextEntry = (props) => {
 
         if (textContent.length > 0) {
             props.addMessage({ content: textContent, isUserMessage: true });
-            
+
             if (!isWaiting) props.addMessage({ content: '...', isUserMessage: false});
             setIsWaiting(true);
             

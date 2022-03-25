@@ -1,4 +1,5 @@
 import React from "react";
+import { toDecimal } from 'vulgar-fractions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import './CartItem.css';
@@ -31,22 +32,71 @@ const CartItem = (props) => {
     }
 
     const getInitialQuantity = (ingredient) => {
-        // TODO - Get the intial quantity in the given ingredient
-        /*
-        - Possible values:
-            - No numbers at all (disable quantity adjuster)
-            - Integer (ex: 4)
-            - Multi-character fraction (ex: 1/2)
-                - There is a “/“ between two integers
-            - Multi-character fraction > 1 (ex: 1 1/2)
-                - There is a “ “ and a “/“ between two integers
-            - Unicode fraction (ex: ½)
-                - Existence of fractional unicode
-            - Unicode fraction > 1 (ex: 1 ½)
-                - Fractional unicode after a “ “ after an integer
-        */
-        if (ingredient.charAt(0) >= '0' || ingredient.charAt(0) <= '9') return ingredient.charAt(0);
-        else return 1;
+        let value = 0;
+        let index = 0;
+
+        // Find the first-occurring numeric value
+        while (index < ingredient.length && (ingredient.charAt(index) < '0' || ingredient.charAt(index) > '9')) {
+            index++;
+        }
+
+        // If index is too big, no numbers in ingredient so we return 1
+        // TODO - disable quantity adjustor in this case
+        if (index >= ingredient.length) return 1;
+
+        // Handle unicode fractions < 1
+        if (toDecimal(ingredient.charAt(index)) && toDecimal(ingredient.charAt(index)) > 0) {
+            return toDecimal(ingredient.charAt(index));
+        }
+
+        // Handle integers
+        while (index < ingredient.length && (ingredient.charAt(index) >= '0' && ingredient.charAt(index) <= '9')) {
+            value = parseInt(value) * 10;
+            value = parseInt(value) + parseInt(ingredient.charAt(index));
+            index++;
+        }
+
+        if (ingredient.charAt(index) === '/') {
+            // Handle non-unicode fractions < 1
+            // value is now numerator
+            let denominator = 0;
+            index++;
+            while (index < ingredient.length && (ingredient.charAt(index) >= '0' && ingredient.charAt(index) <= '9')) {
+                denominator = parseInt(denominator) * 10;
+                denominator = parseInt(denominator) + parseInt(ingredient.charAt(index));
+                index++;
+            }
+            value = value / denominator;
+        } else if (ingredient.charAt(index) === ' ') {
+            // Handle unicode fractions > 1
+            if (toDecimal(ingredient.charAt(index + 1)) && toDecimal(ingredient.charAt(index + 1)) > 0) {
+                index++;
+                value = value + toDecimal(ingredient.charAt(index));
+            } else {
+                // Handle non-unicode fractions > 1
+                let numerator = 0;
+                index++;
+
+                while (index < ingredient.length && (ingredient.charAt(index) >= '0' && ingredient.charAt(index) <= '9')) {
+                    numerator = parseInt(numerator) * 10;
+                    numerator = parseInt(numerator) + parseInt(ingredient.charAt(index));
+                    index++;
+                }
+
+                if (ingredient.charAt(index) === '/') {
+                    let denominator = 0;
+                    index++;
+                    while (index < ingredient.length && (ingredient.charAt(index) >= '0' && ingredient.charAt(index) <= '9')) {
+                        denominator = parseInt(denominator) * 10;
+                        denominator = parseInt(denominator) + parseInt(ingredient.charAt(index));
+                        index++;
+                    }
+                    value = value + numerator / denominator;
+                }
+            }
+        }
+        
+        return value;
     }
 
     return props.itemType === 'recipe' ? (
