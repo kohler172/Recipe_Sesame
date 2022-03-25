@@ -6,6 +6,7 @@ const ChatTextEntry = (props) => {
     const [keywords, setKeywords] = useState([]);
     const [negKeywords, setNegKeywords] = useState([]);
     const [isWaiting, setIsWaiting] = useState(false);
+    const [prevRecipes, setPrevRecipes] = useState([]);
     const randomUrl = 'http://localhost:8000/random/';
     const messageUrl = 'http://localhost:8000/message/';
     const rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
@@ -38,6 +39,25 @@ const ChatTextEntry = (props) => {
         return (message.toLowerCase().search('search') > -1 || 
                 message.toLowerCase().search('restart') > -1 ||
                 message.toLowerCase().search('reset') > -1);
+    }
+
+    const recipesAreEqual = (recA, recB) => {
+        if (recA.Title !== recB.Title) return false;
+        if (recA.Cleaned_Ingredients !== recB.Cleaned_Ingredients) return false;
+        if (recA.Instructions !== recB.Instructions) return false;
+        return true;
+
+    }
+
+    const resultsAreUnchanged = (newRecipes) => {
+        console.log(newRecipes);
+        if (newRecipes.length !== prevRecipes.length) return false;
+        
+        for (let i = 0; i < newRecipes.length; i++) {
+            if (!recipesAreEqual(newRecipes[i], prevRecipes[i])) return false;
+        }
+
+        return true;
     }
 
     const handleSend = (event) => {
@@ -84,31 +104,35 @@ const ChatTextEntry = (props) => {
                             props.removeTypingMessages();
                         }
                         props.setRecommendedRecipes(parsedData.recipes);
-                        numberOfResults = parsedData.recipes.length;
                         setKeywords(parsedData.keywords);
                         setNegKeywords(parsedData.negKeywords);
-                    });
 
-                fetch(rasa_url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({'sender': "default", 'message': textContent.toLowerCase()})
-                })
-                    .then(response => response.json())
-                    .then(data => {    
-                        setIsWaiting(false); 
-                        data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));                    
-                        
-                        // Handle case of no results and no message
-                        if (!data && numberOfResults < 1) {
+                        if (resultsAreUnchanged(parsedData.recipes)) numberOfResults = -1;
+                        else numberOfResults = parsedData.recipes.length;
+
+                        setPrevRecipes(parsedData.recipes);
+                    })
+                    .then(() => {
+                        if (numberOfResults < 1) {
                             props.addMessage({ content: "Sorry, we couldn't find any recipes that matched.", isUserMessage: false })
-                            handleReset();
+                            props.removeTypingMessages();
+                        } else {
+                            fetch(rasa_url, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({'sender': "default", 'message': textContent.toLowerCase()})
+                            })
+                                .then(response => response.json())
+                                .then(data => {    
+                                    setIsWaiting(false); 
+                                    data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));                    
+            
+                                    props.removeTypingMessages();
+                                    props.incrementNumberOfMessagesSent();
+                                });
                         }
-
-                        props.removeTypingMessages();
-                        props.incrementNumberOfMessagesSent();
                     });
             } 
 
