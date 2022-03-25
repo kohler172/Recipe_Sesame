@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { toDecimal } from 'vulgar-fractions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +6,9 @@ import './CartItem.css';
 import QuantityAdjuster from "../QuantityAdjuster/QuantityAdjuster";
 
 const CartItem = (props) => {
+    const [endingIndexOfValue, setEndingIndexOfValue] = useState(-1);
+    const [startingIndexOfValue, setStartingIndexOfValue] = useState(-1);
+
     const handleRecipeClick = () => {
         props.setOpenRecipe(props.item);
         props.setRecipeScreenIsOpen(true);
@@ -36,13 +39,15 @@ const CartItem = (props) => {
         let index = 0;
 
         // Find the first-occurring numeric value
-        while (index < ingredient.length && (ingredient.charAt(index) < '0' || ingredient.charAt(index) > '9')) {
+        while (index < ingredient.length && typeof toDecimal(ingredient.charAt(index)) === 'undefined' && (ingredient.charAt(index) < '0' || ingredient.charAt(index) > '9')) {
             index++;
         }
 
         // If index is too big, no numbers in ingredient so we return 1
         // TODO - disable quantity adjustor in this case
         if (index >= ingredient.length) return 1;
+
+        if (startingIndexOfValue === -1) setStartingIndexOfValue(index);
 
         // Handle unicode fractions < 1
         if (toDecimal(ingredient.charAt(index)) && toDecimal(ingredient.charAt(index)) > 0) {
@@ -95,7 +100,10 @@ const CartItem = (props) => {
                 }
             }
         }
+
+        if (value % 1 === 0) index--;
         
+        if (endingIndexOfValue === -1) setEndingIndexOfValue(index);
         return value;
     }
 
@@ -116,6 +124,8 @@ const CartItem = (props) => {
                     initialQuantity={getInitialQuantity(props.item)}
                     savedIngredients={props.savedIngredients}
                     setSavedIngredients={props.setSavedIngredients}
+                    startingIndex={startingIndexOfValue}
+                    endingIndex={endingIndexOfValue}
                 />
             </div>
         </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { toVulgar } from 'vulgar-fractions';
 import './QuantityAdjuster.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
@@ -6,18 +7,29 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const QuantityAdjuster = (props) => {
     const [quantity, setQuantity] = useState(props.initialQuantity);
+    const [startIndex, setStartIndex] = useState(props.startingIndex);
+    const [endIndex, setEndIndex] = useState(props.endingIndex);
     const floatRegExp = new RegExp('^([0-9]+([.][0-9]*)?|[.][0-9]+)$');
 
-    const updateItem = () => {
+    useEffect(() => {
         let currentIngredients = props.savedIngredients.slice();
         let currentIng = props.ingredient;
+        let index = currentIngredients.indexOf(currentIng);
+        let result = "";
 
-        //const indexOfIng = currentIngredients.indexOf(currentIng);
-        //if (indexOfIng !== -1) currentIngredients.splice(indexOfIng, 1);
+        if (quantity === 0) result += 0;
+        else if (quantity >= 1) result += Math.floor(quantity);
+        if (typeof toVulgar(quantity % 1) !== 'undefined' && result.length === 0) result += toVulgar(quantity % 1);
+        else if (typeof toVulgar(quantity % 1) !== 'undefined') result += " " + toVulgar(quantity % 1);
+        else if (quantity % 1 > 0) result += quantity % 1;
 
-        //localStorage.setItem('savedIngredients', JSON.stringify(currentIngredients));
-        //props.setSavedIngredients(currentIngredients);
-    }
+        const newIng = currentIng.substring(0, startIndex) + result + currentIng.substring(endIndex);
+        
+        setEndIndex(startIndex + result.length);
+        currentIngredients.splice(index, 1, newIng);
+        console.log(newIng);
+        props.setSavedIngredients(currentIngredients);
+    }, [quantity]);
 
     const handleQuantityChange = (event) => {
         setQuantity(event.target.value);
@@ -25,7 +37,7 @@ const QuantityAdjuster = (props) => {
 
     const onQuantityBlur = (event) => {
         if(!event.target.value.match(floatRegExp)) setQuantity(0);
-        updateItem();
+        //updateItem();
     }
 
     const roundToQuarter = (num) => {
@@ -45,7 +57,7 @@ const QuantityAdjuster = (props) => {
         }
 
         setQuantity(roundToQuarter(newQuantity));
-        updateItem();
+        //updateItem();
     }
 
     const decrementQuantity = () => {
@@ -60,7 +72,7 @@ const QuantityAdjuster = (props) => {
         }
         if (newQuantity < 0.0) setQuantity(0); // Catch any negatives
         else setQuantity(roundToQuarter(newQuantity));
-        updateItem();
+        //updateItem();
     }
 
     return (
