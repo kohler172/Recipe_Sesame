@@ -15,7 +15,7 @@ const ChatTextEntry = (props) => {
         setTextContent(event.target.value);
     }
 
-    const handleReset = () => {
+    const handleResetMessage = () => {
         setIsWaiting(false);
         setKeywords([]);
         setNegKeywords([]);
@@ -60,81 +60,87 @@ const ChatTextEntry = (props) => {
         return true;
     }
 
-    const handleSend = (event) => {
-        event.preventDefault();
+    const handleShowMore = () => {
+        setIsWaiting(false);
+        props.setResultStartingIndex(props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6);
+        const random = Math.random();
+        if (random < 0.33) {
+            props.addMessage({ content: "Here's some other recipes.", isUserMessage: false });
+        } else if (random < 0.66) {
+            props.addMessage({ content: "Ok, here's more recipes from your search.", isUserMessage: false });
+        } else {
+            props.addMessage({ content: "You might like these recipes.", isUserMessage: false });
+        }
+        props.removeTypingMessages();
+    }
 
-        /* Sorry for the mess, I'll clean this up. */
+    const handleSearchMessage = () => {
+        let numberOfResults = 0;
+        props.setResultStartingIndex(0);
+
+        fetch(messageUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'sender': "test", 'message': textContent, 'keywords': keywords, 'negKeywords': negKeywords})
+        })
+            .then(response => response.json())
+            .then(data => {
+                const parsedData = JSON.parse(data);
+                if (parsedData.recipes.length < 1) {
+                    setIsWaiting(false);
+                    props.removeTypingMessages();
+                }
+                props.setRecommendedRecipes(parsedData.recipes);
+                setKeywords(parsedData.keywords);
+                setNegKeywords(parsedData.negKeywords);
+
+                /* 
+                 *  If results haven't changed, set number of results to negative
+                 *  so we display the correct response in the following .then
+                 */
+                if (resultsAreUnchanged(parsedData.recipes)) numberOfResults = -1;
+                else numberOfResults = parsedData.recipes.length;
+
+                setPrevRecipes(parsedData.recipes);
+            })
+            .then(() => {
+                if (numberOfResults < 1) {
+                    // Handle no new results on front end to avoid back end complication
+                    props.addMessage({ content: "Sorry, we couldn't find any recipes that are a good fit.", isUserMessage: false })
+                    props.removeTypingMessages();
+                } else {
+                    fetch(rasa_url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({'sender': "default", 'message': textContent.toLowerCase()})
+                    })
+                        .then(response => response.json())
+                        .then(data => {    
+                            setIsWaiting(false); 
+                            data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));
+                            props.removeTypingMessages();
+                            props.incrementNumberOfMessagesSent();
+                        });
+                }
+            });
+    }
+
+    const handleMessageSend = (event) => {
+        event.preventDefault();
 
         if (textContent.length > 0) {
             props.addMessage({ content: textContent, isUserMessage: true });
+            
             if (!isWaiting) props.addMessage({ content: '...', isUserMessage: false});
             setIsWaiting(true);
             
-            if (isResetMessage(textContent)) {
-                handleReset();
-            } else if (textContent.toLowerCase().search('show me more') > -1) {
-                setIsWaiting(false);
-                props.setResultStartingIndex(props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6);
-                const random = Math.random();
-                if (random < 0.33) {
-                    props.addMessage({ content: "Here's some other recipes.", isUserMessage: false });
-                } else if (random < 0.66) {
-                    props.addMessage({ content: "Ok, here's more recipes from your search.", isUserMessage: false });
-                } else {
-                    props.addMessage({ content: "You might like these recipes.", isUserMessage: false });
-                }
-
-                props.removeTypingMessages();
-            } else {
-                let numberOfResults = 0;
-                props.setResultStartingIndex(0);
-
-                fetch(messageUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({'sender': "test", 'message': textContent, 'keywords': keywords, 'negKeywords': negKeywords})
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        const parsedData = JSON.parse(data);
-                        if (parsedData.recipes.length < 1) {
-                            setIsWaiting(false);
-                            props.removeTypingMessages();
-                        }
-                        props.setRecommendedRecipes(parsedData.recipes);
-                        setKeywords(parsedData.keywords);
-                        setNegKeywords(parsedData.negKeywords);
-
-                        if (resultsAreUnchanged(parsedData.recipes)) numberOfResults = -1;
-                        else numberOfResults = parsedData.recipes.length;
-
-                        setPrevRecipes(parsedData.recipes);
-                    })
-                    .then(() => {
-                        if (numberOfResults < 1) {
-                            props.addMessage({ content: "Sorry, we couldn't find any recipes that matched.", isUserMessage: false })
-                            props.removeTypingMessages();
-                        } else {
-                            fetch(rasa_url, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({'sender': "default", 'message': textContent.toLowerCase()})
-                            })
-                                .then(response => response.json())
-                                .then(data => {    
-                                    setIsWaiting(false); 
-                                    data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));                    
-            
-                                    props.removeTypingMessages();
-                                    props.incrementNumberOfMessagesSent();
-                                });
-                        }
-                    });
-            } 
+            if (isResetMessage(textContent)) handleResetMessage();
+            else if (textContent.toLowerCase().search('show me more') > -1) handleShowMore();
+            else handleSearchMessage();
 
             setTextContent('');
         }
@@ -142,7 +148,7 @@ const ChatTextEntry = (props) => {
 
     return (
         <div>
-            <form className="chatTextEntry" onSubmit={handleSend}>
+            <form className="chatTextEntry" onSubmit={handleMessageSend}>
                 <input className="input" type="text" placeholder="Enter text." onChange={handleTextChange} value={textContent}></input>
                 <input className="send" type="submit" value="Send"></input>
             </form>
