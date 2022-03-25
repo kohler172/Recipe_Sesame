@@ -45,7 +45,9 @@ const CartItem = (props) => {
 
         // If index is too big, no numbers in ingredient so we return 1
         // TODO - disable quantity adjustor in this case
-        if (index >= ingredient.length) return 1;
+        if (index >= ingredient.length) {
+            return 1;
+        }
 
         if (startingIndexOfValue === -1) setStartingIndexOfValue(index);
 
@@ -101,7 +103,12 @@ const CartItem = (props) => {
             }
         }
 
-        if (value % 1 === 0) index--;
+        
+        if (value % 1 !== 0) {
+            console.log(ingredient);
+            console.log(ingredient.charAt(++index));
+            index += 2;
+        }
         
         if (endingIndexOfValue === -1) setEndingIndexOfValue(index);
         return value;

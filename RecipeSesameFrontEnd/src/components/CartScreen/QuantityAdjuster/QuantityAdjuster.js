@@ -12,23 +12,24 @@ const QuantityAdjuster = (props) => {
     const floatRegExp = new RegExp('^([0-9]+([.][0-9]*)?|[.][0-9]+)$');
 
     useEffect(() => {
-        let currentIngredients = props.savedIngredients.slice();
-        let currentIng = props.ingredient;
-        let index = currentIngredients.indexOf(currentIng);
-        let result = "";
+        if (props.endingIndex !== -1) {
+            let currentIngredients = props.savedIngredients.slice();
+            let currentIng = props.ingredient;
+            let index = currentIngredients.indexOf(currentIng);
+            let result = "";
 
-        if (quantity === 0) result += 0;
-        else if (quantity >= 1) result += Math.floor(quantity);
-        if (typeof toVulgar(quantity % 1) !== 'undefined' && result.length === 0) result += toVulgar(quantity % 1);
-        else if (typeof toVulgar(quantity % 1) !== 'undefined') result += " " + toVulgar(quantity % 1);
-        else if (quantity % 1 > 0) result += quantity % 1;
+            if (quantity === 0) result += 0;
+            else if (quantity >= 1) result += Math.floor(quantity);
+            if (typeof toVulgar(quantity % 1) !== 'undefined' && result.length === 0) result += toVulgar(quantity % 1);
+            else if (typeof toVulgar(quantity % 1) !== 'undefined') result += " " + toVulgar(quantity % 1);
+            else if (quantity % 1 > 0) result = parseInt(result) + quantity % 1;
 
-        const newIng = currentIng.substring(0, startIndex) + result + currentIng.substring(endIndex);
-        
-        setEndIndex(startIndex + result.length);
-        currentIngredients.splice(index, 1, newIng);
-        console.log(newIng);
-        props.setSavedIngredients(currentIngredients);
+            const newIng = currentIng.substring(0, startIndex) + result + currentIng.substring(endIndex);
+            
+            setEndIndex(startIndex + result.length);
+            currentIngredients.splice(index, 1, newIng);
+            props.setSavedIngredients(currentIngredients);
+        }
     }, [quantity]);
 
     const handleQuantityChange = (event) => {
