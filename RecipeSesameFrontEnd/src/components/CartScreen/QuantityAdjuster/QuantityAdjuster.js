@@ -18,7 +18,7 @@ const QuantityAdjuster = (props) => {
             let index = currentIngredients.indexOf(currentIng);
             let result = "";
 
-            if (quantity === 0) result += 0;
+            if (quantity < 1 && typeof toVulgar(quantity % 1) === 'undefined') result += 0;
             else if (quantity >= 1) result += Math.floor(quantity);
             
             if (typeof toVulgar(quantity % 1) !== 'undefined' && result.length === 0) result += toVulgar(quantity % 1);
@@ -27,7 +27,12 @@ const QuantityAdjuster = (props) => {
 
             const newIng = currentIng.substring(0, startIndex) + result + currentIng.substring(endIndex);
             
-            setEndIndex(startIndex + result.toString().length);
+            if (quantity % 1 > 0 && currentIng.substring(startIndex, endIndex - 1).includes("/")) {
+                // TODO - handle denominators > 9
+                setEndIndex(startIndex + result.toString().length + 2);
+            }
+
+            else setEndIndex(startIndex + result.toString().length);
             currentIngredients.splice(index, 1, newIng);
             props.setSavedIngredients(currentIngredients);
         }

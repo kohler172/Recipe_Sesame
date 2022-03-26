@@ -102,13 +102,9 @@ const CartItem = (props) => {
                 }
             }
         }
-
-        
-        if (value % 1 !== 0) {
-            index += 2;
-        }
         
         if (endingIndexOfValue === -1) setEndingIndexOfValue(index);
+        console.log(index);
         return value;
     }
 
