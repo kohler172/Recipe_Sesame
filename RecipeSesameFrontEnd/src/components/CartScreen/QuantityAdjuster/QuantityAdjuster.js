@@ -10,6 +10,7 @@ const QuantityAdjuster = (props) => {
     const [startIndex] = useState(props.startingIndex);
     const [endIndex, setEndIndex] = useState(props.endingIndex);
     const [valueChanged, setValueChanged] = useState(false);
+    const [loaded, setLoaded] = useState(false);
     const floatRegExp = new RegExp('^([0-9]+([.][0-9]*)?|[.][0-9]+)$');
 
     useEffect(() => {
@@ -40,10 +41,13 @@ const QuantityAdjuster = (props) => {
             }
             else setEndIndex(startIndex + result.toString().length);
 
+            console.log(newIng);
+
             currentIngredients.splice(index, 1, newIng);
-            localStorage.setItem('savedIngredients', JSON.stringify(currentIngredients));
+            if (loaded) localStorage.setItem('savedIngredients', JSON.stringify(currentIngredients));
             props.setSavedIngredients(currentIngredients);
         }
+        setLoaded(true);
     }, [quantity]);
 
     const handleQuantityChange = (event) => {

@@ -64,6 +64,8 @@ const CartItem = (props) => {
             index++;
         }
 
+        // TODO - handle case where next character is unicode fraction as well (no space)
+
         if (ingredient.charAt(index) === '/') {
             // Handle non-unicode fractions < 1
             // value is now numerator
@@ -80,6 +82,7 @@ const CartItem = (props) => {
             if (toDecimal(ingredient.charAt(index + 1)) && toDecimal(ingredient.charAt(index + 1)) > 0) {
                 index++;
                 value = value + toDecimal(ingredient.charAt(index));
+                index++;
             } else {
                 // Handle non-unicode fractions > 1
                 let numerator = 0;
@@ -100,7 +103,7 @@ const CartItem = (props) => {
                         index++;
                     }
                     value = value + numerator / denominator;
-                }
+                } else index--;
             }
         } else if (ingredient.charAt(index) === '.') {
             // Handle decimals
