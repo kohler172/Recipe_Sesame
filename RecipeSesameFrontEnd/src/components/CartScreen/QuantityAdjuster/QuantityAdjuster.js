@@ -34,6 +34,7 @@ const QuantityAdjuster = (props) => {
 
             else setEndIndex(startIndex + result.toString().length);
             currentIngredients.splice(index, 1, newIng);
+            localStorage.setItem('savedIngredients', JSON.stringify(currentIngredients));
             props.setSavedIngredients(currentIngredients);
         }
     }, [quantity]);

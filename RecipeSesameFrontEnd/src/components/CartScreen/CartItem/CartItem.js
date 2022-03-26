@@ -101,10 +101,26 @@ const CartItem = (props) => {
                     value = value + numerator / denominator;
                 }
             }
+        } else if (ingredient.charAt(index) === '.') {
+            // Handle decimals
+            index++;
+            let decimal = 0;
+
+            while (index < ingredient.length && (ingredient.charAt(index) >= '0' && ingredient.charAt(index) <= '9')) {
+                decimal = parseInt(decimal) * 10;
+                decimal = parseInt(decimal) + parseInt(ingredient.charAt(index));
+                index++;
+            }
+
+            console.log(decimal);
+
+            const divisor = Math.pow(10, decimal.toString().length);
+            console.log(divisor);
+            value = value + decimal / divisor;
+            console.log(value);
         }
         
         if (endingIndexOfValue === -1) setEndingIndexOfValue(index);
-        console.log(index);
         return value;
     }
 
