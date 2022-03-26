@@ -53,6 +53,7 @@ const CartItem = (props) => {
 
         // Handle unicode fractions < 1
         if (toDecimal(ingredient.charAt(index)) && toDecimal(ingredient.charAt(index)) > 0) {
+            if (endingIndexOfValue === -1) setEndingIndexOfValue(index + 1);
             return toDecimal(ingredient.charAt(index));
         }
 
