@@ -113,12 +113,8 @@ const CartItem = (props) => {
                 index++;
             }
 
-            console.log(decimal);
-
             const divisor = Math.pow(10, decimal.toString().length);
-            console.log(divisor);
             value = value + decimal / divisor;
-            console.log(value);
         }
         
         if (endingIndexOfValue === -1) setEndingIndexOfValue(index);

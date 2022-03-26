@@ -18,9 +18,14 @@ const QuantityAdjuster = (props) => {
             let currentIng = props.ingredient;
             let index = currentIngredients.indexOf(currentIng);
             let result = "";
-
+            
             if (quantity < 1 && typeof toVulgar(quantity % 1) === 'undefined') result += 0;
             else if (quantity >= 1) result += Math.floor(quantity);
+
+            if (index === currentIngredients.length - 1) {
+                console.log('quantity ' + quantity);
+                console.log("result " + result);
+            }
             
             if (typeof toVulgar(quantity % 1) !== 'undefined' && result.length === 0) result += toVulgar(quantity % 1);
             else if (typeof toVulgar(quantity % 1) !== 'undefined') result += " " + toVulgar(quantity % 1);
