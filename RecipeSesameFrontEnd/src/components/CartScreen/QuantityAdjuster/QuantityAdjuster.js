@@ -4,6 +4,7 @@ import './QuantityAdjuster.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const QuantityAdjuster = (props) => {
     const [quantity, setQuantity] = useState(props.initialQuantity);
@@ -40,8 +41,6 @@ const QuantityAdjuster = (props) => {
                 setValueChanged(true);
             }
             else setEndIndex(startIndex + result.toString().length);
-
-            console.log(newIng);
 
             currentIngredients.splice(index, 1, newIng);
             if (loaded) localStorage.setItem('savedIngredients', JSON.stringify(currentIngredients));
@@ -93,6 +92,7 @@ const QuantityAdjuster = (props) => {
 
     return (
         <div className="quantityAdjuster">
+            <FontAwesomeIcon icon={faTrash} className="delete" onClick={props.removeIngredient}/>
             <div className="servingsArrows quantityArrows">
                 <FontAwesomeIcon icon={faAngleDown} onClick={decrementQuantity} size="lg"/>
                 <div className="servings quantity">

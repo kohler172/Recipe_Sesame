@@ -7,10 +7,29 @@
 
 .cartList {
     overflow: scroll;
-    border-radius: 0 var(--small-radius) var(--small-radius) var(--small-radius);
+    border-radius: 0 0 var(--small-radius) var(--small-radius);
     height: 70vh;
     width: 100%;
     padding: 10px 0 30px;
+}
+
+.search {
+    position: absolute;
+    top: 72px;
+    right: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.search > input {
+    height: 30px;
+    padding: 0 13px;
+    width: 180px;
+    background-color: var(--off-white);
+    border: none;
+    border-radius: var(--small-radius) var(--small-radius) var(--small-radius) var(--small-radius);
+    box-shadow: var(--card-shadow-light);
 }
 
 @media only screen and (max-width: 500px) {
