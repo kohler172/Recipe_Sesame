@@ -33,3 +33,19 @@
 .quantityArrows > svg:last-of-type {
     margin: 0 8px 0 12px !important;
 }
+
+.quantityAdjuster > svg {
+    color: var(--warning-color);
+    transition-property: color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    padding: 0 12px 0 11px;
+    border-right: 1px solid rgb(114, 168, 139);
+    height: 100%;
+    margin-right: 3px;
+}
+
+.quantityAdjuster > svg:hover {
+    color:var(--warning-color-dark);
+    cursor: pointer;
+}

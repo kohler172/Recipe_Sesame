@@ -35,7 +35,7 @@ function App() {
       <div className="header">
         <Logo />
         <div className="headerButtons">
-          <div className="recipeButton">
+          <div className="recipeButton accountBtn">
             <FontAwesomeIcon icon={faUser} size="1x"/>
           </div>
           <CartButton 

@@ -13,6 +13,7 @@
 .cartCard {
     height: calc(90vh - 40px);
     padding: 20px 0;
+    position: relative;
 }
 
 .cartContent {

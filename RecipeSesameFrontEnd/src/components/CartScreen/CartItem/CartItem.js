@@ -135,8 +135,8 @@ const CartItem = (props) => {
         <div className="cartItem cartIngredient">
             <p>{props.item}</p>
             <div className="ingredientButtons">
-                <FontAwesomeIcon icon={faTrash} className="delete" onClick={removeIngredient}/>
                 <QuantityAdjuster 
+                    removeIngredient={removeIngredient}
                     ingredient={props.item}
                     initialQuantity={getInitialQuantity(props.item)}
                     savedIngredients={props.savedIngredients}

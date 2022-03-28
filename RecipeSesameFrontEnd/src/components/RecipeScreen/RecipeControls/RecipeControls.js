@@ -16,6 +16,8 @@ const RecipeControls = (props) => {
             <RecipeButtons 
                 setRecipeSaved={props.setRecipeSaved}
                 recipe={props.recipe}
+                ingredients={props.ingredients}
+                setIngredients={props.setIngredients}
                 recipeSaved={props.recipeSaved}
                 savedRecipes={props.savedRecipes}
                 setSavedRecipes={props.setSavedRecipes}

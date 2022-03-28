@@ -1,6 +1,6 @@
 .addIngredientsButtonContainer {
     background-color: var(--active-button);
-    width: 119px;
+    width: 113px;
     height: 22px;
     padding: 5px 43px 5px 6px;
     display: flex;
@@ -19,13 +19,14 @@
 }
 
 .servings > input {
-    width: 31px;
+    width: 33px;
     height: 11px;
     border: none;
     background-color: var(--off-white);
-    border-radius: 10px;
+    border-radius: 6px;
     margin: 0;
     text-align: center;
+    padding: 5px 6px;
 }
 
 .servingsArrows {
