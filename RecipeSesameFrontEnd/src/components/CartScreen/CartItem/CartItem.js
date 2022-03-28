@@ -53,6 +53,7 @@ const CartItem = (props) => {
 
         // Handle unicode fractions < 1
         if (toDecimal(ingredient.charAt(index)) && toDecimal(ingredient.charAt(index)) > 0) {
+            if (endingIndexOfValue === -1) setEndingIndexOfValue(index + 1);
             return toDecimal(ingredient.charAt(index));
         }
 
@@ -62,6 +63,8 @@ const CartItem = (props) => {
             value = parseInt(value) + parseInt(ingredient.charAt(index));
             index++;
         }
+
+        // TODO - handle case where next character is unicode fraction as well (no space)
 
         if (ingredient.charAt(index) === '/') {
             // Handle non-unicode fractions < 1
@@ -79,6 +82,7 @@ const CartItem = (props) => {
             if (toDecimal(ingredient.charAt(index + 1)) && toDecimal(ingredient.charAt(index + 1)) > 0) {
                 index++;
                 value = value + toDecimal(ingredient.charAt(index));
+                index++;
             } else {
                 // Handle non-unicode fractions > 1
                 let numerator = 0;
@@ -99,15 +103,21 @@ const CartItem = (props) => {
                         index++;
                     }
                     value = value + numerator / denominator;
-                }
+                } else index--;
             }
-        }
+        } else if (ingredient.charAt(index) === '.') {
+            // Handle decimals
+            index++;
+            let decimal = 0;
 
-        
-        if (value % 1 !== 0) {
-            console.log(ingredient);
-            console.log(ingredient.charAt(++index));
-            index += 2;
+            while (index < ingredient.length && (ingredient.charAt(index) >= '0' && ingredient.charAt(index) <= '9')) {
+                decimal = parseInt(decimal) * 10;
+                decimal = parseInt(decimal) + parseInt(ingredient.charAt(index));
+                index++;
+            }
+
+            const divisor = Math.pow(10, decimal.toString().length);
+            value = value + decimal / divisor;
         }
         
         if (endingIndexOfValue === -1) setEndingIndexOfValue(index);
