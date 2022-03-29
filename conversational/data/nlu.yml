@@ -211,6 +211,7 @@ nlu:
     - [chocolate chip ice cream]{"entity": "ingredient"}
     - i want [olives]{"entity": "ingredient"} and [chicken]{"entity": "ingredient"}
     - i want [chicken]{"entity": "ingredient"} and [beef]{"entity": "ingredient"} and [rice]{"entity": "ingredient"}
+    - i want a [cold brew]{"entity": "ingredient"}
 
 - intent: adjective
   examples: |
@@ -297,3 +298,24 @@ nlu:
     - let's try again
     - clear
     - start over
+
+- intent: garbage
+  examples: |
+    - buifbuiafbuifabui
+    - nanasuddjhafubf
+    - ibaksfjbfas
+    - fbife afuihbfsebuife
+    - biani huifabu afhuif hoifauih fahoihio
+    - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    - bbbbbbbbbbbbbbbbb
+    - fibufbufwbufwbiufwbuifwbuif
+    - jnfjsfkajnfajnkfsjnkfsnkjfsnkjfsdnkjfsdkjnfsdjnkfsdkjnfsd m
+    - m
+    - c
+    - ibaf
+    - mdmdm
+    - lk
+    - op
+    - qt
+    - dgd
+    - njsd

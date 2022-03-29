@@ -12,6 +12,7 @@ intents:
   - adjective
   - tool
   - clear
+  - garbage
 
 responses:
   utter_greet:
@@ -46,6 +47,9 @@ responses:
   - text: "{ingredient} is in."
   - text: "{ingredient}? No problem!"
 
+  utter_ingredient_pos_continued:
+  - text: "{ingredients} will also be included"
+
   utter_ingredient_neg:
   - text: "Recipes with {ingredient} have been filtered out."
   - text: "Alright, we'll exclude any recipes with {ingredient}."
@@ -53,17 +57,26 @@ responses:
   - text: "{ingredient} is out."
   - text: "No {ingredient}? No problem!"
 
+  utter_ingredient_neg_continued:
+  - text: "{ingredients} will also be excluded"
+
   utter_adjective_pos:
   - text: "Results have been updated to be more {adjective}."
   - text: "Searching for {adjective} recipes."
   - text: "Making it {adjective}."
   - text: "Making it more {adjective}."
 
+  utter_adjective_pos_continued:
+  - text: Results will also be more {adjectives}
+
   utter_adjective_neg:
   - text: "{adjective} recipes have been filtered out."
   - text: "Excluding {adjective} recipes."
   - text: "We'll avoid {adjective} recipes."
   - text: "{adjective} recipes are no longer included."
+
+  utter_adjective_neg_continued:
+  - text: "Results will also be less {adjectives}"
 
   utter_tool_pos:
   - text: "Searching for recipes made with a {tool}."
@@ -82,6 +95,9 @@ responses:
 
   utter_clear:
   - text: "Starting over."
+
+  utter_dont_understand:
+  - text: "Sorry, I don't understand! Please rephrase your request."
 
 actions:
   - action_ingredient

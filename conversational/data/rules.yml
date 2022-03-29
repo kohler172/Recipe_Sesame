@@ -35,3 +35,8 @@ rules:
   - intent: tool
   - action: action_tool
   - action: utter_anything_else
+
+- rule: Garbage action
+  steps:
+  - intent: garbage
+  - action: utter_dont_understand
