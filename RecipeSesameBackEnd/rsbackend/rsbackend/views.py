@@ -12,9 +12,12 @@ from .recipeSearch import search, random_recipes
 from .nlp import get_keywords
 #from rasa.nlu.model import Interpreter
 
-class MessageView(APIView):
-    EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate ", "rid "]
+keywords = []
+negKeywords = []
+EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", "allergic ", "dislike ", "hate ", "rid "]
 
+class MessageView(APIView):
+    #Shouldn't be necessary anymore
     def removeI(self, keywords):
         if "i" in keywords:
             keywords.remove("i")
@@ -23,22 +26,31 @@ class MessageView(APIView):
         return keywords
 
     def post(self, request):
-        searches = request.data['keywords']
-        neg_searches = request.data['negKeywords']
-        
-        if any(x in request.data['message'].lower() for x in self.EXCLUSION_KEYWORDS):
-            neg_searches += get_keywords(request.data['message'])
-        else:
-            searches += get_keywords(request.data['message'])
-
-        searches = self.removeI(searches)
-        neg_searches = self.removeI(neg_searches)
-
-        recipes = search(searches, neg_searches)
-        data = {"recipes": recipes, "keywords": searches, "negKeywords": neg_searches}
+        recipes = search(keywords, negKeywords)
+        data = {"recipes": recipes, "keywords": keywords, "negKeywords": negKeywords}
         return Response(json.dumps(data))
+
 
 class RandomView(APIView):
     def get(self, request):
         number_of_recipes = 72
         return Response(random_recipes(number_of_recipes))
+
+#Class to update keywords & negKeywords
+class KeywordsView(APIView):
+    #Returns keywords & negKeywords
+    def get(self, request):
+        return Response({'keywords': keywords, 'negKeywords': negKeywords})
+    #Adds a single keyword to either keywords or negKeywords depending on neg?
+    def post(self, request):
+        if request.data['neg?'] == 'True':
+            negKeywords.append(request.data['keyword'])
+        else:
+            keywords.append(request.data['keyword'])
+        return Response({'keywords': keywords, 'negKeywords': negKeywords})
+    #Clears both keywords and negKeywords
+    def delete(self, request):
+        keywords.clear()
+        negKeywords.clear()
+        print(keywords)
+        return Response({'keywords': keywords, 'negKeywords': negKeywords})
