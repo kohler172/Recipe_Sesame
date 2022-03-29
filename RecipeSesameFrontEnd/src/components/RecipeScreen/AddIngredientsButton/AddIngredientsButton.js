@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { toDecimal, toVulgar } from 'vulgar-fractions';
 import './AddIngredientsButton.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,9 +8,8 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const AddIngredientsButton = (props) => {
     const [servings, setServings] = useState(1);
-    const [previousServings, setPreviousServings] = useState(1);
-    let quantities = {};
-    let quantitiesSet = false;
+    const quantitiesInit = useRef(false);
+    const quantities = useRef([]);
     let endingIndexOfValue = -1;
     let startingIndexOfValue = -1;
 
@@ -25,16 +24,20 @@ const AddIngredientsButton = (props) => {
         for (let i = 0; i < props.ingredients.length; i++) {
             const currentIngredient = props.ingredients[i];
             const quantity = getQuantityFromIngredient(currentIngredient);
-            if (!quantitiesSet) quantities[currentIngredient] = quantity;
-            console.log(quantities[currentIngredient]);
+            console.log(quantitiesInit.current);
+            if (!quantitiesInit.current) {
+                //setQuantities(new Map(quantities.set(currentIngredient, quantity)));
+                let currQuant = quantities.current.slice();
+                currQuant.splice(i, 0, quantity);
+                quantities.current = currQuant;
+            }
 
-            const newQuantity = servings >= previousServings ? servings * quantities[currentIngredient] : quantities[currentIngredient] / servings;
+            const newQuantity = servings * quantities.current[i];
             
             setNewQuantity(currentIngredient, newQuantity, i, currentIngredients);
         }
-        quantitiesSet = true;
+        quantitiesInit.current = true;
         props.setIngredients(currentIngredients);
-        setPreviousServings(servings);
     }, [servings]);
 
     const setNewQuantity = (ingredient, newQuantity, index, currentIngredients) => {
@@ -208,7 +211,7 @@ const AddIngredientsButton = (props) => {
 
     const handleButtonClick = () => {
         let currentIngredients = props.savedIngredients.slice();
-        const newIngredientList = [...currentIngredients, ...JSON.parse(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"'))];
+        const newIngredientList = [...currentIngredients, ...props.ingredients];
         props.setSavedIngredients(newIngredientList);
         localStorage.setItem('savedIngredients', JSON.stringify(newIngredientList));
         if (!props.recipeSaved) saveRecipe();
@@ -220,7 +223,7 @@ const AddIngredientsButton = (props) => {
             <div className="servingsArrows">
                 <FontAwesomeIcon icon={faAngleDown} onClick={decrementServings} size="lg"/>
                 <div className="servings">
-                    <input className="input" type="text" onChange={handleServingsChange} onBlur={onServingsBlur} value={servings}></input>
+                    <input className="input" maxLength="5"  type="text" onChange={handleServingsChange} onBlur={onServingsBlur} value={servings}></input>
                 </div>
                 <FontAwesomeIcon icon={faAngleUp} onClick={incrementServings} size="lg"/>
             </div>

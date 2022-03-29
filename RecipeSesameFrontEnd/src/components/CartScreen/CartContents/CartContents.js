@@ -12,15 +12,18 @@ const CartContents = (props) => {
 
     const handleSearchChange = (event) => {
         setSearchText(event.target.value);
+        filterResults(event.target.value);
+    }
 
-        if (event.target.value.length > 0) {
+    const filterResults = (filter) => {
+        if (filter.length > 0) {
             const ogIngredients = props.savedIngredients;
             const ogRecipes = props.savedRecipes;
 
             if (props.displayIngredients) {
-                setIngredients(ogIngredients.filter(ingredient => ingredient.toLowerCase().search(event.target.value.toLowerCase()) > -1));
+                setIngredients(ogIngredients.filter(ingredient => ingredient.toLowerCase().search(filter.toLowerCase()) > -1));
             } else {
-                setRecipes(ogRecipes.filter(recipe => recipe.Title.toLowerCase().search(event.target.value.toLowerCase()) > -1));
+                setRecipes(ogRecipes.filter(recipe => recipe.Title.toLowerCase().search(filter.toLowerCase()) > -1));
             }
         } else {
             setIngredients(props.savedIngredients);
@@ -31,6 +34,7 @@ const CartContents = (props) => {
     useEffect(() => {
         setIngredients(props.savedIngredients);
         setRecipes(props.savedRecipes);
+        filterResults(searchText);
     }, [props.savedIngredients, props.savedRecipes])
 
     return (

@@ -96,7 +96,7 @@ const QuantityAdjuster = (props) => {
             <div className="servingsArrows quantityArrows">
                 <FontAwesomeIcon icon={faAngleDown} onClick={decrementQuantity} size="lg"/>
                 <div className="servings quantity">
-                    <input className="input" type="text" onChange={handleQuantityChange} onBlur={onQuantityBlur} value={quantity}></input>
+                    <input className="input" maxLength="5" type="text" onChange={handleQuantityChange} onBlur={onQuantityBlur} value={quantity}></input>
                 </div>
                 <FontAwesomeIcon icon={faAngleUp} onClick={incrementQuantity} size="lg"/>
             </div>
