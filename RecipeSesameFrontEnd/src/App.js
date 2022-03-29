@@ -23,8 +23,12 @@ function App() {
   const [resultStartingIndex, setResultStartingIndex] = useState(0);
 
   const randomUrl = 'http://localhost:8000/random/';
+  const keywordsUrl = 'http://localhost:8000/keywords/';
 
   useEffect(() => {
+    window.addEventListener('beforeunload', (event) => {
+      fetch(keywordsUrl, {method: 'DELETE'})
+    });
     fetch(randomUrl)
       .then(response => response.json())
       .then(data => setRecommendedRecipes(data));
