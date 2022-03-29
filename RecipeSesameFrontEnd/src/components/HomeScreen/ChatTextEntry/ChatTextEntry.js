@@ -7,9 +7,10 @@ const ChatTextEntry = (props) => {
     const [negKeywords, setNegKeywords] = useState([]);
     const [isWaiting, setIsWaiting] = useState(false);
     const [prevRecipes, setPrevRecipes] = useState([]);
-    
+
     const randomUrl = 'http://localhost:8000/random/';
     const messageUrl = 'http://localhost:8000/message/';
+    const keywordsUrl = 'http://localhost:8000/keywords/';
     const rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
 
     const handleTextChange = (event) => {
@@ -20,6 +21,7 @@ const ChatTextEntry = (props) => {
         setIsWaiting(false);
         setKeywords([]);
         setNegKeywords([]);
+        fetch(keywordsUrl, {method: 'DELETE'})
         fetch(randomUrl)
             .then(response => response.json())
             .then(data => props.setRecommendedRecipes(data));
@@ -37,7 +39,7 @@ const ChatTextEntry = (props) => {
     }
 
     const isResetMessage = (message) => {
-        return (message.toLowerCase().search('search') > -1 || 
+        return (message.toLowerCase().search('search') > -1 ||
                 message.toLowerCase().search('restart') > -1 ||
                 message.toLowerCase().search('reset') > -1);
     }
@@ -52,7 +54,7 @@ const ChatTextEntry = (props) => {
     const resultsAreUnchanged = (newRecipes) => {
         console.log(newRecipes);
         if (newRecipes.length !== prevRecipes.length) return false;
-        
+
         for (let i = 0; i < newRecipes.length; i++) {
             if (!recipesAreEqual(newRecipes[i], prevRecipes[i])) return false;
         }
@@ -65,7 +67,7 @@ const ChatTextEntry = (props) => {
         const newIndex = props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6;
         setIsWaiting(false);
         props.setResultStartingIndex(props.resultStartingIndex + 6 >= props.recommendedRecipes.length ? 0 : props.resultStartingIndex + 6);
-        
+
         if (originalIndex === newIndex) {
             props.addMessage({ content: "There aren't anymore recipes.", isUserMessage: false })
         } else {
@@ -84,14 +86,28 @@ const ChatTextEntry = (props) => {
     const handleSearchMessage = () => {
         let numberOfResults = 0;
         props.setResultStartingIndex(0);
-
-        fetch(messageUrl, {
+        fetch(rasa_url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({'sender': "test", 'message': textContent, 'keywords': keywords, 'negKeywords': negKeywords})
+            body: JSON.stringify({'sender': "default", 'message': textContent.toLowerCase()})
         })
+        .then(response => response.json())
+        .then(data => {
+            setIsWaiting(false);
+            data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));
+            props.removeTypingMessages();
+            props.incrementNumberOfMessagesSent();
+        })
+        .then(() => {
+            fetch(messageUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({'sender': "test", 'message': textContent})
+            })
             .then(response => response.json())
             .then(data => {
                 const parsedData = JSON.parse(data);
@@ -103,36 +119,24 @@ const ChatTextEntry = (props) => {
                 setKeywords(parsedData.keywords);
                 setNegKeywords(parsedData.negKeywords);
 
-                /* 
+                /*
                  *  If results haven't changed, set number of results to negative
                  *  so we display the correct response in the following .then
                  */
                 if (resultsAreUnchanged(parsedData.recipes)) numberOfResults = -1;
                 else numberOfResults = parsedData.recipes.length;
-
+                console.log(parsedData.recipes.length)
                 setPrevRecipes(parsedData.recipes);
             })
+
             .then(() => {
+              console.log(numberOfResults)
                 if (numberOfResults < 1) {
                     // Handle no new results on front end to avoid back end complication
                     props.addMessage({ content: "Sorry, we couldn't find any recipes that are a good fit.", isUserMessage: false })
                     props.removeTypingMessages();
-                } else {
-                    fetch(rasa_url, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({'sender': "default", 'message': textContent.toLowerCase()})
-                    })
-                        .then(response => response.json())
-                        .then(data => {    
-                            setIsWaiting(false); 
-                            data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));
-                            props.removeTypingMessages();
-                            props.incrementNumberOfMessagesSent();
-                        });
                 }
+              })
             });
     }
 
@@ -144,7 +148,7 @@ const ChatTextEntry = (props) => {
 
             if (!isWaiting) props.addMessage({ content: '...', isUserMessage: false});
             setIsWaiting(true);
-            
+
             if (isResetMessage(textContent)) handleResetMessage();
             else if (textContent.toLowerCase().search('show me more') > -1) handleShowMore();
             else handleSearchMessage();
