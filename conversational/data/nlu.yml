@@ -111,50 +111,65 @@ nlu:
 - intent: ingredient
   examples: |
     - i would like something with [chicken]{"entity": "ingredient"}
-    - i would like something with [cheese]{"entity": "ingredient"}
+    - i would like something with [cheese]{"entity": "ingredient"} please
     - i want something with [beef]{"entity": "ingredient"}
-    - i want something with [ham]{"entity": "ingredient"}
+    - i want something with [ham]{"entity": "ingredient"} please
     - i have [eggs]{"entity": "ingredient"}
-    - i have [cilantro]{"entity": "ingredient"}
+    - i have [cilantro]{"entity": "ingredient"}, though
     - i like [peanuts]{"entity": "ingredient"}
-    - i like [ice cream]{"entity": "ingredient"}
+    - i like [ice cream]{"entity": "ingredient"} too
     - it must include [fruit]{"entity": "ingredient"}
-    - it must include [vegetables]{"entity": "ingredient"}
+    - it must include [vegetables]{"entity": "ingredient"} as well
     - it must have [rice]{"entity": "ingredient"}
-    - it must have [fruit]{"entity": "ingredient"}
+    - it must have [fruit]{"entity": "ingredient"} too
     - give me [pasta]{"entity": "ingredient"}
-    - give me [fish]{"entity": "ingredient"}
+    - give me [fish]{"entity": "ingredient"} please
     - i enjoy [french fries]{"entity": "ingredient"}
-    - i enjoy [chips]{"entity": "ingredient"}
-    - it should have [rice]{"entity": "ingredient"}
+    - i enjoy [chips]{"entity": "ingredient"} as well
+    - it should have [rice]{"entity": "ingredient"} please
     - it should have [spicy chicken]{"entity": "ingredient"}
     - [pancakes]{"entity": "ingredient"} taste good
     - [waffles]{"entity": "ingredient"} taste good
     - i love [apples]{"entity": "ingredient"}
     - i love [oranges]{"entity": "ingredient"}
     - i don't want [chicken]{"entity": "ingredient"}
-    - i dont want [cheese]{"entity": "ingredient"}
+    - i dont want [cheese]{"entity": "ingredient"} though
     - i don't have [beef]{"entity": "ingredient"}
-    - i dont have [ham]{"entity": "ingredient"}
+    - i dont have [ham]{"entity": "ingredient"} though
     - i am allergic to [peanuts]{"entity": "ingredient"}
-    - i am allergic to [ice cream]{"entity": "ingredient"}
+    - i am allergic to [ice cream]{"entity": "ingredient"}, don't include them
     - absolutely no [peanuts]{"entity": "ingredient"}
-    - absolutely no [cilantro]{"entity": "ingredient"}
+    - absolutely no [cilantro]{"entity": "ingredient"} please
     - it must not include [fruit]{"entity": "ingredient"}
-    - it must not include [vegetables]{"entity": "ingredient"}
+    - it must not include [vegetables]{"entity": "ingredient"} though
     - don't give me [pasta]{"entity": "ingredient"}
-    - don't give me [fish]{"entity": "ingredient"}
+    - don't give me [fish]{"entity": "ingredient"} please
     - i dislike [french fries]{"entity": "ingredient"}
-    - i dislike [chips]{"entity": "ingredient"}
+    - i dislike [chips]{"entity": "ingredient"} too
     - i hate [bananas]{"entity": "ingredient"}
-    - i hate [apples]{"entity": "ingredient"}
-    - i hate [oranges]{"entity": "ingredient"}
+    - i hate [apples]{"entity": "ingredient"} as well
+    - i hate [oranges]{"entity": "ingredient"} too
     - [bread]{"entity": "ingredient"} is gross
     - [pancakes]{"entity": "ingredient"} are gross
-    - something with [beef]{"entity": "ingredient"}
+    - something with [beef]{"entity": "ingredient"} please
     - something with [corn]{"entity": "ingredient"}
+    - something with [cinnamon]{"entity": "ingredient"} would be nice
+    - something with [cheese]{"entity": "ingredient"} would be nice
     - something without [salad]{"entity": "ingredient"}
-    - something without [fish]{"entity": "ingredient"}
+    - something without [fish]{"entity": "ingredient"} please
+    - can i have a [salad]{"entity": "ingredient"}
+    - can i have a [sundae]{"entity": "ingredient"} please
+    - can i have [peanut butter]{"entity": "ingredient"}
+    - can i have [chocolate]{"entity": "ingredient"} though
+    - add [fruit]{"entity": "ingredient"}
+    - add [bacon]{"entity": "ingredient"} now
+    - [apricots]{"entity": "ingredient"} please
+    - [milk]{"entity": "ingredient"} please
+    - [mashed potatoes]{"entity": "ingredient"} please
+    - [corn]{"entity": "ingredient"} is good
+    - [pecans]{"entity": "ingredient"} are good
+    - [fruit]{"entity": "ingredient"} would be good
+    - some [peanuts]{"entity": "ingredient"} would be good
     - [peanuts]{"entity": "ingredient"}
     - [french fries]{"entity": "ingredient"}
     - [corn]{"entity": "ingredient"}
@@ -171,6 +186,8 @@ nlu:
     - no [steak]{"entity": "ingredient"} though
     - no [orange juice]{"entity": "ingredient"} though
     - want [taco meat]{"entity": "ingredient"}
+    - i want [eggs]{"entity": "ingredient"} with [bacon]{"entity": "ingredient"}
+    - i want a [fruit smoothie]{"entity": "ingredient"} with [mango]{"entity": "ingredient"}
     - i'd like [grape juice]{"entity": "ingredient"}
     - id like [ground beef]{"entity": "ingredient"}
     - get rid of the [milk]{"entity": "ingredient"}
@@ -190,6 +207,10 @@ nlu:
     - no [grilled chicken]{"entity": "ingredient"}
     - i don't like [olives]{"entity": "ingredient"}
     - i dont like [tomato]{"entity": "ingredient"}
+    - [strawberry ice cream]{"entity": "ingredient"}
+    - [chocolate chip ice cream]{"entity": "ingredient"}
+    - i want [olives]{"entity": "ingredient"} and [chicken]{"entity": "ingredient"}
+    - i want [chicken]{"entity": "ingredient"} and [beef]{"entity": "ingredient"} and [rice]{"entity": "ingredient"}
 
 - intent: adjective
   examples: |
@@ -237,6 +258,11 @@ nlu:
     - [tastier]{"entity": "adjective"}
     - i want it [sweeter]{"entity": "adjective"}
     - make it [colder]{"entity": "adjective"}
+    - [spicy]{"entity": "adjective"}
+    - [bitter]{"entity": "adjective"}
+    - [french]{"entity": "adjective"}
+    - [spanish]{"entity": "adjective"}
+    - [sweet]{"entity": "adjective"}
 
 - intent: tool
   examples: |
@@ -259,7 +285,7 @@ nlu:
     - nothing for a [stove]{"entity": "tool"}
     - don't give me anything for a [crockpot]{"entity": "tool"}
     - dont have a [strainer]{"entity": "tool"}
-    - dont have an oven]{"entity": "tool"} either
+    - dont have an [oven]{"entity": "tool"} either
 
 - intent: clear
   examples: |

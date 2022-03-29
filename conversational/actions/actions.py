@@ -40,7 +40,7 @@ class ActionIngredient(Action):
                 dispatcher.utter_message(response="utter_ingredient_pos", ingredient=entity['value'])
                 self.ingredients.append(entity['value'])
 
-        print(self.ingredients)
+        print(tracker.latest_message['entities'])
         return []
 
 
