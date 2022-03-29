@@ -13,6 +13,7 @@ pipeline:
    - name: SpacyNLP
      model: "en_core_web_md"
    - name: SpacyTokenizer
+   - name: SpacyFeaturizer
    - name: RegexFeaturizer
    - name: LexicalSyntacticFeaturizer
    - name: CountVectorsFeaturizer
@@ -26,9 +27,10 @@ pipeline:
      constrain_similarities: true
    - name: CRFEntityExtractor
      "features": [
-     ["pos", "pattern"]
+     ["pos", "pattern", "text_dense_features"]
      ]
-   - name: EntitySynonymMapper
+     "max_iterations": 100
+#   - name: EntitySynonymMapper
    - name: ResponseSelector
      epochs: 100
      constrain_similarities: true
