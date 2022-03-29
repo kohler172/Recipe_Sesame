@@ -85,6 +85,7 @@ const ChatTextEntry = (props) => {
 
     const handleSearchMessage = () => {
         let numberOfResults = 0;
+        let messages = []
         props.setResultStartingIndex(0);
         fetch(rasa_url, {
             method: 'POST',
@@ -96,7 +97,8 @@ const ChatTextEntry = (props) => {
         .then(response => response.json())
         .then(data => {
             setIsWaiting(false);
-            data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));
+            messages = data;
+            //data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));
             props.removeTypingMessages();
             props.incrementNumberOfMessagesSent();
         })
@@ -134,6 +136,9 @@ const ChatTextEntry = (props) => {
                 if (numberOfResults < 1) {
                     // Handle no new results on front end to avoid back end complication
                     props.addMessage({ content: "Sorry, we couldn't find any recipes that are a good fit.", isUserMessage: false })
+                    props.removeTypingMessages();
+                } else {
+                    messages.forEach((x, i) => props.addMessage({ content: messages[i].text, isUserMessage: false }));
                     props.removeTypingMessages();
                 }
               })
