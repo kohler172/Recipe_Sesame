@@ -211,7 +211,7 @@ const AddIngredientsButton = (props) => {
 
     const handleButtonClick = () => {
         let currentIngredients = props.savedIngredients.slice();
-        const newIngredientList = [...currentIngredients, ...JSON.parse(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"'))];
+        const newIngredientList = [...currentIngredients, ...props.ingredients];
         props.setSavedIngredients(newIngredientList);
         localStorage.setItem('savedIngredients', JSON.stringify(newIngredientList));
         if (!props.recipeSaved) saveRecipe();
