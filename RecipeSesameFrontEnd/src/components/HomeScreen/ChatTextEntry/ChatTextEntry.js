@@ -85,7 +85,8 @@ const ChatTextEntry = (props) => {
 
     const handleSearchMessage = () => {
         let numberOfResults = 0;
-        let messages = []
+        let messages = [];
+        
         props.setResultStartingIndex(0);
         fetch(rasa_url, {
             method: 'POST',
@@ -135,7 +136,7 @@ const ChatTextEntry = (props) => {
               console.log(numberOfResults)
                 if (numberOfResults < 1) {
                     // Handle no new results on front end to avoid back end complication
-                    props.addMessage({ content: "Sorry, we couldn't find any recipes that are a good fit.", isUserMessage: false })
+                    props.addMessage({ content: "Sorry, we couldn't find any recipes that match.", isUserMessage: false });
                     props.removeTypingMessages();
                 } else {
                     messages.forEach((x, i) => props.addMessage({ content: messages[i].text, isUserMessage: false }));
