@@ -8,6 +8,14 @@
     border-bottom: 2px solid var(--main-color-dark);
 }
 
+.cardHeader > h1 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    padding-right: 25px;
+}
+
 .cardHeader > h1:hover {
     cursor: default;
 }
