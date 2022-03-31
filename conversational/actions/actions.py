@@ -22,7 +22,7 @@ def postKeyword(keyword, neg):
 #Get the string of entities for printing
 def getEntitiesString(entities):
     if len(entities) == 0:
-        return "ERROR: No Entities Found"
+        return False
     elif len(entities) == 1:
         return entities[0]['value']
     elif len(entities) == 2:
@@ -41,15 +41,23 @@ class ActionIngredient(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        keywords = getEntitiesString(tracker.latest_message['entities'])
+
         if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
             for entity in tracker.latest_message['entities']:
                 postKeyword(entity['value'], True)
-            dispatcher.utter_message(response="utter_ingredient_neg", ingredient=getEntitiesString(tracker.latest_message['entities']))
+            if keywords is False:
+                dispatcher.utter_message(response="utter_dont_understand")
+            else:
+                dispatcher.utter_message(response="utter_ingredient_neg", ingredient=keywords)
 
         else:
             for entity in tracker.latest_message['entities']:
                 postKeyword(entity['value'], False)
-            dispatcher.utter_message(response="utter_ingredient_pos", ingredient=getEntitiesString(tracker.latest_message['entities']))
+            if keywords is False:
+                dispatcher.utter_message(response="utter_dont_understand")
+            else:
+                dispatcher.utter_message(response="utter_ingredient_pos", ingredient=keywords)
 
         print(tracker.latest_message['entities'])
         return []
@@ -64,14 +72,22 @@ class ActionAdjective(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        keywords = getEntitiesString(tracker.latest_message['entities'])
+
         if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
             for entity in tracker.latest_message['entities']:
                 postKeyword(entity['value'], True)
-            dispatcher.utter_message(response="utter_adjective_neg", adjective=getEntitiesString(tracker.latest_message['entities']))
+            if keywords is False:
+                dispatcher.utter_message(response="utter_dont_understand")
+            else:
+                dispatcher.utter_message(response="utter_adjective_neg", adjective=keywords)
         else:
             for entity in tracker.latest_message['entities']:
                 postKeyword(entity['value'], False)
-            dispatcher.utter_message(response="utter_adjective_pos", adjective=getEntitiesString(tracker.latest_message['entities']))
+            if keywords is False:
+                dispatcher.utter_message(response="utter_dont_understand")
+            else:
+                dispatcher.utter_message(response="utter_adjective_pos", adjective=keywords)
 
         return []
 
@@ -86,14 +102,22 @@ class ActionTool(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        keywords = getEntitiesString(tracker.latest_message['entities'])
+
         if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
             for entity in tracker.latest_message['entities']:
                 postKeyword(entity['value'], True)
-            dispatcher.utter_message(response="utter_tool_neg", tool=getEntitiesString(tracker.latest_message['entities']))
+            if keywords is False:
+                dispatcher.utter_message(response="utter_dont_understand")
+            else:
+                dispatcher.utter_message(response="utter_tool_neg", tool=keywords)
         else:
             for entity in tracker.latest_message['entities']:
                 postKeyword(entity['value'], False)
-            dispatcher.utter_message(response="utter_tool_pos", tool=getEntitiesString(tracker.latest_message['entities']))
+            if keywords is False:
+                dispatcher.utter_message(response="utter_dont_understand")
+            else:
+                dispatcher.utter_message(response="utter_tool_pos", tool=keywords)
 
         return []
 
