@@ -25,7 +25,7 @@
 
 .recipeItem:hover {
     cursor: pointer;
-    background-color: rgb(172, 231, 201);
+    background-color: rgb(210, 186, 143);
 }
 
 .cartItem > p {

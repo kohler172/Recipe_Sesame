@@ -35,17 +35,17 @@
 }
 
 .quantityAdjuster > svg {
-    color: var(--warning-color);
+    color: rgb(223, 15, 15);
     transition-property: color;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
     padding: 0 12px 0 11px;
-    border-right: 1px solid rgb(114, 168, 139);
+    border-right: 1px solid #37456e;
     height: 100%;
     margin-right: 3px;
 }
 
 .quantityAdjuster > svg:hover {
-    color:var(--warning-color-dark);
+    color: rgb(242, 19, 19);
     cursor: pointer;
 }
