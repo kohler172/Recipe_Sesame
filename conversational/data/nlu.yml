@@ -9,6 +9,171 @@ version: "3.0"
 
 nlu:
 - lookup: tool
+- lookup: category
+  examples: |
+    - circuits
+    - workshop
+    - craft
+    - cooking
+    - living
+    - outside
+
+- lookup: subcategory
+  examples: |
+    - apple
+    - arduino
+    - art
+    - assisstive tech
+    - audio
+    - cameras
+    - clocks
+    - computers
+    - electronics
+    - gadgets
+    - lasers
+    - leds
+    - linux
+    - microcontrollers
+    - microsoft
+    - mobile
+    - raspberry pi
+    - remote control
+    - reuse
+    - robots
+    - sensors
+    - software
+    - soldering
+    - speakers
+    - tools
+    - usb
+    - wearables
+    - websites
+    - wireless
+
+    - 3d printing
+    - cars
+    - cnc
+    - electric vehicles
+    - energy
+    - furniture
+    - home improvement
+    - home theater
+    - hydroponics
+    - knives
+    - laser cutting
+    - lighting
+    - metalworking
+    - molds & casting
+    - motorcycles
+    - organizing
+    - pallets
+    - repair
+    - science
+    - shelves
+    - solar
+    - tools
+    - woodworking
+    - workbenches
+
+    - art
+    - books & journals
+    - cardboard
+    - cards
+    - clay
+    - costumes & cosplay
+    - digital graphics
+    - duct tape
+    - embroidery
+    - fashion
+    - felt
+    - fiber arts
+    - gift wrapping
+    - jewelry
+    - knitting & crochet
+    - leather
+    - mason jars
+    - no-sew
+    - paper
+    - parties & weddings
+    - photography
+    - printmaking
+    - reuse
+    - sewing
+    - soapmaking
+    - wallets
+
+    - bacon
+    - bbq & grilling
+    - beverages
+    - bread
+    - breakfast
+    - cake
+    - candy
+    - canning & preserving
+    - cocktails & mocktails
+    - coffee
+    - cookies
+    - cupcakes
+    - dessert
+    - homebrew
+    - main course
+    - pasta
+    - pie
+    - pizza
+    - salad
+    - sandwiches
+    - snacks & appetizers
+    - soups & stews
+    - vegetarian & vegan
+
+    - beauty
+    - christmas
+    - cleaning
+    - decorating
+    - education
+    - gardening
+    - halloween
+    - health
+    - hiding places
+    - holidays
+    - homesteading
+    - kids
+    - kitchen
+    - lego & k'nex
+    - life hacks
+    - music
+    - office supply hacks
+    - organizing
+    - pest control
+    - pets
+    - pranks, tricks, & humor
+    - relationships
+    - toys & games
+    - travel
+    - video games
+
+    - backyard
+    - beach
+    - bikes
+    - birding
+    - boats
+    - camping
+    - climbing
+    - fire
+    - fishing
+    - hunting
+    - kites
+    - knots
+    - launchers
+    - paracord
+    - rockets
+    - siege engines
+    - skateboarding
+    - snow
+    - sports
+    - survival
+    - water
+
 
 - intent: greet
   examples: |
@@ -108,185 +273,102 @@ nlu:
     - am i talking to a human?
 
 
+- intent: category
+  examples: |
+    - [circuits]{"entity": "category"}
+    - [workshop]{"entity": "category"}
+    - [craft]{"entity": "category"}
+    - [cooking]{"entity": "category"}
+    - [living]{"entity": "category"}
+    - [outside]{"entity": "category"}
+    - show me [workshop]{"entity": "category"}
+    - i want to see [workshop]{"entity": "category"}
+    - [workshop]{"entity": "category"} instructions
+    - instructions for [craft]{"entity": "category"}
+    - give me [craft]{"entity": "category"}
+
+- intent: subcategory
+  examples: |
+    - [art]{"entity": "subcategory"}
+    - [home theater]{"entity": "subcategory"}
+    - [knives]{"entity": "subcategory"}
+    - [paracord]{"entity": "subcategory"}
+    - show me [art]{"entity": "subcategory"}
+
+- intent: show_categories
+  examples: |
+    - what are the categories?
+    - show me the categories
+    - categories
+    - i want to see categories
+    - show category
+    - category
+
+- intent: show_subcategories_circuits
+  examples: |
+    - what is in circuits?
+    - whats the circuit categories
+    - what are circuit subcategories?
+    - show circuits
+
+- intent: show_subcategories_workshop
+  examples: |
+    - what is in workshop?
+    - whats the workshop categories
+    - what are workshop subcategories?
+    - show workshop
+
+- intent: show_subcategories_craft
+  examples: |
+    - what is in crafts?
+    - whats the craft categories
+    - what are crafts subcategories?
+    - show craft
+
+- intent: show_subcategories_cooking
+  examples: |
+    - what is in cooking?
+    - whats the cooking categories
+    - what are cooking subcategories?
+    - show cooking
+
+- intent: show_subcategories_living
+  examples: |
+    - what is in living?
+    - whats the living categories
+    - what are living subcategories?
+    - show living
+
+- intent: show_subcategories_outside
+  examples: |
+    - what is in outside?
+    - whats the outside categories
+    - what are outside subcategories?
+    - show outside
+
+
 - intent: ingredient
   examples: |
-    - i would like something with [chicken]{"entity": "ingredient"}
-    - i would like something with [cheese]{"entity": "ingredient"} please
-    - i want something with [beef]{"entity": "ingredient"}
-    - i want something with [ham]{"entity": "ingredient"} please
-    - i have [eggs]{"entity": "ingredient"}
-    - i have [cilantro]{"entity": "ingredient"}, though
-    - i like [peanuts]{"entity": "ingredient"}
-    - i like [ice cream]{"entity": "ingredient"} too
-    - it must include [fruit]{"entity": "ingredient"}
-    - it must include [vegetables]{"entity": "ingredient"} as well
-    - it must have [rice]{"entity": "ingredient"}
-    - it must have [fruit]{"entity": "ingredient"} too
-    - give me [pasta]{"entity": "ingredient"}
-    - give me [fish]{"entity": "ingredient"} please
-    - i enjoy [french fries]{"entity": "ingredient"}
-    - i enjoy [chips]{"entity": "ingredient"} as well
-    - it should have [rice]{"entity": "ingredient"} please
-    - it should have [spicy chicken]{"entity": "ingredient"}
-    - [pancakes]{"entity": "ingredient"} taste good
-    - [waffles]{"entity": "ingredient"} taste good
-    - i love [apples]{"entity": "ingredient"}
-    - i love [oranges]{"entity": "ingredient"}
-    - i don't want [chicken]{"entity": "ingredient"}
-    - i dont want [cheese]{"entity": "ingredient"} though
-    - i don't have [beef]{"entity": "ingredient"}
-    - i dont have [ham]{"entity": "ingredient"} though
-    - i am allergic to [peanuts]{"entity": "ingredient"}
-    - i am allergic to [ice cream]{"entity": "ingredient"}, don't include them
-    - absolutely no [peanuts]{"entity": "ingredient"}
-    - absolutely no [cilantro]{"entity": "ingredient"} please
-    - it must not include [fruit]{"entity": "ingredient"}
-    - it must not include [vegetables]{"entity": "ingredient"} though
-    - don't give me [pasta]{"entity": "ingredient"}
-    - don't give me [fish]{"entity": "ingredient"} please
-    - i dislike [french fries]{"entity": "ingredient"}
-    - i dislike [chips]{"entity": "ingredient"} too
-    - i hate [bananas]{"entity": "ingredient"}
-    - i hate [apples]{"entity": "ingredient"} as well
-    - i hate [oranges]{"entity": "ingredient"} too
-    - [bread]{"entity": "ingredient"} is gross
-    - [pancakes]{"entity": "ingredient"} are gross
-    - something with [beef]{"entity": "ingredient"} please
-    - something with [corn]{"entity": "ingredient"}
-    - something with [cinnamon]{"entity": "ingredient"} would be nice
-    - something with [cheese]{"entity": "ingredient"} would be nice
-    - something without [salad]{"entity": "ingredient"}
-    - something without [fish]{"entity": "ingredient"} please
-    - can i have a [salad]{"entity": "ingredient"}
-    - can i have a [sundae]{"entity": "ingredient"} please
-    - can i have [peanut butter]{"entity": "ingredient"}
-    - can i have [chocolate]{"entity": "ingredient"} though
-    - add [fruit]{"entity": "ingredient"}
-    - add [bacon]{"entity": "ingredient"} now
-    - [apricots]{"entity": "ingredient"} please
-    - [milk]{"entity": "ingredient"} please
-    - [mashed potatoes]{"entity": "ingredient"} please
-    - [corn]{"entity": "ingredient"} is good
-    - [pecans]{"entity": "ingredient"} are good
-    - [fruit]{"entity": "ingredient"} would be good
-    - some [peanuts]{"entity": "ingredient"} would be good
-    - [peanuts]{"entity": "ingredient"}
-    - [french fries]{"entity": "ingredient"}
-    - [corn]{"entity": "ingredient"}
-    - [beer]{"entity": "ingredient"}
-    - [orange juice]{"entity": "ingredient"}
-    - [tomato sauce]{"entity": "ingredient"}
-    - [apple juice]{"entity": "ingredient"}
-    - [grilled cheese]{"entity": "ingredient"}
-    - [spicy chicken]{"entity": "ingredient"}
-    - [cheddar cheese]{"entity": "ingredient"}
-    - [chocolate-chip cookies]{"entity": "ingredient"}
-    - no [peas]{"entity": "ingredient"}
-    - no [wine]{"entity": "ingredient"}
-    - no [steak]{"entity": "ingredient"} though
-    - no [orange juice]{"entity": "ingredient"} though
-    - want [taco meat]{"entity": "ingredient"}
-    - i want [eggs]{"entity": "ingredient"} with [bacon]{"entity": "ingredient"}
-    - i want a [fruit smoothie]{"entity": "ingredient"} with [mango]{"entity": "ingredient"}
-    - i'd like [grape juice]{"entity": "ingredient"}
-    - id like [ground beef]{"entity": "ingredient"}
-    - get rid of the [milk]{"entity": "ingredient"}
-    - get rid of any [sage leaves]{"entity": "ingredient"}
-    - get rid of [ice cream]{"entity": "ingredient"}
-    - no [nutmeg]{"entity": "ingredient"}, i'm allergic
-    - no [nuts]{"entity": "ingredient"}, im allergic
-    - i'm allergic to [almonds]{"entity": "ingredient"}
-    - i'm allergic to [shellfish{"entity": "ingredient"}
-    - im allergic to [salt]{"entity": "ingredient"}
-    - im allergic to [garlic]{"entity": "ingredient"}
-    - i want [ice cream]{"entity": "ingredient"}
-    - i want [chocolate ice cream]{"entity": "ingredient"}
-    - i want [red wine]{"entity": "ingredient"} too
-    - more [milk shakes]{"entity": "ingredient"} too
-    - no [crab]{"entity": "ingredient"}
-    - no [grilled chicken]{"entity": "ingredient"}
-    - i don't like [olives]{"entity": "ingredient"}
-    - i dont like [tomato]{"entity": "ingredient"}
-    - [strawberry ice cream]{"entity": "ingredient"}
-    - [chocolate chip ice cream]{"entity": "ingredient"}
-    - i want [olives]{"entity": "ingredient"} and [chicken]{"entity": "ingredient"}
-    - i want [chicken]{"entity": "ingredient"} and [beef]{"entity": "ingredient"} and [rice]{"entity": "ingredient"}
-    - i want a [cold brew]{"entity": "ingredient"}
+    - [cabinets]{"entity": "ingredient"}
+    - [chessboards]{"entity": "ingredient"}
+    - [drawers]{"entity": "ingredient"}
+    - [magic wand]{"entity": "ingredient"}
+    - [purse]{"entity": "ingredient"}
+    - [mechanical bug]{"entity": "ingredient"}
+    - [tool roll]{"entity": "ingredient"}
+    - [beef]{"entity": "ingredient"}
+    - [carrots]{"entity": "ingredient"}
+    - [fujisan bread]{"entity": "ingredient"}
+    - [mexican sweet bread]{"entity": "ingredient"}
+    - [cribbage board]{"entity": "ingredient"}
+    - [indoor fire pit]{"entity": "ingredient"}
+    - [nylon net]{"entity": "ingredient"}
+    - [3d printed brail]{"entity": "ingredient"}
+    - [roller coaster]{"entity": "ingredient"}
+    - [storage]{"entity": "ingredient"}
+    - [tetra tower]{"entity": "ingredient"}
+    - i want [fishing]]{"entity": "ingredient"} stuff
 
-- intent: adjective
-  examples: |
-    - make it [spicy]{"entity": "adjective"}
-    - make it [sweet]{"entity": "adjective"}
-    - make it [sour]{"entity": "adjective"}
-    - make it [bitter]{"entity": "adjective"}
-    - i would like something [sweet]{"entity": "adjective"}
-    - i would like something [spicy]{"entity": "adjective"}
-    - i would like something [strong]{"entity": "adjective"}
-    - i would like something [tasty]{"entity": "adjective"}
-    - i would like something [greek]{"entity": "adjective"}
-    - i would like something [mexican]{"entity": "adjective"}
-    - i would like something [chinese]{"entity": "adjective"}
-    - something [salty]{"entity": "adjective"}
-    - something [french]{"entity": "adjective"}
-    - something [japanese]{"entity": "adjective"}
-    - it should be [salty]{"entity": "adjective"}
-    - it should be [sweet]{"entity": "adjective"}
-    - it should be [hot]{"entity": "adjective"}
-    - it should be [cold]{"entity": "adjective"}
-    - something [sweet]{"entity": "adjective"} sounds good
-    - something [fried]{"entity": "adjective"} sounds good
-    - give me something [fried]{"entity": "adjective"}
-    - give me something [spicy]{"entity": "adjective"}
-    - give me something [bitter]{"entity": "adjective"}
-    - i want [thai]{"entity": "adjective"} food
-    - i don't like [spicy]{"entity": "adjective"} food
-    - i don't like [sweet]{"entity": "adjective"} food
-    - i don't like [sour]{"entity": "adjective"} food
-    - i don't like [greek]{"entity": "adjective"} food
-    - i don't like [mexican]{"entity": "adjective"} food
-    - i don't like [chinese]{"entity": "adjective"} food
-    - nothing [sweet]{"entity": "adjective"}
-    - nothing [bitter]{"entity": "adjective"}
-    - nothing [hot]{"entity": "adjective"}
-    - nothing [cold]{"entity": "adjective"}
-    - those are too [salty]{"entity": "adjective"}
-    - those are too [spicy]{"entity": "adjective"}
-    - those are too [gross]{"entity": "adjective"}
-    - those are too [fried]{"entity": "adjective"}
-    - that's too [bitter]{"entity": "adjective"}
-    - that's too [grilled]{"entity": "adjective"}
-    - [spicier]{"entity": "adjective"}
-    - [tastier]{"entity": "adjective"}
-    - i want it [sweeter]{"entity": "adjective"}
-    - make it [colder]{"entity": "adjective"}
-    - [spicy]{"entity": "adjective"}
-    - [bitter]{"entity": "adjective"}
-    - [french]{"entity": "adjective"}
-    - [spanish]{"entity": "adjective"}
-    - [sweet]{"entity": "adjective"}
-
-- intent: tool
-  examples: |
-    - i only have a [grill]{"entity": "tool"}
-    - i only have a [stove]{"entity": "tool"}
-    - i only have a [toaster]{"entity": "tool"}
-    - i want recipes for my [grill]{"entity": "tool"}
-    - i want recipes for my [oven]{"entity": "tool"}
-    - i want recipes for my [stove]{"entity": "tool"}
-    - i want recipes for my [crockpot]{"entity": "tool"}
-    - for a [microwave]{"entity": "tool"}
-    - for a [stove]{"entity": "tool"}
-    - i don't have a [grill]{"entity": "tool"}
-    - i dont have a [stove]{"entity": "tool"}
-    - i do not have a [toaster]{"entity": "tool"}
-    - i don't have a [grill]{"entity": "tool"} though
-    - i dont have a [microwave]{"entity": "tool"} though
-    - no recipes for a [grill]{"entity": "tool"}
-    - no recipes for a [oven]{"entity": "tool"}
-    - nothing for a [stove]{"entity": "tool"}
-    - don't give me anything for a [crockpot]{"entity": "tool"}
-    - dont have a [strainer]{"entity": "tool"}
-    - dont have an [oven]{"entity": "tool"} either
 
 - intent: clear
   examples: |
