@@ -24,17 +24,52 @@ rules:
   - action: action_ingredient
   - action: utter_anything_else
 
-- rule: Adjective action
+- rule: Category action
   steps:
-  - intent: adjective
-  - action: action_adjective
+  - intent: category
+  - action: action_category
   - action: utter_anything_else
 
-- rule: Tool action
+- rule: Subcategory action
   steps:
-  - intent: tool
-  - action: action_tool
+  - intent: subcategory
+  - action: action_category
   - action: utter_anything_else
+
+- rule: Show categories
+  steps:
+    - intent: show_categories
+    - action: utter_categories
+
+- rule: Show circuits subcategories
+  steps:
+    - intent: show_subcategories_circuits
+    - action: utter_subcategories_circuits
+
+- rule: Show craft subcategories
+  steps:
+    - intent: show_subcategories_craft
+    - action: utter_subcategories_craft
+
+- rule: Show cooking subcategories
+  steps:
+    - intent: show_subcategories_cooking
+    - action: utter_subcategories_cooking
+
+- rule: Show workshop subcategories
+  steps:
+    - intent: show_subcategories_workshop
+    - action: utter_subcategories_workshop
+
+- rule: Show living subcategories
+  steps:
+    - intent: show_subcategories_living
+    - action: utter_subcategories_living
+
+- rule: Show outside subcategories
+  steps:
+    - intent: show_subcategories_outside
+    - action: utter_subcategories_outside
 
 - rule: Garbage action
   steps:
