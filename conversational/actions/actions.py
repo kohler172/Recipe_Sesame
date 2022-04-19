@@ -56,17 +56,14 @@ class ActionIngredient(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-<<<<<<< HEAD
         keywords = getEntitiesString(tracker.latest_message['entities'])
         print("IN RUN")
         print(tracker.latest_message['text'])
-=======
 
         doc = nlp(tracker.latest_message['text'])
         nouns = [chunk.text for chunk in doc.noun_chunks]
         adjectives = [token.lemma_ for token in doc if token.pos_ == "ADJ"]
         keywords = nouns + adjectives
->>>>>>> 38f03bb15b8a02d8d0c0caf060b4a8eddd6a8a8c
 
         if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
             for word in keywords:
