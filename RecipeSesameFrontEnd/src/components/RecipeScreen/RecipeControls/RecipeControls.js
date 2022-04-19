@@ -11,8 +11,6 @@ const RecipeControls = (props) => {
             <div className="mobileInstructions">
                 { props.recipe.Instructions.split('\n').map(line => <p className="recipeInstructions">{line}</p>) }
             </div>
-            <h2>Your Ingredients</h2>
-            <RecipeCartContainer savedIngredients={props.savedIngredients}/>
             <RecipeButtons 
                 setRecipeSaved={props.setRecipeSaved}
                 recipe={props.recipe}
