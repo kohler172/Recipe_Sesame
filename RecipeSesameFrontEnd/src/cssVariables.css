@@ -1,8 +1,9 @@
 :root {
-  --main-color: rgb(183, 235, 207);
-  --main-color-light: rgb(199, 255, 225);
-  --main-color-dark: rgb(155, 216, 184);
-  --secondary-color: rgb(255, 153, 36);
+  --main-color: rgb(218, 190, 141);
+  --main-color-light: rgb(235, 209, 164);
+  --main-color-dark: rgb(193, 167, 122);
+  --secondary-color: #a6575d;
+  --bot-message-color: #646464;
   --secondary-color-dark: rgb(230, 133, 22);
   --warning-color: rgb(185, 20, 20);
   --warning-color-dark: rgb(160, 21, 21);
@@ -14,12 +15,12 @@
   --off-white: rgb(245, 245, 245);
   --disabled-button-color: rgb(200, 200, 200);
   --unselected-button: rgb(166, 224, 194);
-  --card-shadow: 0 1px 10px #85bb9e;
-  --card-shadow-light: 0 0 5px #9dddbd;
-  --button-shadow: 0 0 5px #69aa8a;
-  --list-shadow: inset 0px 0px 4px #7ca58f;
-  --screen-shadow: 0px 0px 8px rgb(36, 53, 44);
-  --screen-shade: rgba(49, 71, 58, 0.9);
-  --active-button: rgb(86, 143, 114);
+  --card-shadow: 0 1px 10px rgb(181, 155, 110);
+  --card-shadow-light: 0 0 5px rgb(181, 155, 110);
+  --button-shadow: 0 0 5px rgb(181, 155, 110);
+  --list-shadow: inset 0px 0px 4px rgb(181, 155, 110);
+  --screen-shadow: 0px 0px 8px rgb(93, 79, 55);
+  --screen-shade: rgb(115, 98, 69);
+  --active-button: #495886;
   --active-buton-text: rgb(245, 245, 245);
 }

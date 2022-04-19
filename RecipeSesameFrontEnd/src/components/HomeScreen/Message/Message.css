@@ -18,7 +18,7 @@
 }
 
 .leftMessage {
-    background-color: rgb(80, 80, 80);
+    background-color: var(--bot-message-color);
     color: var(--off-white);
     margin-right: auto;
     border-radius: var(--large-radius) var(--large-radius) var(--large-radius) 3px;
@@ -26,7 +26,7 @@
 
 .rightMessage {
     background-color: var(--secondary-color);
-    color: var(--black-text);
+    color: var(--off-white);
     margin-left: auto;
     border-radius: var(--large-radius) var(--large-radius) 3px var(--large-radius);
 }
