@@ -4,7 +4,7 @@ import './Logo.css';
 const Logo = () => {
     return (
         <div className="logo">
-            <h1>recipe sesame!</h1>
+            <h1>handy dandy!</h1>
         </div>
     );
 }
