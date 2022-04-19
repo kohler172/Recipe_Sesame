@@ -33,6 +33,19 @@ def getEntitiesString(entities):
             str = str+", "+entities[i+1]['value']
         return str+", and "+entities[-1]['value']
 
+def getListString(entities):
+    if len(entities) == 0:
+        return False
+    elif len(entities) == 1:
+        return entities[0]
+    elif len(entities) == 2:
+        return entities[0]+" and "+entities[1]
+    else:
+        str = entities[0]
+        for i in range(len(entities)-2):
+            str = str+", "+entities[i+1]
+        return str+", and "+entities[-1]
+
 class ActionIngredient(Action):
     def name(self) -> Text:
         return "action_ingredient"
@@ -53,7 +66,7 @@ class ActionIngredient(Action):
             if keywords is False:
                 dispatcher.utter_message(response="utter_dont_understand")
             else:
-                dispatcher.utter_message(response="utter_ingredient_neg", ingredient=keywords)
+                dispatcher.utter_message(response="utter_ingredient_neg", ingredient=getListString(keywords))
 
         else:
             for word in keywords:
@@ -61,7 +74,7 @@ class ActionIngredient(Action):
             if keywords is False:
                 dispatcher.utter_message(response="utter_dont_understand")
             else:
-                dispatcher.utter_message(response="utter_ingredient_pos", ingredient=keywords)
+                dispatcher.utter_message(response="utter_ingredient_pos", ingredient=getListString(keywords))
 
         print(tracker.latest_message['entities'])
         return []

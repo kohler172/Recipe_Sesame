@@ -349,25 +349,51 @@ nlu:
 
 - intent: ingredient
   examples: |
-    - [cabinets]{"entity": "ingredient"}
-    - [chessboards]{"entity": "ingredient"}
-    - [drawers]{"entity": "ingredient"}
-    - [magic wand]{"entity": "ingredient"}
-    - [purse]{"entity": "ingredient"}
-    - [mechanical bug]{"entity": "ingredient"}
-    - [tool roll]{"entity": "ingredient"}
-    - [beef]{"entity": "ingredient"}
-    - [carrots]{"entity": "ingredient"}
-    - [fujisan bread]{"entity": "ingredient"}
-    - [mexican sweet bread]{"entity": "ingredient"}
-    - [cribbage board]{"entity": "ingredient"}
-    - [indoor fire pit]{"entity": "ingredient"}
-    - [nylon net]{"entity": "ingredient"}
-    - [3d printed brail]{"entity": "ingredient"}
-    - [roller coaster]{"entity": "ingredient"}
-    - [storage]{"entity": "ingredient"}
-    - [tetra tower]{"entity": "ingredient"}
-    - i want [fishing]]{"entity": "ingredient"} stuff
+    - cabinets
+    - chessboards
+    - drawers
+    - magic wand
+    - purse
+    - mechanical bug
+    - tool roll
+    - beef
+    - carrots
+    - fujisan bread
+    - mexican sweet bread
+    - cribbage board
+    - indoor fire pit
+    - nylon net
+    - 3d printed brail
+    - roller coaster
+    - storage
+    - tetra tower
+    - fishing
+    - crayon
+    - butterfly
+    - automaton
+    - pneumatic air graver
+    - hexagon shelf
+    - headboard
+    - charging hub
+    - easter egg
+    - torch
+    - gate slide bolt
+    - mobile shop cart
+    - game box
+    - carbon fiber
+    - steam whistle
+    - baby rattle
+    - plant hanger
+    - puzzle of a wooden duck
+    - old easel restoration
+    - kinetic sculpture
+    - pie stand
+    - drawers
+    - pai sho board
+    - door opener
+    - renovation
+    - stacking ring toy
+    - paper cutter
 
 
 - intent: clear
