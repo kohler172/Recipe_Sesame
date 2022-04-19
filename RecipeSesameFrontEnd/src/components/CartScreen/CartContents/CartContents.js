@@ -63,7 +63,7 @@ const CartContents = (props) => {
                     </div>
                 ) : (
                     <div className="cartList empty">
-                        <p>You don't have any ingredients in your basket.</p>
+                        <p>You don't have any supplies in your basket.</p>
                     </div>
                 )
             ) : (
@@ -82,7 +82,7 @@ const CartContents = (props) => {
                     </div>
                 ) : (
                     <div className="cartList empty">
-                        <p>You haven't saved any recipes.</p>
+                        <p>You haven't saved any projects.</p>
                     </div>
                 )
             )}
