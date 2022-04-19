@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: 1px solid rgb(114, 168, 139);
+    border-right: 1px solid #37456e;
 }
 
 .servingsArrows > svg:hover {

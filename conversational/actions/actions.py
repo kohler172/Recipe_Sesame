@@ -43,21 +43,29 @@ class ActionIngredient(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+<<<<<<< HEAD
         keywords = getEntitiesString(tracker.latest_message['entities'])
         print("IN RUN")
         print(tracker.latest_message['text'])
+=======
+
+        doc = nlp(tracker.latest_message['text'])
+        nouns = [chunk.text for chunk in doc.noun_chunks]
+        adjectives = [token.lemma_ for token in doc if token.pos_ == "ADJ"]
+        keywords = nouns + adjectives
+>>>>>>> 38f03bb15b8a02d8d0c0caf060b4a8eddd6a8a8c
 
         if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
-            for entity in tracker.latest_message['entities']:
-                postKeyword(entity['value'], True)
+            for word in keywords:
+                postKeyword(word, True)
             if keywords is False:
                 dispatcher.utter_message(response="utter_dont_understand")
             else:
                 dispatcher.utter_message(response="utter_ingredient_neg", ingredient=keywords)
 
         else:
-            for entity in tracker.latest_message['entities']:
-                postKeyword(entity['value'], False)
+            for word in keywords:
+                postKeyword(word, False)
             if keywords is False:
                 dispatcher.utter_message(response="utter_dont_understand")
             else:
@@ -66,11 +74,9 @@ class ActionIngredient(Action):
         print(tracker.latest_message['entities'])
         return []
 
-
-class ActionAdjective(Action):
-
+class ActionCategory(Action):
     def name(self) -> Text:
-        return "action_adjective"
+        return "action_category"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -84,45 +90,17 @@ class ActionAdjective(Action):
             if keywords is False:
                 dispatcher.utter_message(response="utter_dont_understand")
             else:
-                dispatcher.utter_message(response="utter_adjective_neg", adjective=keywords)
+                dispatcher.utter_message(response="utter_ingredient_neg", category=keywords)
+
         else:
             for entity in tracker.latest_message['entities']:
                 postKeyword(entity['value'], False)
             if keywords is False:
                 dispatcher.utter_message(response="utter_dont_understand")
             else:
-                dispatcher.utter_message(response="utter_adjective_pos", adjective=keywords)
+                dispatcher.utter_message(response="utter_category", category=keywords)
 
-        return []
-
-
-class ActionTool(Action):
-
-    ingredients = []
-    def name(self) -> Text:
-        return "action_tool"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        keywords = getEntitiesString(tracker.latest_message['entities'])
-
-        if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
-            for entity in tracker.latest_message['entities']:
-                postKeyword(entity['value'], True)
-            if keywords is False:
-                dispatcher.utter_message(response="utter_dont_understand")
-            else:
-                dispatcher.utter_message(response="utter_tool_neg", tool=keywords)
-        else:
-            for entity in tracker.latest_message['entities']:
-                postKeyword(entity['value'], False)
-            if keywords is False:
-                dispatcher.utter_message(response="utter_dont_understand")
-            else:
-                dispatcher.utter_message(response="utter_tool_pos", tool=keywords)
-
+        print(tracker.latest_message['entities'])
         return []
 
 

@@ -8,9 +8,16 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - category
+  - subcategory
+  - show_categories
+  - show_subcategories_craft
+  - show_subcategories_living
+  - show_subcategories_cooking
+  - show_subcategories_outside
+  - show_subcategories_circuits
+  - show_subcategories_workshop
   - ingredient
-  - adjective
-  - tool
   - clear
   - garbage
 
@@ -40,6 +47,181 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  utter_categories:
+  - text: "The categories are: circuits, workshop, craft, cooking, living, outside"
+
+  utter_subcategories_circuits:
+  - text: "The subcategories of circuits are:
+        - apple
+        - arduino
+        - art
+        - assisstive tech
+        - audio
+        - cameras
+        - clocks
+        - computers
+        - electronics
+        - gadgets
+        - lasers
+        - leds
+        - linux
+        - microcontrollers
+        - microsoft
+        - mobile
+        - raspberry pi
+        - remote control
+        - reuse
+        - robots
+        - sensors
+        - software
+        - soldering
+        - speakers
+        - tools
+        - usb
+        - wearables
+        - websites
+        - wireless"
+
+  utter_subcategories_workshop:
+  - text: "The subcategories of workshop are:
+        - 3d printing
+        - cars
+        - cnc
+        - electric vehicles
+        - energy
+        - furniture
+        - home improvement
+        - home theater
+        - hydroponics
+        - knives
+        - laser cutting
+        - lighting
+        - metalworking
+        - molds & casting
+        - motorcycles
+        - organizing
+        - pallets
+        - repair
+        - science
+        - shelves
+        - solar
+        - tools
+        - woodworking
+        - workbenches"
+
+  utter_subcategories_craft:
+  - text: "The subcategories of craft are:
+        - art
+        - books & journals
+        - cardboard
+        - cards
+        - clay
+        - costumes & cosplay
+        - digital graphics
+        - duct tape
+        - embroidery
+        - fashion
+        - felt
+        - fiber arts
+        - gift wrapping
+        - jewelry
+        - knitting & crochet
+        - leather
+        - mason jars
+        - no-sew
+        - paper
+        - parties & weddings
+        - photography
+        - printmaking
+        - reuse
+        - sewing
+        - soapmaking
+        - wallets"
+
+  utter_subcategories_cooking:
+  - text: "The subcategories of cooking are:
+        - bacon
+        - bbq & grilling
+        - beverages
+        - bread
+        - breakfast
+        - cake
+        - candy
+        - canning & preserving
+        - cocktails & mocktails
+        - coffee
+        - cookies
+        - cupcakes
+        - dessert
+        - homebrew
+        - main course
+        - pasta
+        - pie
+        - pizza
+        - salad
+        - sandwiches
+        - snacks & appetizers
+        - soups & stews
+        - vegetarian & vegan"
+
+  utter_subcategories_living:
+  - text: "The subcategories of living are:
+        - beauty
+        - christmas
+        - cleaning
+        - decorating
+        - education
+        - gardening
+        - halloween
+        - health
+        - hiding places
+        - holidays
+        - homesteading
+        - kids
+        - kitchen
+        - lego & k'nex
+        - life hacks
+        - music
+        - office supply hacks
+        - organizing
+        - pest control
+        - pets
+        - pranks, tricks, & humor
+        - relationships
+        - toys & games
+        - travel
+        - video games"
+
+  utter_subcategories_outside:
+  - text: "The subcatgories of outside are:
+        - backyard
+        - beach
+        - bikes
+        - birding
+        - boats
+        - camping
+        - climbing
+        - fire
+        - fishing
+        - hunting
+        - kites
+        - knots
+        - launchers
+        - paracord
+        - rockets
+        - siege engines
+        - skateboarding
+        - snow
+        - sports
+        - survival
+        - water"
+
+  utter_category:
+  - text: "Searching in {category}"
+
+  utter_subcategory:
+  - text: "Searching in {category}"
+
   utter_ingredient_pos:
   - text: "{ingredient} will be included."
   - text: "Ok, let's find some recipes with {ingredient}."
@@ -60,32 +242,6 @@ responses:
   utter_ingredient_neg_continued:
   - text: "{ingredients} will also be excluded"
 
-  utter_adjective_pos:
-  - text: "Results have been updated to be more {adjective}."
-  - text: "Searching for {adjective} recipes."
-  - text: "Making it {adjective}."
-  - text: "Making it more {adjective}."
-
-  utter_adjective_pos_continued:
-  - text: Results will also be more {adjectives}
-
-  utter_adjective_neg:
-  - text: "{adjective} recipes have been filtered out."
-  - text: "Excluding {adjective} recipes."
-  - text: "We'll avoid {adjective} recipes."
-  - text: "{adjective} recipes are no longer included."
-
-  utter_adjective_neg_continued:
-  - text: "Results will also be less {adjectives}"
-
-  utter_tool_pos:
-  - text: "Searching for recipes made with a {tool}."
-  - text: "We'll find recipes that use your {tool}."
-
-  utter_tool_neg:
-  - text: "Excluding recipes that require a {tool}."
-  - text: "We won't include any recipes that require a {tool}."
-
   utter_anything_else:
   - text: "Anything else?"
   - text: "Any other ingredients you'd like?"
@@ -101,15 +257,13 @@ responses:
 
 actions:
   - action_ingredient
-  - action_adjective
-  - action_tool
+  - action_category
+  - action_subcategory
   - action_clear
 
-
 entities:
-  - ingredient
-  - adjective
-  - tool
+  - category
+  - subcategory
 
 session_config:
   session_expiration_time: 60
