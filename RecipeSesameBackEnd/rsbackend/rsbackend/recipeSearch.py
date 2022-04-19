@@ -29,59 +29,57 @@ def search(words, neg_words):
 
     words = " ".join(words).lower()
 
-    es.indices.refresh(index="test")
+    es.indices.refresh(index="crafts")
     neg_words = " ".join(neg_words)
 
+    print("HERE we are")
     print(words)
     print(neg_words)
 
-    results = es.search(index="test", body={ #perform sample search
+    results = es.search(index="crafts", body={ #perform sample search
         "size": 72,
         "query": {
             "bool": {
-                "must": {
-                    "multi_match": {
-                        "query": words,
-                        "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "and"
-                    }
-                },
-                "must_not": {
-                    "multi_match": {
-                        "query": neg_words,
-                        "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "or"
-                    }
+            "must": {
+                "multi_match": {
+                    "query": words,
+                    "fields": ["Project_Title"],
+                    "operator": "and"
                 }
-
+            },
+            "must_not": {
+                "multi_match": {
+                    "query": neg_words,
+                    "fields": ["Project_Title"],
+                    "operator": "or"
+                }
             }
             }
+        }
     })['hits']['hits']
 
     # Prefer to AND, but if no results, OR instead
 
     if len(results) < 1:
-        results = es.search(index="test", body={ #perform sample search
-        "size": 72,
+        results = es.search(index="crafts", body={ #perform sample search
         "query": {
             "bool": {
-                "must": {
-                    "multi_match": {
-                        "query": words,
-                        "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "or"
-                    }
-                },
-                "must_not": {
-                    "multi_match": {
-                        "query": neg_words,
-                        "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "or"
-                    }
+            "must": {
+                "multi_match": {
+                    "query": words,
+                    "fields": ["Project_Title"],
+                    "operator": "and"
                 }
-
+            },
+            "must_not": {
+                "multi_match": {
+                    "query": neg_words,
+                    "fields": ["Project_Title"],
+                    "operator": "or"
+                }
             }
             }
+        }
         })['hits']['hits']
 
     finalRes = []
@@ -92,9 +90,9 @@ def search(words, neg_words):
     return finalRes # Return only relevant recipe data
 
 def random_recipes(amount):
-    es.indices.refresh(index="test")
+    es.indices.refresh(index="crafts")
 
-    results = es.search(index="test", body={
+    results = es.search(index="crafts", body={
         "size": amount,
         "query": {
             "function_score": {

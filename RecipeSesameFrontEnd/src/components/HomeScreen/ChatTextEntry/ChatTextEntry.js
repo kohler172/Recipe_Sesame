@@ -86,6 +86,8 @@ const ChatTextEntry = (props) => {
     const handleSearchMessage = () => {
         let numberOfResults = 0;
         let messages = [];
+        console.log("Here's text content:")
+        console.log(textContent)
         
         props.setResultStartingIndex(0);
         fetch(rasa_url, {
@@ -98,12 +100,16 @@ const ChatTextEntry = (props) => {
         .then(response => response.json())
         .then(data => {
             setIsWaiting(false);
+            console.log("here is data")
+            console.log(data)
             messages = data;
             //data.forEach((x, i) => props.addMessage({ content: data[i].text, isUserMessage: false }));
             props.removeTypingMessages();
             props.incrementNumberOfMessagesSent();
         })
         .then(() => {
+            console.log('heres that')
+            console.log(textContent)
             fetch(messageUrl, {
                 method: 'POST',
                 headers: {
@@ -113,7 +119,11 @@ const ChatTextEntry = (props) => {
             })
             .then(response => response.json())
             .then(data => {
+                console.log("PREPARSE")
+                console.log(data)
                 const parsedData = JSON.parse(data);
+                console.log("Here is parsed data:")
+                console.log(parsedData)
                 if (parsedData.recipes.length < 1) {
                     setIsWaiting(false);
                     props.removeTypingMessages();

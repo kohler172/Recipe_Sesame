@@ -10,6 +10,7 @@ from elasticsearch import Elasticsearch
 from django.http import JsonResponse
 from .recipeSearch import search, random_recipes
 from .nlp import get_keywords
+from .scraper import scrape_photo
 #from rasa.nlu.model import Interpreter
 
 keywords = []
@@ -36,17 +37,31 @@ class RandomView(APIView):
         number_of_recipes = 72
         return Response(random_recipes(number_of_recipes))
 
+class ScraperView(APIView):
+    def post(self, request):
+        val = str(request.body)
+        url = 'https://www.instructables.com/'
+        url += val[34:-3]
+        vall = scrape_photo(url)
+        return Response(vall)
+
 #Class to update keywords & negKeywords
 class KeywordsView(APIView):
     #Returns keywords & negKeywords
     def get(self, request):
+        print("went get keywords")
         return Response({'keywords': keywords, 'negKeywords': negKeywords})
     #Adds a single keyword to either keywords or negKeywords depending on neg?
     def post(self, request):
+        print("Went post keywords")
+        print(request.data['keyword'])
         if request.data['neg?'] == 'True':
             negKeywords.append(request.data['keyword'])
         else:
             keywords.append(request.data['keyword'])
+
+        print("and here are the keywords")
+        print(keywords)
         return Response({'keywords': keywords, 'negKeywords': negKeywords})
     #Clears both keywords and negKeywords
     def delete(self, request):

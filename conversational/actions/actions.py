@@ -16,6 +16,8 @@ EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", 
 
 #Posts a single keyword to the backend, adding it to the list
 def postKeyword(keyword, neg):
+    print("heres keyword")
+    print(keyword)
     keyDict = {'keyword': keyword, 'neg?': neg}
     r = requests.post(url = keywordUrl, data = keyDict)
 
@@ -42,6 +44,8 @@ class ActionIngredient(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         keywords = getEntitiesString(tracker.latest_message['entities'])
+        print("IN RUN")
+        print(tracker.latest_message['text'])
 
         if any(x in tracker.latest_message['text'] for x in EXCLUSION_KEYWORDS):
             for entity in tracker.latest_message['entities']:
