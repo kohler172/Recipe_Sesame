@@ -9,7 +9,7 @@ const Message = (props) => {
     ) : (
         <div className="message leftMessage">
             <p>{props.content}</p>
-        </div>
+        </div> 
     );
 }
 

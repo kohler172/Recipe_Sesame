@@ -1,0 +1,42 @@
+version: "3.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Clear stored data and start over at user's request
+  steps:
+  - intent: clear
+  - action: action_clear
+  - action: utter_greet
+
+- rule: Ingredient action
+  steps:
+  - intent: ingredient
+  - action: action_ingredient
+  - action: utter_anything_else
+
+- rule: Adjective action
+  steps:
+  - intent: adjective
+  - action: action_adjective
+  - action: utter_anything_else
+
+- rule: Tool action
+  steps:
+  - intent: tool
+  - action: action_tool
+  - action: utter_anything_else
+
+- rule: Garbage action
+  steps:
+  - intent: garbage
+  - action: utter_dont_understand

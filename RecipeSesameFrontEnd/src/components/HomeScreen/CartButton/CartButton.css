@@ -2,22 +2,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--main-color-light);
-    padding: 0 14px 0 15px;
+    background-color: var(--active-button);
+    padding: 0 14px 0 14px;
     height: 36px;
     border-radius: var(--large-radius);
-    box-shadow: var(--card-shadow-light);
-}
-
-.cartBtn > p {
-    margin-right: 9px;
-    font-weight: bold;
+    box-shadow: var(--button-shadow);
+    color: var(--active-buton-text);
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    margin-left: 6px;
 }
 
 .cartBtn > svg {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
 
 .cartBtn:hover {
     cursor: pointer;
+    transform: scale(1.03);
 }

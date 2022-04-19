@@ -4,7 +4,7 @@ import MessageContainer from '../MessageContainer/MessageContainer';
 import './Chatbox.css'
 
 const Chatbox = (props) => {
-    const [messages, setMessages] = useState([{ content: "Hello! What kind of recipes are you looking for?", isUserMessage: false }]);
+    const [messages, setMessages] = useState([{ content: "Hi! Welcome to recipe sesame! What types of recipes are you looking for?", isUserMessage: false }]);
 
     const addMessage = (message) => {
         const currentMessages = messages;
@@ -12,15 +12,15 @@ const Chatbox = (props) => {
         setMessages(currentMessages);
     }
 
+    const removeTypingMessages = () => {
+        const string = '...';
+        let currentMessages = messages;
+        currentMessages = currentMessages.filter(i => i.content !== string);
+        setMessages(currentMessages);
+    }
+
     const incrementNumberOfMessagesSent = () => {
         props.setNumberOfMessagesSent(props.numberOfMessagesSent + 1);
-        
-        // The above function call is async, so these if statements execute first
-        if (props.numberOfMessagesSent === 0) {
-            addMessage({ content: "Sounds good! Any other ingredients you'd like to include?", isUserMessage: false });
-        } else {
-            addMessage({ content: "I think you might enjoy these recipes. Would you like to find any other recipes?", isUserMessage: false });
-        }
     }
 
     return (
@@ -29,10 +29,15 @@ const Chatbox = (props) => {
             <ChatTextEntry 
                 incrementNumberOfMessagesSent={incrementNumberOfMessagesSent} 
                 addMessage={addMessage}
+                removeTypingMessages={removeTypingMessages}
+                recommendedRecipes={props.recommendedRecipes}
                 setRecommendedRecipes={props.setRecommendedRecipes}
+                resultStartingIndex={props.resultStartingIndex}
+                setResultStartingIndex={props.setResultStartingIndex}
             />
         </div>
     );
 }
+
 
 export default Chatbox;

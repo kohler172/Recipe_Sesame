@@ -5,6 +5,10 @@ This is the backend for our Recipe Sesame project.
 
 You will need to have <b>Django</b>, <b>Django REST</b>, <b>spaCy</b>, and <b>the Elasticsearch Python client</b> installed.
 
+## Spacy
+### `pip install spacy`
+### `python -m spacy download en_core_web_md`
+
 ## Setup
 To begin, we will install Docker and start Elasticsearch. To do this, follow the instructions under the "Self-managed" tab under "Run Elasticsearch" here:
 

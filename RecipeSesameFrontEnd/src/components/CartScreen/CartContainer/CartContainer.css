@@ -10,10 +10,23 @@
     background-color: var(--screen-shade);
 }
 
+.cartCard {
+    height: calc(90vh - 40px);
+    padding: 20px 0;
+    position: relative;
+}
+
 .cartContent {
     background-color: var(--main-color);
-    height: 90vh;
+    height: 95vh;
     width: 90%;
     border-radius: var(--large-radius);
     box-shadow: var(--screen-shadow);
+}
+
+@media only screen and (max-width: 500px) {
+    .cartCard {
+        height: calc(90vh - 20px);
+        padding: 20px 0 0;
+    }
 }

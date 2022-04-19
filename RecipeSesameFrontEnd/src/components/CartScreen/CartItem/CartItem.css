@@ -1,35 +1,109 @@
 .cartItem {
-    padding: 12px 20px 12px 12px;
-    margin: 10px 30px;
-    border-radius: var(--large-radius);
+    padding: 13px 13px 13px 5px;
+    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid var(--main-color-dark);
+    border-top: 1px solid var(--main-color-dark);
+    font-weight: bold;
+    position: relative;
+}
+
+.cartItem:first-of-type {
+    border-top: none;
+}
+
+.recipeItem {
+    padding: 15px 20px 15px 15px;
+    transition-property: background-color;
+    transition-duration: 0.2s;
 }
 
 .cartItem:hover {
+    cursor: default;
+}
+
+.recipeItem:hover {
     cursor: pointer;
+    background-color: rgb(172, 231, 201);
 }
 
 .cartItem > p {
-    padding: 0 15px;
+    padding: 0 10px;
 }
 
 .cartItem > img {
     border-radius: 6px;
-    height: 90px;
+    height: 75px;
     box-shadow: var(--card-shadow);
 }
 
-.cartItem > svg {
-    color: var(--warning-color);
+.ingredientButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.cartItem > svg:hover {
+.ingredientButtons > svg, .cartItem > svg {
+    color: var(--warning-color);
+    transition-property: color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    margin-right: 20px;
+}
+
+.ingredientButtons > svg:hover, .cartItem > svg:hover {
     color:var(--warning-color-dark);
+    cursor: pointer;
 }
 
 .cartIngredient {
     text-align: left;
+}
+
+@media only screen and (max-width: 500px) {
+    .cartIngredient {
+        text-align: left;
+    }
+
+    .ingredientButtons {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+    }
+
+    .ingredientButtons > svg {
+        margin-top: 14px;
+        margin-right: 0;
+    }
+
+    .recipeItem {
+        padding: 15px 5px
+    }
+
+    .cartItem > img {
+        height: 50px;
+    }
+}
+
+.click {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.recipeItem:first-of-type {
+    border-radius: var(--large-radius) var(--large-radius) 0 0;
+}
+
+.recipeItem:last-of-type {
+    border-radius: 0 0 var(--large-radius) var(--large-radius);
+}
+
+.delete {
+    z-index: 5;
 }

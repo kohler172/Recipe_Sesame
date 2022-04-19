@@ -1,46 +1,29 @@
 import React, { useState } from "react";
-import RecipeButton from "../RecipeButton/RecipeButton";
+import RecipeButtons from "../RecipeButtons/RecipeButtons";
 import RecipeCartContainer from "../RecipeCartContainer/RecipeCartContainer";
 import './RecipeControls.css';
 
 const RecipeControls = (props) => {
-    const [recipeSaved, setRecipeSaved] = useState(false);
-    const addIngredientsLabel = "Add ingredients";
-    const saveRecipeLabel = "Save recipe";
-    const savedRecipeLabel = "Recipe saved";
-
     return (
         <div className="recipeControls">
-            <img src={process.env.PUBLIC_URL + "/images/"  + props.recipe.Image_Name + ".jpg"} alt={props.recipe.Title} />
+            {/* <img src={process.env.PUBLIC_URL + "/images/"  + props.recipe.Image_Name + ".jpg"} alt={props.recipe.Title} />
+            { JSON.parse(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"')).map(line => <p className="mobileIngredient">{line}</p>) }
+            <div className="mobileInstructions">
+                { props.recipe.Instructions.split('\n').map(line => <p className="recipeInstructions">{line}</p>) }
+            </div> */}
+            <h2>Your Ingredients</h2>
             <RecipeCartContainer savedIngredients={props.savedIngredients}/>
-            <div className="recipeButtons">
-                <RecipeButton 
-                    recipe={props.recipe} 
-                    savedRecipes={props.savedRecipes}
-                    savedIngredients={props.savedIngredients}
-                    setSavedIngredients={props.setSavedIngredients} 
-                    setSavedRecipes={props.setSavedRecipes}
-                    setRecipeSaved={setRecipeSaved} 
-                    recipeSaved={recipeSaved}
-                    type={'add'} 
-                    label={addIngredientsLabel} 
-                />
-                {recipeSaved ? (<RecipeButton 
-                                    recipe={props.recipe} 
-                                    label={savedRecipeLabel} 
-                                    setRecipeSaved={setRecipeSaved}
-                                    recipeSaved={recipeSaved}
-                                    type={'save'} 
-                                />) : (<RecipeButton 
-                                            recipe={props.recipe} 
-                                            label={saveRecipeLabel} 
-                                            setRecipeSaved={setRecipeSaved} 
-                                            savedRecipes={props.savedRecipes}
-                                            setSavedRecipes={props.setSavedRecipes}
-                                            recipeSaved={recipeSaved}
-                                            type={'save'} 
-                                        />) }
-            </div>
+            <RecipeButtons 
+                setRecipeSaved={props.setRecipeSaved}
+                recipe={props.recipe}
+                ingredients={props.ingredients}
+                setIngredients={props.setIngredients}
+                recipeSaved={props.recipeSaved}
+                savedRecipes={props.savedRecipes}
+                setSavedRecipes={props.setSavedRecipes}
+                savedIngredients={props.savedIngredients}
+                setSavedIngredients={props.setSavedIngredients}
+            />
         </div>
     );
 }

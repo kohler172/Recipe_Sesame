@@ -8,18 +8,10 @@
 
 @media only screen and (max-width: 1000px) {
     .recommendedContainer {
-        width: calc(100% - 24px);
-        align-items: flex-start;
-        overflow: scroll;
-        background-color: var(--main-color-light);
-        box-shadow: var(--list-shadow);
+        width: 100%;
         border-radius: var(--small-radius);
-        padding: 4px 12px;
-    }
-
-    .recommendedContainer > h2 {
-        margin-top: 8px;
-        margin-left: 13px;
+        padding: 4px 0;
+        margin-bottom: 20px !important;
     }
   }
 
@@ -27,19 +19,24 @@
     margin-bottom: 10px;
 }
 
-.recommendedScroll {
+.noRecipes {
     display: flex;
-    height: 600px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     width: 100%;
-    min-width: 0;
+}
+
+.recommendedScroll {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
 }
 
 @media only screen and (min-width: 1000px) {
     .recommendedScroll {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        gap: 15px;
         height: 68vh;
+        gap: 15px;
     }
 }

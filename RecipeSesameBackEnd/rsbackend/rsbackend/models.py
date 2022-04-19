@@ -22,6 +22,14 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
+class Craft(models.Model):
+    project_title = models.CharField(blank=False, null=False)
+    instr_link = models.URLField(blank=True, null=True)
+    sub_cat = models.CharField(blank=False, null=False)
+
+    def __str__(self):
+        return self.name
+
 class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(Recipe)
     ingredient = models.ForeignKey(Ingredient)

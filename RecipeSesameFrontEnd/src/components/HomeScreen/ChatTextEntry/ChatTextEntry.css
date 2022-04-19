@@ -4,12 +4,13 @@
     justify-content: center;
     background-color: var(--off-white);
     border-radius: 0 0 var(--small-radius) var(--small-radius);
-    border-top: var(--gray-border);
+    box-shadow: 0px 0 5px #cccccc;
 }
 
 .chatTextEntry > input {
     background-color: white;
-    border: var(--gray-border);
+    box-shadow: 0 0 3px #cccccc;
+    border: none;
     border-radius: 5px;
 }
 

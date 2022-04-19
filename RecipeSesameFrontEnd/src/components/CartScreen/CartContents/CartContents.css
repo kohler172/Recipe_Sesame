@@ -1,28 +1,73 @@
 .cartContents {
-    width: calc(100% - 120px);
-    padding: 0 60px;
+    width: calc(100% - 80px);
+    padding: 0 40px;
     height: 100vh;
-    margin-top: 12px;
+    margin-top: 5px;
 }
 
 .cartList {
     overflow: scroll;
-    background-color: var(--main-color-light);
-    border-radius: 0 var(--small-radius) var(--small-radius) var(--small-radius);
-    height: 58vh;
+    border-radius: 0 0 var(--small-radius) var(--small-radius);
+    height: 70vh;
     width: 100%;
-    padding: 10px 0;
+    padding: 10px 0 30px;
+}
+
+.search {
+    position: absolute;
+    top: 72px;
+    right: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.search > input {
+    height: 30px;
+    padding: 0 13px;
+    width: 180px;
+    background-color: var(--off-white);
+    border: none;
+    border-radius: var(--small-radius) var(--small-radius) var(--small-radius) var(--small-radius);
+    box-shadow: var(--card-shadow-light);
+}
+
+@media only screen and (max-width: 500px) {
+    .cartContents {
+        width: calc(100% - 20px);
+        padding: 0 10px;
+    }
+}
+
+.taller {
+    height: 65vh;
+}
+
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
 
 .printButton {
-    background-color: var(--main-color-light);
-    border: 1px solid rgb(162, 216, 187);
-    padding: 0 20px;
-    margin: 8px 0;
-    height: 40px;
-    border-radius: 20px;
+    background-color: var(--active-button);
+    color: var(--active-buton-text);
+    box-shadow: var(--button-shadow);
+    padding: 8px 15px;
+    margin: 19px 0 13px;
+    border-radius: var(--large-radius);
+    font-weight: bold;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     float: right;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.printButton:hover {
+    cursor: pointer;
+    transform: scale(1.03);
 }

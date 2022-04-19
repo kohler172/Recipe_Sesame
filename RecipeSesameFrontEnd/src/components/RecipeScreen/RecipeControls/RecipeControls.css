@@ -4,23 +4,42 @@
     justify-content: space-between;
     align-items: center;
     width: 35%;
+    padding-top: 20px;
+    height: calc(100% - 10px);
+}
+
+.recipeControls > h2:hover {
+    cursor: default;
 }
 
 .recipeControls > img {
     width: 100%;
     border-radius: var(--small-radius);
     box-shadow: var(--card-shadow);
+    margin-bottom: 15px;
+}
+
+.mobileIngredient, .mobileInstructions {
+    display: none;
 }
 
 @media only screen and (max-width: 500px) {
-    .recipeControls > img {
-        max-height: 16vh;
-        margin: 10px 0;
+    .recipeControls {
+        width: 100%;
+        padding-top: 8px;
     }
-}
 
-.recipeButtons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    .recipeControls > img {
+        margin: 10px 0 18px;
+    }
+
+    .mobileIngredient, .mobileInstructions {
+        display: block;
+        text-align: left;
+        align-self: flex-start;
+    }
+
+    .mobileInstructions {
+        margin-bottom: 20px;
+    }
 }
