@@ -51,7 +51,7 @@ function App() {
       </div>
       <div className="mainContainer">
         <div className="container chatContainer">
-          <h2>Chat with Sesame</h2>
+          <h2>Chat</h2>
           <Chatbox 
             numberOfMessagesSent={numberOfMessagesSent} 
             setNumberOfMessagesSent={setNumberOfMessagesSent}
