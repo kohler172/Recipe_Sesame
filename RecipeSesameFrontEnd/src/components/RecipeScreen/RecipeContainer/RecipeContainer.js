@@ -6,7 +6,8 @@ import './RecipeContainer.css';
 
 const RecipeContainer = (props) => {
     const [recipeSaved, setRecipeSaved] = useState(props.savedRecipes.includes(props.openRecipe));
-    const [ingredients, setIngredients] = useState(JSON.parse(props.openRecipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"')));
+    //const [ingredients, setIngredients] = useState(JSON.parse(props.openRecipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"')));
+    const [ingredients, setIngredients] = useState(props.openRecipe.Subcategory);
 
     const closeRecipeScreen = () => {
         props.setRecipeScreenIsOpen(false);
@@ -17,10 +18,10 @@ const RecipeContainer = (props) => {
             <div className="recipeMain">
                 <div className="shade" onClick={closeRecipeScreen}></div>
                 <div className="screenCard recipeCard">
-                    <RecipeHeader recipeName={props.openRecipe.Title} closeRecipeScreen={closeRecipeScreen}/>
+                    <RecipeHeader recipeName={props.openRecipe.Project_Title} closeRecipeScreen={closeRecipeScreen}/>
                     <div className="recipeContent">
                         <RecipeDescription recipe={props.openRecipe} ingredients={ingredients} />
-                        <RecipeControls 
+                        {/* <RecipeControls 
                             setRecipeSaved={setRecipeSaved}
                             recipe={props.openRecipe}
                             ingredients={ingredients}
@@ -30,7 +31,7 @@ const RecipeContainer = (props) => {
                             setSavedRecipes={props.setSavedRecipes}
                             savedIngredients={props.savedIngredients}
                             setSavedIngredients={props.setSavedIngredients}
-                        />
+                        /> */}
                     </div>
                      
                 </div>

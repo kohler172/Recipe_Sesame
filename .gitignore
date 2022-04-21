@@ -36,3 +36,6 @@
 /conversational/.rasa/cache/*
 /conversation/actions/__pycache__/*
 
+node_modules/
+RecipeSesameFrontEnd/node_modules/
+RecipeSesameFrontEnd/node_modules/

@@ -16,6 +16,8 @@ EXCLUSION_KEYWORDS = ["no ", "not ", "don't ", "dont ", "nothing ", "without ", 
 
 #Posts a single keyword to the backend, adding it to the list
 def postKeyword(keyword, neg):
+    print("heres keyword")
+    print(keyword)
     keyDict = {'keyword': keyword, 'neg?': neg}
     r = requests.post(url = keywordUrl, data = keyDict)
 
@@ -33,6 +35,19 @@ def getEntitiesString(entities):
             str = str+", "+entities[i+1]['value']
         return str+", and "+entities[-1]['value']
 
+def getListString(entities):
+    if len(entities) == 0:
+        return False
+    elif len(entities) == 1:
+        return entities[0]
+    elif len(entities) == 2:
+        return entities[0]+" and "+entities[1]
+    else:
+        str = entities[0]
+        for i in range(len(entities)-2):
+            str = str+", "+entities[i+1]
+        return str+", and "+entities[-1]
+
 class ActionIngredient(Action):
     def name(self) -> Text:
         return "action_ingredient"
@@ -41,6 +56,10 @@ class ActionIngredient(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+
+        keywords = getEntitiesString(tracker.latest_message['entities'])
+        print("IN RUN")
+        print(tracker.latest_message['text'])
 
         doc = nlp(tracker.latest_message['text'])
         nouns = [chunk.text for chunk in doc.noun_chunks]
@@ -53,7 +72,7 @@ class ActionIngredient(Action):
             if keywords is False:
                 dispatcher.utter_message(response="utter_dont_understand")
             else:
-                dispatcher.utter_message(response="utter_ingredient_neg", ingredient=keywords)
+                dispatcher.utter_message(response="utter_ingredient_neg", ingredient=getListString(keywords))
 
         else:
             for word in keywords:
@@ -61,7 +80,7 @@ class ActionIngredient(Action):
             if keywords is False:
                 dispatcher.utter_message(response="utter_dont_understand")
             else:
-                dispatcher.utter_message(response="utter_ingredient_pos", ingredient=keywords)
+                dispatcher.utter_message(response="utter_ingredient_pos", ingredient=getListString(keywords))
 
         print(tracker.latest_message['entities'])
         return []

@@ -13,9 +13,9 @@ def search(words):
     print('heres words')
     print(words)
     words = " ".join(words)
-    es.indices.refresh(index="test")
+    es.indices.refresh(index="crafts")
 
-    results = es.search(index="test", body={ #perform sample search
+    results = es.search(index="crafts", body={ #perform sample search
         "query": {
             "multi_match": {
                 "query": words,

@@ -13,6 +13,10 @@ const RecommendedContainer = (props) => {
             <h2>Suggested Recipes</h2>
             {props.recommendedRecipes.length > 0 ? (
                 <div className="recommendedScroll">
+                    {
+                        
+                        console.log(props.recommendedRecipes)
+                    }
                     { props.recommendedRecipes.slice(props.resultStartingIndex, props.resultStartingIndex + 6).map((recipe, index) => (
                         <RecommendedRecipe 
                             key={index} 

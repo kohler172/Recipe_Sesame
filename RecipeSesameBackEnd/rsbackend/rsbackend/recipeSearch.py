@@ -3,6 +3,7 @@ import random
 from datetime import datetime
 from elasticsearch import Elasticsearch
 from django.http import JsonResponse
+from .scraper import scrape_instructions, scrape_photo
 es = Elasticsearch("http://localhost:9200")
 
 def get_recipe_data(recipe):
@@ -29,72 +30,69 @@ def search(words, neg_words):
 
     words = " ".join(words).lower()
 
-    es.indices.refresh(index="test")
+    es.indices.refresh(index="crafts")
     neg_words = " ".join(neg_words)
 
-    print(words)
-    print(neg_words)
-
-    results = es.search(index="test", body={ #perform sample search
-        "size": 72,
+    results = es.search(index="crafts", body={ #perform sample search
+        "size": 6,
         "query": {
             "bool": {
-                "must": {
-                    "multi_match": {
-                        "query": words,
-                        "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "and"
-                    }
-                },
-                "must_not": {
-                    "multi_match": {
-                        "query": neg_words,
-                        "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "or"
-                    }
+            "must": {
+                "multi_match": {
+                    "query": words,
+                    "fields": ["Project_Title"],
+                    "operator": "and"
                 }
-
+            },
+            "must_not": {
+                "multi_match": {
+                    "query": neg_words,
+                    "fields": ["Project_Title"],
+                    "operator": "or"
+                }
             }
             }
+        }
     })['hits']['hits']
 
     # Prefer to AND, but if no results, OR instead
 
     if len(results) < 1:
-        results = es.search(index="test", body={ #perform sample search
-        "size": 72,
+        results = es.search(index="crafts", body={ #perform sample search
         "query": {
             "bool": {
-                "must": {
-                    "multi_match": {
-                        "query": words,
-                        "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "or"
-                    }
-                },
-                "must_not": {
-                    "multi_match": {
-                        "query": neg_words,
-                        "fields": ["Title", "Instructions", "Ingredients"],
-                        "operator": "or"
-                    }
+            "must": {
+                "multi_match": {
+                    "query": words,
+                    "fields": ["Project_Title"],
+                    "operator": "and"
                 }
-
+            },
+            "must_not": {
+                "multi_match": {
+                    "query": neg_words,
+                    "fields": ["Project_Title"],
+                    "operator": "or"
+                }
             }
             }
+        }
         })['hits']['hits']
 
     finalRes = []
 
     for result in results:
-        finalRes.append(result['_source'])
+        dict = result['_source']
+        dict["img_url"] = scrape_photo(dict['Instructables_link'])
+        finalRes.append(dict)
 
     return finalRes # Return only relevant recipe data
 
 def random_recipes(amount):
-    es.indices.refresh(index="test")
+    es.indices.refresh(index="crafts")
+    print('called randrecp')
 
-    results = es.search(index="test", body={
+    results = es.search(index="crafts", body={
         "size": amount,
         "query": {
             "function_score": {
@@ -109,5 +107,14 @@ def random_recipes(amount):
         }
     })['hits']['hits']
 
-    return map(get_recipe_data, results)
+    res = []
+    # print('results here')
+    # print(results[0]['_source'])
+    for result in results:
+        dict = result['_source']
+        dict["img_url"] = scrape_photo(dict['Instructables_link'])
+        res.append(dict)
+    
+    # print(cop)
+    return res
         
