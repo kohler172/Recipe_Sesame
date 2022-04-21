@@ -57,6 +57,10 @@ class ActionIngredient(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
 
+        keywords = getEntitiesString(tracker.latest_message['entities'])
+        print("IN RUN")
+        print(tracker.latest_message['text'])
+
         doc = nlp(tracker.latest_message['text'])
         nouns = [chunk.text for chunk in doc.noun_chunks]
         adjectives = [token.lemma_ for token in doc if token.pos_ == "ADJ"]
