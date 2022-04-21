@@ -34,7 +34,7 @@ def search(words, neg_words):
     neg_words = " ".join(neg_words)
 
     results = es.search(index="crafts", body={ #perform sample search
-        "size": 72,
+        "size": 6,
         "query": {
             "bool": {
             "must": {
@@ -83,9 +83,7 @@ def search(words, neg_words):
 
     for result in results:
         dict = result['_source']
-        dict["instructions"] = scrape_instructions(dict['Instructables_link'])
-        # print("now instr. ")
-        # print(dict["instructions"])
+        dict["img_url"] = scrape_photo(dict['Instructables_link'])
         finalRes.append(dict)
 
     return finalRes # Return only relevant recipe data
@@ -114,16 +112,9 @@ def random_recipes(amount):
     # print(results[0]['_source'])
     for result in results:
         dict = result['_source']
-        dict["instructions"] = scrape_instructions(dict['Instructables_link'])
         dict["img_url"] = scrape_photo(dict['Instructables_link'])
-        # print("now instr. ")
-        # print(dict["instructions"])
         res.append(dict)
-    # print(type(results[0]['_source']))
-
-    # return map(get_recipe_data, results)
-    cop = map(get_recipe_data, results)
-    print('heres cop')
+    
     # print(cop)
     return res
         

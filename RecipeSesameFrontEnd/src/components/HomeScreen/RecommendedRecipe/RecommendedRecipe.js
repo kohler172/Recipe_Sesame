@@ -9,12 +9,9 @@ const RecommendedRecipe = (props) => {
     const[instructions, setInstructions] = useState('')
 
     const handleRecipeClick = () => {
-        console.log("opening recipe")
-        console.log(props.recipe.Instructables_link)
+        let url = 'https://www.instructables.com/' + props.recipe.Instructables_link
+        window.open(url)
         props.setOpenRecipe(props.recipe);
-        // scrapeInstructions()
-        console.log('heres instructions : ')
-        console.log(props.recipe)
         //console.log(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"'));
         props.setRecipeScreenIsOpen(true);
     }
@@ -53,10 +50,7 @@ const RecommendedRecipe = (props) => {
     }
     
     return (
-        <div style={{ backgroundImage: "url(" + img_url +")"}} className="recommendedRecipe" onClick={handleRecipeClick}>
-            {
-                console.log(scrapeImage())
-            }
+        <div style={{ backgroundImage: "url(" + props.recipe.img_url +")"}} className="recommendedRecipe" onClick={handleRecipeClick}>
             <h3>{props.recipe.Project_Title}</h3>
         </div>
         // <div style={{ backgroundImage: "url(" + process.env.PUBLIC_URL + "/images/"  + props.recipe.Image_Name + ".jpg" + ")"}} className="recommendedRecipe" onClick={handleRecipeClick}>

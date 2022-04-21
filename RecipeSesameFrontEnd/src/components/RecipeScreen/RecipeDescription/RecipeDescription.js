@@ -24,15 +24,9 @@ const RecipeDescription = (props) => {
 
     return (
         <div className="recipeDescription">
-            {/* { props.ingredients.map(line => <p>{line}</p>) } */}
             <div className="instructions">
-                {
-                    console.log(props.recipe.instructions)
-                }
                 <img src={props.recipe.img_url} alt="Lamp" width="50%" height="" style={{ alignSelf: 'center' }}></img>
                 {props.recipe.instructions}
-                
-                {/* {instructions} */}
             </div>
         </div>
     );
