@@ -4,7 +4,7 @@ import MessageContainer from '../MessageContainer/MessageContainer';
 import './Chatbox.css'
 
 const Chatbox = (props) => {
-    const [messages, setMessages] = useState([{ content: "Hi! Welcome to recipe sesame! What types of recipes are you looking for?", isUserMessage: false }]);
+    const [messages, setMessages] = useState([{ content: "Hi! Welcome to handy dandy! What types of instructables are you looking for?", isUserMessage: false }]);
 
     const addMessage = (message) => {
         const currentMessages = messages;

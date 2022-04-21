@@ -10,7 +10,7 @@ const RecommendedContainer = (props) => {
 
     return (
         <div className="container recommendedContainer">
-            <h2>Suggested Recipes</h2>
+            <h2>Suggested Instructables</h2>
             {props.recommendedRecipes.length > 0 ? (
                 <div className="recommendedScroll">
                     {
