@@ -3,6 +3,7 @@ import random
 from datetime import datetime
 from elasticsearch import Elasticsearch
 from django.http import JsonResponse
+from .scraper import scrape_instructions, scrape_photo
 es = Elasticsearch("http://localhost:9200")
 
 def get_recipe_data(recipe):
@@ -31,10 +32,6 @@ def search(words, neg_words):
 
     es.indices.refresh(index="crafts")
     neg_words = " ".join(neg_words)
-
-    print("HERE we are")
-    print(words)
-    print(neg_words)
 
     results = es.search(index="crafts", body={ #perform sample search
         "size": 72,
@@ -85,12 +82,17 @@ def search(words, neg_words):
     finalRes = []
 
     for result in results:
-        finalRes.append(result['_source'])
+        dict = result['_source']
+        dict["instructions"] = scrape_instructions(dict['Instructables_link'])
+        # print("now instr. ")
+        # print(dict["instructions"])
+        finalRes.append(dict)
 
     return finalRes # Return only relevant recipe data
 
 def random_recipes(amount):
     es.indices.refresh(index="crafts")
+    print('called randrecp')
 
     results = es.search(index="crafts", body={
         "size": amount,
@@ -107,5 +109,21 @@ def random_recipes(amount):
         }
     })['hits']['hits']
 
-    return map(get_recipe_data, results)
+    res = []
+    # print('results here')
+    # print(results[0]['_source'])
+    for result in results:
+        dict = result['_source']
+        dict["instructions"] = scrape_instructions(dict['Instructables_link'])
+        dict["img_url"] = scrape_photo(dict['Instructables_link'])
+        # print("now instr. ")
+        # print(dict["instructions"])
+        res.append(dict)
+    # print(type(results[0]['_source']))
+
+    # return map(get_recipe_data, results)
+    cop = map(get_recipe_data, results)
+    print('heres cop')
+    # print(cop)
+    return res
         

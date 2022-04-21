@@ -5,14 +5,15 @@ const scraperUrl = 'http://localhost:8000/scraper/';
 
 const RecipeDescription = (props) => {
     const[instructions, setInstructions] = useState('')
-    const scrape_instructions = async () => {
+
+    const scrapeInstructions = async () => {
         let val = ''
         return await fetch(scraperUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({'sender': "default", 'message': props.recipe.Instructables_link})
+            body: JSON.stringify({'sender': "default", 'type': 'text', 'message': props.recipe.Instructables_link})
         })
         .then(response => response.json())
         .then(data => {
@@ -25,7 +26,13 @@ const RecipeDescription = (props) => {
         <div className="recipeDescription">
             {/* { props.ingredients.map(line => <p>{line}</p>) } */}
             <div className="instructions">
-                {instructions}  
+                {
+                    console.log(props.recipe.instructions)
+                }
+                <img src={props.recipe.img_url} alt="Lamp" width="50%" height="" style={{ alignSelf: 'center' }}></img>
+                {props.recipe.instructions}
+                
+                {/* {instructions} */}
             </div>
         </div>
     );

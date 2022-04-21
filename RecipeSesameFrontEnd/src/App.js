@@ -31,7 +31,9 @@ function App() {
     });
     fetch(randomUrl)
       .then(response => response.json())
-      .then(data => setRecommendedRecipes(data));
+      .then(data => 
+       //console.log(data));
+        setRecommendedRecipes(data));
   }, [])
 
   return (

@@ -6,11 +6,33 @@ let val = 'hi'
 
 const RecommendedRecipe = (props) => {
     const[img_url, setImgUrl] = useState('')
+    const[instructions, setInstructions] = useState('')
+
     const handleRecipeClick = () => {
         console.log("opening recipe")
+        console.log(props.recipe.Instructables_link)
         props.setOpenRecipe(props.recipe);
+        // scrapeInstructions()
+        console.log('heres instructions : ')
+        console.log(props.recipe)
         //console.log(props.recipe.Cleaned_Ingredients.replace(/"/g, ' inch').replace(/'/g, '"'));
         props.setRecipeScreenIsOpen(true);
+    }
+
+    const scrapeInstructions = async () => {
+        let val = ''
+        return await fetch(scraperUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'sender': "default", 'type': 'text', 'message': props.recipe.Instructables_link})
+        })
+        .then(response => response.json())
+        .then(data => {
+            setInstructions(data)
+            return data
+        })
     }
     
     
@@ -21,7 +43,7 @@ const RecommendedRecipe = (props) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({'sender': "default", 'message': props.recipe.Instructables_link})
+            body: JSON.stringify({'sender': "default", 'type': 'image', 'message': props.recipe.Instructables_link})
         })
         .then(response => response.json())
         .then(data => {
