@@ -39,7 +39,35 @@ const CartContents = (props) => {
 
     return (
         <div className="cartContents">
-            {props.savedRecipes && props.savedRecipes.length > 0 ? (
+            <ListSelector 
+                displayIngredients={props.displayIngredients}
+                setDisplayIngredients={props.setDisplayIngredients}
+            />
+
+            <div className="search">
+                <input className="input" type="text" placeholder="Search..." onChange={handleSearchChange} value={searchText}></input>
+            </div>
+            
+            {props.displayIngredients ? (
+                props.savedIngredients && props.savedIngredients.length > 0 ? (
+                    <div className="cartList">
+                        {ingredients.map((item, index) => (
+                            <CartItem 
+                                key={index} 
+                                item={item} 
+                                savedIngredients={props.savedIngredients}
+                                setSavedIngredients={props.setSavedIngredients}
+                                itemType="ingredient"
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="cartList empty">
+                        <p>You don't have any supplies in your basket.</p>
+                    </div>
+                )
+            ) : (
+                props.savedRecipes && props.savedRecipes.length > 0 ? (
                     <div className="cartList allRadius">
                         {recipes.map((item, index) => (
                             <CartItem key={index} 
@@ -56,7 +84,8 @@ const CartContents = (props) => {
                     <div className="cartList empty">
                         <p>You haven't saved any projects.</p>
                     </div>
-                )}
+                )
+            )}
         </div>
     );
 }

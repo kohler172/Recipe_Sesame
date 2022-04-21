@@ -26,6 +26,19 @@ const RecipeButtons = (props) => {
                                         recipeSaved={props.recipeSaved}
                                         type={'save'} 
                                     />) }
+            <AddIngredientsButton 
+                recipe={props.recipe} 
+                ingredients={props.ingredients}
+                setIngredients={props.setIngredients}
+                savedRecipes={props.savedRecipes}
+                savedIngredients={props.savedIngredients}
+                setSavedIngredients={props.setSavedIngredients} 
+                setSavedRecipes={props.setSavedRecipes}
+                setRecipeSaved={props.setRecipeSaved} 
+                recipeSaved={props.recipeSaved}
+                type={'add'} 
+                label={addIngredientsLabel} 
+            />
         </div>
     )
 }
